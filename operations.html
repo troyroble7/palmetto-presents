@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Analysis | Palmetto Presents</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo"><span class="accent">Palmetto</span>&nbsp;Presents</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="collections.html">Customer Collections</a></li>
+            <li><a href="operations.html" class="active">Operational Analysis</a></li>
+            <li><a href="competitive.html">Competitive Intel</a></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <span class="section-label">Ops Performance</span>
+    <h1>Operational Analysis</h1>
+    <p>Milestone approval rates, rejection trends, and install quality metrics for EPC partners.</p>
+</section>
+
+<div class="content-section">
+    <div class="section-header" style="text-align:left;">
+        <span class="section-label">Key Metrics</span>
+        <h2>Platform-Wide Benchmarks</h2>
+    </div>
+    <div class="content-grid">
+        <div class="info-card">
+            <div class="metric">54%</div>
+            <div class="metric-label">M1 First-Time Approval (Avg)</div>
+            <p style="margin-top:1rem;">Milestone 1 first-time pass rate across all EPCs. Top performers exceed 90%. The #1 rejection driver is Enphase PV Maintainer configuration.</p>
+        </div>
+        <div class="info-card">
+            <div class="metric">53%</div>
+            <div class="metric-label">M2 First-Time Approval (Avg)</div>
+            <p style="margin-top:1rem;">Milestone 2 first-time pass rate. Primary blocker: consumption data correlated with solar production — typically caused by faulty CT installations.</p>
+        </div>
+        <div class="info-card">
+            <div class="metric">16%</div>
+            <div class="metric-label">Top Activation Blocker</div>
+            <p style="margin-top:1rem;">CT Installation & Configuration accounts for 16% of all activation rejections — the single largest blocker to getting systems live.</p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-header" style="text-align:left;">
+        <span class="section-label">Report Contents</span>
+        <h2>What's In Your Ops Report</h2>
+    </div>
+    <div class="content-grid">
+        <div class="info-card">
+            <h3>Milestone Rejection Analysis</h3>
+            <p>M1 and M2 approval/rejection rates with specific queue flag breakdowns. Identify the top 3 issues dragging your pass rate down.</p>
+        </div>
+        <div class="info-card">
+            <h3>Cycle Time Performance</h3>
+            <p>NTP-to-Install, NTP-to-Activation, and backlog aging metrics compared to platform medians (49d and 133d respectively).</p>
+        </div>
+        <div class="info-card">
+            <h3>Install Quality Scoring</h3>
+            <p>First-time pass rates, rework frequency, and quality trend analysis over rolling 90-day windows.</p>
+        </div>
+        <div class="info-card">
+            <h3>Peer Benchmarking</h3>
+            <p>Your metrics compared against anonymized peer EPCs in your size category and the Platinum benchmark standard.</p>
+        </div>
+        <div class="info-card">
+            <h3>Backlog & Aging Analysis</h3>
+            <p>Active project backlog broken down by pre-install vs pre-activation, with aging cohorts and stale project flags.</p>
+        </div>
+        <div class="info-card">
+            <h3>Channel Tier Impact</h3>
+            <p>How your operational performance maps to LightReach channel tiers: Certified, Pro, Elite, and Platinum.</p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-header" style="text-align:left;">
+        <span class="section-label">Channel Tiers</span>
+        <h2>Operational Excellence = Tier Advancement</h2>
+        <p style="text-align:left;margin:0;">Tiers are earned, not given. Based on 6 KPIs: install quality, aging backlog, NPS, collections, tranche execution, and volume.</p>
+    </div>
+    <div class="content-grid" style="margin-top:2rem;">
+        <div class="info-card" style="border-left: 4px solid var(--orange);">
+            <h3>Certified</h3>
+            <p>Entry tier for new LightReach partners. Baseline operational standards and onboarding completion required.</p>
+        </div>
+        <div class="info-card" style="border-left: 4px solid #3b82f6;">
+            <h3>Pro</h3>
+            <p>Demonstrated operational consistency. Above-average first-time pass rates and collection performance.</p>
+        </div>
+        <div class="info-card" style="border-left: 4px solid #f59e0b;">
+            <h3>Elite</h3>
+            <p>Top-quartile performance across all 6 KPIs. Priority pipeline access and enhanced support.</p>
+        </div>
+        <div class="info-card" style="border-left: 4px solid #94a3b8;">
+            <h3>Platinum</h3>
+            <p>Only 13 EPCs in 2026. The highest standard in solar. These are the partners LightReach trusts most with pipeline.</p>
+        </div>
+    </div>
+</div>
+
+<section class="cta-section">
+    <div class="cta-inner">
+        <span class="section-label" style="color:rgba(255,255,255,0.5);">Improve Your Ops</span>
+        <h2>Request Your Operational<br>Performance Report</h2>
+        <p>Contact your LightReach Regional Manager for your EPC-specific milestone and quality analysis.</p>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2026 Palmetto LightReach. For authorized EPC partners only. Confidential.</p>
+</footer>
+
+</body>
+</html>

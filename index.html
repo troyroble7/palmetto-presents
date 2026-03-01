@@ -4,42 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palmetto Presents</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #1a1a2e;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #fff;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #F9593B, #FF6B35, #FFD166);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-        }
-        p {
-            font-size: 1.2rem;
-            color: #A8DADC;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Palmetto Presents</h1>
-        <p>Coming Soon</p>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+            <span class="accent">Palmetto</span>&nbsp;Presents
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="collections.html">Customer Collections</a></li>
+            <li><a href="operations.html">Operational Analysis</a></li>
+            <li><a href="competitive.html">Competitive Intel</a></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
     </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <span class="section-label">Palmetto LightReach Partner Intelligence</span>
+    <h1>Insights That <span>Power Performance</span></h1>
+    <p>Product updates, operational analytics, and competitive intelligence for LightReach EPC partners.</p>
+    <div class="hero-cards">
+        <a href="collections.html" class="hero-card">
+            <div class="hero-card-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+            </div>
+            <h3>Customer Collections</h3>
+            <p>Portfolio health, payment trends, and corrective action plans</p>
+        </a>
+        <a href="operations.html" class="hero-card">
+            <div class="hero-card-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17H7A5 5 0 017 7h2m6 0h2a5 5 0 010 10h-2m-7-5h8"/></svg>
+            </div>
+            <h3>Operational Analysis</h3>
+            <p>Milestone approvals, rejection trends, and install quality</p>
+        </a>
+        <a href="competitive.html" class="hero-card">
+            <div class="hero-card-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
+            </div>
+            <h3>Competitive Intel</h3>
+            <p>Market positioning, competitor analysis, and pricing data</p>
+        </a>
+    </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div>
+            <div class="stat-number">700+</div>
+            <div class="stat-label">EPC Partners</div>
+        </div>
+        <div>
+            <div class="stat-number">31</div>
+            <div class="stat-label">States + PR</div>
+        </div>
+        <div>
+            <div class="stat-number">103K+</div>
+            <div class="stat-label">NTPs to Date</div>
+        </div>
+        <div>
+            <div class="stat-number">#2</div>
+            <div class="stat-label">US TPO Market Share</div>
+        </div>
+    </div>
+</div>
+
+<!-- Latest Updates -->
+<section class="section">
+    <div class="section-header">
+        <span class="section-label">Latest</span>
+        <h2>Recent Updates</h2>
+        <p>The latest product announcements, operational insights, and market intelligence.</p>
+    </div>
+    <div class="featured-grid">
+        <div class="card">
+            <div class="card-img" style="display:flex;align-items:center;justify-content:center;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+            </div>
+            <div class="card-body">
+                <span class="card-tag tag-product">Product Update</span>
+                <h3>Energy Backup: Standalone Battery Lease Now Live in 18 States</h3>
+                <p>$0 upfront battery-only lease with Tesla PW3, Enphase 10C, and Franklin aPower2. No PPL competitor offers battery-only.</p>
+                <a href="#" class="card-link">Learn more &rarr;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img" style="display:flex;align-items:center;justify-content:center;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+            </div>
+            <div class="card-body">
+                <span class="card-tag tag-product">Capital Markets</span>
+                <h3>Sabal 2026-1: $430M ABS Close + $250M ITC Sale</h3>
+                <p>$680M capital markets day. LightReach ABS priced tightest of any solar ABS — 225 bps vs Sunrun 240.</p>
+                <a href="#" class="card-link">Learn more &rarr;</a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img" style="display:flex;align-items:center;justify-content:center;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="card-body">
+                <span class="card-tag tag-training">Training</span>
+                <h3>Onboarding Revamp: New EPC Setup for Success</h3>
+                <p>Updated onboarding flow — battery backup configuration, domestic content compliance, and proposal tool integration.</p>
+                <a href="#" class="card-link">Learn more &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solar 3.0 CTA -->
+<section class="cta-section">
+    <div class="cta-inner">
+        <span class="section-label" style="color: rgba(255,255,255,0.6);">Solar 3.0</span>
+        <h2>Long-Term Customer Value.<br>Not Just Customer Acquisition.</h2>
+        <p>Cross-sell storage, generators, water heaters, and HVAC across the 25-year contract life. LightReach is an enterprise partner, not just a capital provider.</p>
+        <a href="competitive.html" class="hero-cta">View Competitive Position &rarr;</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2026 Palmetto LightReach. For authorized EPC partners only. Confidential.</p>
+</footer>
+
 </body>
 </html>

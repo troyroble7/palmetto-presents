@@ -1,0 +1,90 @@
+.epc-hero { position: relative; }
+
+.epc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    padding: 0.5rem 1.25rem 0.5rem 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.epc-badge span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+}
+
+.epc-website {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 1rem;
+}
+.epc-website:hover { color: var(--orange); }
+
+.epc-about {
+    background: var(--light-bg);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+.epc-about h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.75rem; }
+.epc-about p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.7; }
+.epc-about a { color: var(--orange); font-weight: 600; }
+
+.report-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.report-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.report-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.report-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.report-icon svg { width: 24px; height: 24px; }
+
+.icon-collections { background: rgba(249,89,59,0.1); }
+.icon-collections svg { stroke: var(--orange); }
+.icon-ops { background: rgba(59,130,246,0.1); }
+.icon-ops svg { stroke: #3b82f6; }
+.icon-intel { background: rgba(16,185,129,0.1); }
+.icon-intel svg { stroke: #059669; }
+
+.report-content h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.35rem; }
+.report-content p { font-size: 0.88rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 0.75rem; }
+
+.report-link {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--orange);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+@media (max-width: 768px) {
+    .report-card { flex-direction: column; }
+}

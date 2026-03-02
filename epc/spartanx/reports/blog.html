@@ -10,14 +10,18 @@
         .blog-hero {
             min-height: 80vh;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            gap: 4rem;
             padding: 4rem 2rem;
         }
-        .blog-hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
+        .blog-text {
+            text-align: center;
+            max-width: 500px;
+        }
+        .blog-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
             background: linear-gradient(135deg, #f59e0b, #f97316, #ef4444);
             -webkit-background-clip: text;
@@ -26,14 +30,26 @@
             margin-bottom: 1rem;
             line-height: 1.1;
         }
-        .blog-hero p {
+        .blog-text p {
             font-size: 1.25rem;
             color: var(--grey-500, #6b7280);
-            max-width: 500px;
         }
         .goat-emoji {
-            font-size: 6rem;
-            margin-bottom: 1.5rem;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        .derek-photo {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 6px solid #f97316;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .blog-hero { flex-direction: column; gap: 2rem; }
+            .derek-photo { width: 240px; height: 240px; }
         }
     </style>
 </head>
@@ -56,9 +72,12 @@
 </nav>
 
 <section class="blog-hero">
-    <div class="goat-emoji">&#x1F410;</div>
-    <h1>Derek is the biggest GOAT on the mountain</h1>
-    <p>Weekly update from Derek, Sean, Troy, AC &amp; Paul.</p>
+    <div class="blog-text">
+        <div class="goat-emoji">&#x1F410;</div>
+        <h1>Derek is the biggest GOAT on the mountain</h1>
+        <p>Weekly update from Derek, Sean, Troy, AC &amp; Paul.</p>
+    </div>
+    <img src="derek.jpg" alt="Derek Heckendorn" class="derek-photo">
 </section>
 
 <footer class="footer">

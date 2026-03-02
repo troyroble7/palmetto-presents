@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Channel Partner Program | Palmetto LightReach</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cp-nav { background: var(--dark); padding: 1rem 2rem; position: fixed; top: 0; width: 100%; z-index: 100; }
+        .cp-nav-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+        .cp-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
+        .cp-nav a:hover { color: #fff; }
+        .cp-nav .brand { color: #fff; font-weight: 700; font-size: 1.125rem; }
+        .cp-nav .brand .accent { color: var(--orange); }
+
+        .cp-hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a2640 100%);
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cp-hero::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 50%;
+            height: 180%;
+            background: var(--orange);
+            opacity: 0.05;
+            transform: rotate(12deg);
+            border-radius: 50%;
+        }
+        .cp-hero .cp-label {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--orange);
+            background: rgba(249,89,59,0.12);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .cp-hero h1 {
+            font-size: clamp(2.25rem, 5vw, 3.25rem);
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            position: relative;
+            line-height: 1.2;
+        }
+        .cp-hero p {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .cp-body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+            color: var(--gray-800);
+            line-height: 1.8;
+        }
+        .cp-body h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 3rem 0 1rem;
+            color: var(--dark);
+            border-left: 4px solid var(--orange);
+            padding-left: 1rem;
+        }
+        .cp-body p {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--gray-600);
+        }
+        .cp-body strong { color: var(--gray-800); }
+        .cp-body ul {
+            margin: 0.5rem 0 1.5rem 1.5rem;
+            color: var(--gray-600);
+        }
+        .cp-body ul li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        /* ── Tier Cards ── */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0 3rem;
+        }
+        .tier-card {
+            background: #fff;
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .tier-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        .tier-badge {
+            width: 140px;
+            height: auto;
+            margin: 0 auto 1.25rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        .tier-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+        .tier-tag {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.2rem 0.65rem;
+            border-radius: 100px;
+            margin-bottom: 0.75rem;
+        }
+        .tier-desc {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .tier-certified .tier-name { color: var(--orange); }
+        .tier-certified .tier-tag { background: rgba(249,89,59,0.1); color: var(--orange); }
+        .tier-certified { border-bottom: 3px solid var(--orange); }
+
+        .tier-pro .tier-name { color: #3b82f6; }
+        .tier-pro .tier-tag { background: rgba(59,130,246,0.1); color: #3b82f6; }
+        .tier-pro { border-bottom: 3px solid #3b82f6; }
+
+        .tier-elite .tier-name { color: #d4a017; }
+        .tier-elite .tier-tag { background: rgba(212,160,23,0.1); color: #d4a017; }
+        .tier-elite { border-bottom: 3px solid #d4a017; }
+
+        .tier-platinum .tier-name { color: #64748b; }
+        .tier-platinum .tier-tag { background: rgba(100,116,139,0.1); color: #64748b; }
+        .tier-platinum { border-bottom: 3px solid #64748b; background: linear-gradient(180deg, #fafbfc, #fff); }
+        .tier-platinum::after {
+            content: 'Highest Tier';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #fff;
+            background: var(--orange);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* ── KPI Table ── */
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0 2rem;
+            font-size: 0.9rem;
+        }
+        .kpi-table th {
+            background: var(--dark);
+            color: #fff;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+        }
+        .kpi-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-600);
+        }
+        .kpi-table tr:nth-child(even) td { background: var(--light-bg); }
+        .kpi-table .kpi-num {
+            font-weight: 800;
+            color: var(--orange);
+            font-size: 1rem;
+            width: 40px;
+            text-align: center;
+        }
+
+        /* ── Lifecycle ── */
+        .lifecycle-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .lifecycle-card {
+            background: var(--light-bg);
+            border: 1px solid var(--gray-200);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        .lifecycle-card h4 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            color: var(--dark);
+        }
+        .lifecycle-card p {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin: 0;
+        }
+        .lifecycle-icon {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(249,89,59,0.06), rgba(255,209,102,0.06));
+            border: 1px solid rgba(249,89,59,0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; color: var(--gray-600); font-size: 1rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+
+        /* ── Services Table ── */
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0 2rem;
+            font-size: 0.88rem;
+        }
+        .services-table th {
+            background: var(--dark);
+            color: #fff;
+            font-weight: 600;
+            text-align: left;
+            padding: 0.65rem 1rem;
+        }
+        .services-table td {
+            padding: 0.65rem 1rem;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-600);
+        }
+        .services-table td:first-child {
+            font-weight: 600;
+            color: var(--gray-800);
+            white-space: nowrap;
+        }
+        .services-table tr:nth-child(even) td { background: var(--light-bg); }
+
+        @media (max-width: 768px) {
+            .tier-grid { grid-template-columns: repeat(2, 1fr); }
+            .lifecycle-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .tier-grid { grid-template-columns: 1fr; }
+            .lifecycle-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="cp-nav">
+    <div class="cp-nav-inner">
+        <span class="brand">Palmetto <span class="accent">Presents</span></span>
+        <a href="index.html">Back to Home</a>
+    </div>
+</nav>
+
+<section class="cp-hero">
+    <div class="cp-label">Partner Excellence Framework</div>
+    <h1>LightReach Channel Partner Program</h1>
+    <p>Tiers are earned, not given. Performance across 6 KPIs determines your standing. Only the best earn Platinum.</p>
+</section>
+
+<div class="cp-body">
+
+    <h2>Program Philosophy</h2>
+    <p>The LightReach Channel Partner Program is designed to <strong>reward partners for how they perform and what they earn</strong>. Unlike competitors who tier based on volume, LightReach tiers based on operational excellence. A smaller EPC with excellent first-time pass rates, collection rates, and NPS can earn Platinum over a high-volume EPC with sloppy operations.</p>
+
+    <div class="highlight-box">
+        <p><strong>"Status and tier are not given &mdash; they're earned through consistent execution and operational excellence."</strong></p>
+        <p>&mdash; Troy Roble, SVP Business Development, Palmetto LightReach</p>
+    </div>
+
+    <h2>The Four Tiers</h2>
+    <p>Every LightReach partner starts as Certified and earns their way up through demonstrated performance. Tiers are reviewed twice annually (mid-year and year-end).</p>
+
+    <div class="tier-grid">
+        <div class="tier-card tier-certified">
+            <img src="epc/badges/certified.png" alt="LightReach Certified" class="tier-badge">
+            <div class="tier-name">Certified</div>
+            <div class="tier-tag">Entry Tier</div>
+            <p class="tier-desc">Welcome to LightReach. Every new partner starts here. Access to core platform, training, and support.</p>
+        </div>
+        <div class="tier-card tier-pro">
+            <img src="epc/badges/pro.png" alt="LightReach Pro" class="tier-badge">
+            <div class="tier-name">Pro</div>
+            <div class="tier-tag">Growth Tier</div>
+            <p class="tier-desc">Demonstrated operational competence. Consistent quality metrics and growing volume. Dedicated RM assigned.</p>
+        </div>
+        <div class="tier-card tier-elite">
+            <img src="epc/badges/elite.png" alt="LightReach Elite" class="tier-badge">
+            <div class="tier-name">Elite</div>
+            <div class="tier-tag">Performance Tier</div>
+            <p class="tier-desc">Strong across all 6 KPIs. Access to premium products, business reviews, and market expansion support.</p>
+        </div>
+        <div class="tier-card tier-platinum">
+            <img src="epc/badges/platinum.png" alt="LightReach Platinum" class="tier-badge">
+            <div class="tier-name">Platinum</div>
+            <div class="tier-tag">Highest Standard in Solar</div>
+            <p class="tier-desc">Only 13 EPCs in 2026. A rarified designation earned through exceptional operational excellence and customer experience.</p>
+        </div>
+    </div>
+
+    <h2>6 Performance KPIs</h2>
+    <p>Every partner is measured across six key performance indicators. These metrics determine tier standing, pricing access, and product eligibility.</p>
+
+    <table class="kpi-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>KPI</th>
+                <th>What It Measures</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="kpi-num">1</td>
+                <td><strong>Installation Quality</strong></td>
+                <td>First-time pass rate on milestone submissions. Clean job packets = fewer rejections = faster funding.</td>
+            </tr>
+            <tr>
+                <td class="kpi-num">2</td>
+                <td><strong>Aging Backlog</strong></td>
+                <td>How quickly projects move through the pipeline. Stuck projects tie up capital and hurt customer experience.</td>
+            </tr>
+            <tr>
+                <td class="kpi-num">3</td>
+                <td><strong>Customer NPS</strong></td>
+                <td>Net Promoter Score from post-install surveys. Happy customers pay on time and refer friends.</td>
+            </tr>
+            <tr>
+                <td class="kpi-num">4</td>
+                <td><strong>Collection Rate</strong></td>
+                <td>Percentage of customers making on-time payments. Directly impacts ABS portfolio health and cost of capital.</td>
+            </tr>
+            <tr>
+                <td class="kpi-num">5</td>
+                <td><strong>Tranche Execution</strong></td>
+                <td>How efficiently partners hit funding milestones. Predictable execution enables better financial planning.</td>
+            </tr>
+            <tr>
+                <td class="kpi-num">6</td>
+                <td><strong>Monthly Volume</strong></td>
+                <td>NTP volume as a measure of growth and commitment. Volume matters, but only alongside quality.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Account Lifecycle</h2>
+    <p>Partners move through a structured lifecycle based on their performance trajectory:</p>
+
+    <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+            <div class="lifecycle-icon">&#x1F50D;</div>
+            <h4>Review</h4>
+            <p>Twice annually (mid-year + year-end) against all 6 KPIs</p>
+        </div>
+        <div class="lifecycle-card">
+            <div class="lifecycle-icon">&#x2B06;&#xFE0F;</div>
+            <h4>Promotion</h4>
+            <p>Advancement to elevated tier based on sustained performance</p>
+        </div>
+        <div class="lifecycle-card">
+            <div class="lifecycle-icon">&#x2B07;&#xFE0F;</div>
+            <h4>Relegation</h4>
+            <p>Adjustment to lower tier when metrics decline</p>
+        </div>
+        <div class="lifecycle-card">
+            <div class="lifecycle-icon">&#x26A0;&#xFE0F;</div>
+            <h4>Probation</h4>
+            <p>Monitored for failing metrics. Max 3 violations before action.</p>
+        </div>
+        <div class="lifecycle-card">
+            <div class="lifecycle-icon">&#x1F6D1;</div>
+            <h4>Off-Boarding</h4>
+            <p>Partnership termination for partners who cannot meet standards</p>
+        </div>
+    </div>
+
+    <h2>Services & Benefits</h2>
+    <p>All partners receive access to core platform services. Higher tiers unlock premium benefits and exclusive programs.</p>
+
+    <table class="services-table">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Installer Ops & Knowledge Center</td>
+                <td>Extensive resource library for operational best practices</td>
+            </tr>
+            <tr>
+                <td>Training Curriculum</td>
+                <td>Tips, tricks, guides, articles, demos. On-site trainings for qualifying partners.</td>
+            </tr>
+            <tr>
+                <td>Live Support (Chat)</td>
+                <td>Real-time access to OpSpec, QC, Compliance & RM teams</td>
+            </tr>
+            <tr>
+                <td>Technical Support</td>
+                <td>Real-time technical assistance via chat and review</td>
+            </tr>
+            <tr>
+                <td>Relationship Manager</td>
+                <td>Dedicated LightReach RM assigned to your account</td>
+            </tr>
+            <tr>
+                <td>BI, Data & Reporting</td>
+                <td>Curated insights delivered weekly, monthly, and quarterly</td>
+            </tr>
+            <tr>
+                <td>Business Reviews</td>
+                <td>WBR (weekly), MBR (monthly), QBR (quarterly) review cadence</td>
+            </tr>
+            <tr>
+                <td>Milestone Management</td>
+                <td>Prescriptive curriculum to improve in-field and submission quality</td>
+            </tr>
+            <tr>
+                <td>Domestic Content Program</td>
+                <td>Opt-in ITC-DC program rewarding US-made materials (qualifying partners)</td>
+            </tr>
+            <tr>
+                <td>Direct Pay Program</td>
+                <td>LightReach pays equipment suppliers directly via Greentech Finance Solutions</td>
+            </tr>
+            <tr>
+                <td>Platform APIs</td>
+                <td>Sales: agnostic proposal/design tools. Fulfillment: site capture integration.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Exclusive Programs (Qualifying Partners)</h2>
+    <ul>
+        <li><strong>Service Partner Network:</strong> Join the LightReach service network (local/regional/national) based on operational milestone quality</li>
+        <li><strong>Stewardship Program:</strong> Distinguished recognition within the LightReach partner ecosystem</li>
+        <li><strong>Market Expansion:</strong> Support for municipal, state, regional, or national expansion</li>
+        <li><strong>Restricted Offerings:</strong> Premium financial products &mdash; HVAC/Heat Pump (Comfort Plan), New Homes, Storage (Energy Backup)</li>
+    </ul>
+
+    <h2>What Platinum Means</h2>
+    <p><strong>Only 13 LightReach Platinum EPCs exist in 2026.</strong> This is intentionally exclusive. Platinum represents the EPCs that LightReach trusts most with pipeline &mdash; the highest standard in the solar industry.</p>
+    <p>Platinum is earned through exceptional performance across all 6 KPIs: strong first-time pass rates, excellent customer collection rates, disciplined tranche execution, high NPS, clean backlog management, and sustained volume. It is the aspiration tier that all EPCs should work toward.</p>
+
+    <div class="highlight-box">
+        <p><strong>Why it matters for ABS:</strong> Platinum EPCs produce the cleanest assets. Their customers pay on time, their installations pass inspection the first time, and their NPS scores reflect genuine customer satisfaction. This directly supports LightReach's position as the tightest-priced solar ABS issuer in the market (225 bps &mdash; tighter than Sunrun, SunStrong, and GoodLeap).</p>
+    </div>
+
+    <h2>LightReach Sub-Products</h2>
+    <ul>
+        <li><strong>LightReach Solar + Storage</strong> &mdash; Core residential lease product</li>
+        <li><strong>LightReach Energy Backup</strong> &mdash; Standalone battery lease (eb.palmetto.finance)</li>
+        <li><strong>LightReach Comfort Plan</strong> &mdash; HVAC / heat pump lease (comfortplan.palmetto.finance)</li>
+        <li><strong>LightReach New Homes</strong> &mdash; New construction program (nhp.palmetto.finance)</li>
+        <li><strong>LightReach New Community</strong> &mdash; Community solar (newcommunity.palmetto.finance)</li>
+        <li><strong>LightReach Puerto Rico</strong> &mdash; PR-specific program (pr.palmetto.finance)</li>
+    </ul>
+
+</div>
+
+<footer class="footer">
+    <p>&copy; 2026 Palmetto LightReach. Confidential &mdash; for authorized partner use only.</p>
+</footer>
+
+</body>
+</html>

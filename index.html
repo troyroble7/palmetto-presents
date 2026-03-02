@@ -440,5 +440,62 @@
     <p>&copy; 2026 Palmetto LightReach. For authorized EPC partners only. Confidential.</p>
 </footer>
 
+<script>
+(async function() {
+  try {
+    const res = await fetch('/api/session');
+    const data = await res.json();
+    if (!data.authenticated) return;
+
+    // Add Sign Out link to nav
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+      const li = document.createElement('li');
+      li.innerHTML = '<a href="/api/logout" style="color:#F9593B;">Sign Out</a>';
+      navLinks.appendChild(li);
+    }
+
+    if (data.role === 'epc') {
+      // Filter EPC tiles — only show the user's own portal
+      const epcGrid = document.querySelector('#epcs .epc-grid');
+      if (epcGrid) {
+        const tiles = epcGrid.querySelectorAll('.epc-tile');
+        tiles.forEach(function(tile) {
+          const href = tile.getAttribute('href') || '';
+          // href format: "epc/spartanx/" — extract slug
+          const match = href.match(/^epc\/([^/]+)\//);
+          if (match && match[1] !== data.slug) {
+            tile.style.display = 'none';
+          }
+        });
+        // Update section header
+        const sectionHeader = document.querySelector('#epcs .section-header p');
+        if (sectionHeader) {
+          sectionHeader.textContent = 'Your partner portal is below.';
+        }
+        const sectionH2 = document.querySelector('#epcs .section-header h2');
+        if (sectionH2) {
+          sectionH2.textContent = 'Your Portal';
+        }
+      }
+
+      // Hide Competitive Intel section entirely for EPC users
+      var intelSection = document.getElementById('intel');
+      if (intelSection) intelSection.style.display = 'none';
+
+      // Hide Competitive Intel nav link
+      var navItems = document.querySelectorAll('.nav-links a');
+      navItems.forEach(function(a) {
+        if (a.getAttribute('href') === '#intel') {
+          a.parentElement.style.display = 'none';
+        }
+      });
+    }
+  } catch (e) {
+    // Fail silently — homepage remains fully public
+  }
+})();
+</script>
+
 </body>
 </html>

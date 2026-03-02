@@ -16,9 +16,8 @@
         </a>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="collections.html">Customer Collections</a></li>
-            <li><a href="operations.html">Operational Analysis</a></li>
-            <li><a href="competitive.html">Competitive Intel</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#epcs">EPC Partners</a></li>
         </ul>
         <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -30,30 +29,7 @@
 <section class="hero">
     <span class="section-label">Palmetto LightReach Partner Intelligence</span>
     <h1>Insights That <span>Power Performance</span></h1>
-    <p>Product updates, operational analytics, and competitive intelligence for LightReach EPC partners.</p>
-    <div class="hero-cards">
-        <a href="collections.html" class="hero-card">
-            <div class="hero-card-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
-            </div>
-            <h3>Customer Collections</h3>
-            <p>Portfolio health, payment trends, and corrective action plans</p>
-        </a>
-        <a href="operations.html" class="hero-card">
-            <div class="hero-card-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17H7A5 5 0 017 7h2m6 0h2a5 5 0 010 10h-2m-7-5h8"/></svg>
-            </div>
-            <h3>Operational Analysis</h3>
-            <p>Milestone approvals, rejection trends, and install quality</p>
-        </a>
-        <a href="competitive.html" class="hero-card">
-            <div class="hero-card-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
-            </div>
-            <h3>Competitive Intel</h3>
-            <p>Market positioning, competitor analysis, and pricing data</p>
-        </a>
-    </div>
+    <p>Interactive report decks for every LightReach EPC partner — operations, collections, channel performance, NTP, post-install pipeline, and NPS.</p>
 </section>
 
 <!-- Stats Bar -->
@@ -78,46 +54,114 @@
     </div>
 </div>
 
-<!-- Latest Updates -->
-<section class="section">
+<!-- 6 Report Sections -->
+<section class="section" id="reports">
     <div class="section-header">
-        <span class="section-label">Latest</span>
-        <h2>Recent Updates</h2>
-        <p>The latest product announcements, operational insights, and market intelligence.</p>
+        <span class="section-label">Report Library</span>
+        <h2>6 Report Categories</h2>
+        <p>Each EPC partner receives interactive slide-deck reports across these categories.</p>
     </div>
-    <div class="featured-grid">
-        <div class="card">
-            <div class="card-img" style="display:flex;align-items:center;justify-content:center;">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+    <div class="report-type-grid">
+        <div class="report-type-card">
+            <div class="rt-icon rt-ops">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 17H7A5 5 0 017 7h2m6 0h2a5 5 0 010 10h-2m-7-5h8"/></svg>
             </div>
-            <div class="card-body">
-                <span class="card-tag tag-product">Product Update</span>
-                <h3>Energy Backup: Standalone Battery Lease Now Live in 18 States</h3>
-                <p>$0 upfront battery-only lease with Tesla PW3, Enphase 10C, and Franklin aPower2. No PPL competitor offers battery-only.</p>
-                <a href="#" class="card-link">Learn more &rarr;</a>
-            </div>
+            <h3>Operations</h3>
+            <p>Milestone approval rates, M1/M2 rejection trends, cycle times, install quality scoring, and optimization recommendations.</p>
+            <span class="rt-status rt-live">Live</span>
         </div>
-        <div class="card">
-            <div class="card-img" style="display:flex;align-items:center;justify-content:center;">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+        <div class="report-type-card">
+            <div class="rt-icon rt-collections">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
             </div>
-            <div class="card-body">
-                <span class="card-tag tag-product">Capital Markets</span>
-                <h3>Sabal 2026-1: $430M ABS Close + $250M ITC Sale</h3>
-                <p>$680M capital markets day. LightReach ABS priced tightest of any solar ABS — 225 bps vs Sunrun 240.</p>
-                <a href="#" class="card-link">Learn more &rarr;</a>
-            </div>
+            <h3>Customer Collections</h3>
+            <p>Portfolio health, payment trends, delinquency drivers, holdback impact, and corrective action plans.</p>
+            <span class="rt-status rt-coming">Coming Soon</span>
         </div>
-        <div class="card">
-            <div class="card-img" style="display:flex;align-items:center;justify-content:center;">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        <div class="report-type-card">
+            <div class="rt-icon rt-channel">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            <div class="card-body">
-                <span class="card-tag tag-training">Training</span>
-                <h3>Onboarding Revamp: New EPC Setup for Success</h3>
-                <p>Updated onboarding flow — battery backup configuration, domestic content compliance, and proposal tool integration.</p>
-                <a href="#" class="card-link">Learn more &rarr;</a>
+            <h3>Channel Performance</h3>
+            <p>Channel tier standings, 6-KPI scorecard, tier advancement tracking, and Platinum benchmark comparison.</p>
+            <span class="rt-status rt-coming">Coming Soon</span>
+        </div>
+        <div class="report-type-card">
+            <div class="rt-icon rt-ntp">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
             </div>
+            <h3>NTP</h3>
+            <p>NTP pipeline volume, conversion funnel, weekly run-rate, state-level breakdown, and forecast performance.</p>
+            <span class="rt-status rt-coming">Coming Soon</span>
+        </div>
+        <div class="report-type-card">
+            <div class="rt-icon rt-postinstall">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            </div>
+            <h3>Post Installation Pipeline</h3>
+            <p>Post-install backlog, activation queue, PTO timelines, stuck project flags, and aging cohort analysis.</p>
+            <span class="rt-status rt-coming">Coming Soon</span>
+        </div>
+        <div class="report-type-card">
+            <div class="rt-icon rt-nps">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9V5a3 3 0 00-5.12-2.12L3 9v11h4l8-2V9z"/><path d="M21 9h-4v7h4a1 1 0 001-1v-5a1 1 0 00-1-1z"/></svg>
+            </div>
+            <h3>NPS</h3>
+            <p>Net Promoter Score deep dives — by install cohort, region, product type, and rep with trend analysis over time.</p>
+            <span class="rt-status rt-coming">Coming Soon</span>
+        </div>
+    </div>
+</section>
+
+<!-- EPC Partners -->
+<section class="section" id="epcs" style="background:var(--light-bg);max-width:100%;padding-left:0;padding-right:0;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 2rem;">
+        <div class="section-header">
+            <span class="section-label">EPC Partners</span>
+            <h2>Partner Report Portals</h2>
+            <p>Select an EPC to access their full report library.</p>
+        </div>
+        <div class="epc-grid">
+            <a href="epc/spartanx/" class="epc-tile">
+                <div class="epc-tile-badge" style="background:#FF7C0B;">SX</div>
+                <div class="epc-tile-info">
+                    <h3>SpartanX Solar</h3>
+                    <span class="epc-tile-count">1 report live</span>
+                </div>
+                <span class="epc-tile-arrow">&rarr;</span>
+            </a>
+            <a href="epc/fastrac/" class="epc-tile">
+                <div class="epc-tile-badge" style="background:#2563eb;">FR</div>
+                <div class="epc-tile-info">
+                    <h3>Fastrac</h3>
+                    <span class="epc-tile-count">1 report live</span>
+                </div>
+                <span class="epc-tile-arrow">&rarr;</span>
+            </a>
+            <a href="epc/trinity-solar/" class="epc-tile">
+                <div class="epc-tile-badge" style="background:#171B1F;">TS</div>
+                <div class="epc-tile-info">
+                    <h3>Trinity Solar</h3>
+                    <span class="epc-tile-count">Coming soon</span>
+                </div>
+                <span class="epc-tile-arrow">&rarr;</span>
+            </a>
+            <a href="epc/owe/" class="epc-tile">
+                <div class="epc-tile-badge" style="background:#0493CE;">OWE</div>
+                <div class="epc-tile-info">
+                    <h3>Our World Energy</h3>
+                    <span class="epc-tile-count">Coming soon</span>
+                </div>
+                <span class="epc-tile-arrow">&rarr;</span>
+            </a>
+            <a href="epc/ion-solar/" class="epc-tile">
+                <div class="epc-tile-badge" style="background:#111;">ION</div>
+                <div class="epc-tile-info">
+                    <h3>ION Solar</h3>
+                    <span class="epc-tile-count">Coming soon</span>
+                </div>
+                <span class="epc-tile-arrow">&rarr;</span>
+            </a>
         </div>
     </div>
 </section>
@@ -128,7 +172,6 @@
         <span class="section-label" style="color: rgba(255,255,255,0.6);">Solar 3.0</span>
         <h2>Long-Term Customer Value.<br>Not Just Customer Acquisition.</h2>
         <p>Cross-sell storage, generators, water heaters, and HVAC across the 25-year contract life. LightReach is an enterprise partner, not just a capital provider.</p>
-        <a href="competitive.html" class="hero-cta">View Competitive Position &rarr;</a>
     </div>
 </section>
 

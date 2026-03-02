@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spectrum Solar Collections &amp; NPS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --palmetto-50:#FEF4F2; --palmetto-100:#FFE3D6; --palmetto-200:#FFCCB5;
+  --palmetto-300:#FFB493; --palmetto-400:#F77D67; --palmetto-500:#F9593B;
+  --palmetto-600:#DF3A1C; --palmetto-700:#952A18; --palmetto-800:#611D11;
+  --palmetto-900:#341009; --palmetto-950:#2F0C06;
+
+  --grey-50:#FBFBF7; --grey-100:#ECF0E4; --grey-150:#DAE3D8;
+  --grey-200:#DAE3D8; --grey-300:#A7B1B0; --grey-400:#819087;
+  --grey-500:#65776D; --grey-600:#4A5951; --grey-700:#313E37;
+  --grey-800:#28332D; --grey-900:#1F2723; --grey-950:#131B16;
+
+  --white:#FFFFFF; --border:#DDDDDD; --fill:#F8F8F8; --bg-alt:#F3F4F5;
+  --text-primary:#1F2723; --text-secondary:#535353; --text-muted:#888888;
+
+  --font-display: "ABC Solar Display", Inter, Helvetica, Arial, sans-serif;
+  --font-body: "Saans", Inter, Helvetica, Arial, sans-serif;
+
+  --radius: 3px; --radius-pill: 200px;
+  --transition: 0.15s ease-in-out;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  height:100%; width:100%; overflow:hidden;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px; line-height: 1.5;
+}
+
+/* SLIDE DECK ENGINE */
+.deck { position:relative; width:100%; height:100%; overflow:hidden; }
+
+.slide {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background: var(--white);
+  opacity:0; pointer-events:none;
+  transition: opacity var(--transition), transform var(--transition);
+  transform: translateX(30px);
+}
+.slide.active { opacity:1; pointer-events:auto; transform:translateX(0); z-index:2; }
+.slide.prev   { opacity:0; transform:translateX(-30px); z-index:1; }
+
+.slide:nth-child(even) { background: var(--grey-50); }
+.slide.divider { background: var(--grey-50); }
+
+.slide.title-slide { background: var(--white); }
+.slide.title-slide .t-h1 { color: var(--palmetto-500); }
+
+.s-inner {
+  width: min(92vw, 1200px);
+  height: min(88vh, 720px);
+  padding: 2.5rem 3.5rem 2rem;
+  display: flex; flex-direction: column;
+}
+
+.s-content { flex:1; overflow-y:auto; overflow-x:hidden; padding-right:6px; }
+.s-content::-webkit-scrollbar { width:3px; }
+.s-content::-webkit-scrollbar-thumb { background:var(--grey-300); border-radius:var(--radius); }
+
+.foot {
+  flex-shrink:0; padding-top:0.75rem; margin-top:auto;
+  font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.3px;
+}
+
+/* TYPOGRAPHY */
+.t-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3rem);
+  font-weight: 900; line-height: 1; letter-spacing: -2px;
+  color: var(--text-primary); margin-bottom: 0.75rem;
+}
+.t-h1 {
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700; line-height: 1.25; letter-spacing: -1px;
+  color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.t-h2 {
+  font-family: var(--font-body);
+  font-size: clamp(1.125rem, 2vw, 1.625rem);
+  font-weight: 400; line-height: 1.25;
+  color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.t-h3 {
+  font-family: var(--font-body);
+  font-size: 1.125rem; font-weight: 600; line-height: 1.2;
+  letter-spacing: -0.5px; color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.t-body { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem; }
+.t-sm   { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; }
+.t-xs   { font-size: 0.75rem; color: var(--text-muted); }
+.t-cat  {
+  font-size: 0.8125rem; font-weight: 600; letter-spacing: 1.4px;
+  text-transform: uppercase; color: var(--grey-500); margin-bottom: 0.75rem;
+  display: inline-block;
+}
+.div-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 900; letter-spacing: -2px; line-height: 1;
+  color: var(--white);
+}
+.div-sub {
+  font-size: 1.125rem; color: var(--grey-300); margin-top: 0.5rem;
+}
+
+/* BADGES */
+.badge {
+  display: inline-block; font-size: 0.8125rem; font-weight: 600;
+  letter-spacing: 1.4px; text-transform: uppercase;
+  padding: 0.375rem 1rem; border-radius: var(--radius);
+  background: var(--bg-alt); color: var(--text-primary); margin-bottom: 1rem;
+  border-left: 3px solid var(--palmetto-500);
+}
+
+/* KPI GRID */
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-bottom:1rem; }
+.kpi-grid-2r { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-bottom:0.75rem; }
+.kpi {
+  text-align:left; padding:1rem 1.25rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--white); border-left: 4px solid var(--grey-300);
+}
+.kpi-n {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 900; letter-spacing: -1px;
+  color: var(--text-primary); line-height: 1; margin-bottom: 0.25rem;
+}
+.kpi-l { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary); }
+
+/* TABLES */
+table { width:100%; border-collapse:collapse; font-size:0.8125rem; margin-bottom:1rem; }
+th { background:var(--grey-700); color:var(--white); font-weight:600; text-align:center; padding:0.5rem 0.625rem; white-space:nowrap; }
+th:first-child { text-align:left; }
+td { padding:0.4rem 0.625rem; border-bottom:1px solid var(--border); text-align:center; }
+td:first-child { text-align:left; font-weight:500; }
+tr:nth-child(even) td { background:var(--grey-50); }
+tr.hl td { background: var(--palmetto-50); font-weight: 600; }
+
+/* TWO COLUMN */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:0.5rem; }
+.col ul { margin-top:0.5rem; padding-left:1.25rem; }
+.col li { font-size:0.875rem; color:var(--text-secondary); margin-bottom:0.375rem; line-height:1.4; }
+
+/* BULLET LISTS */
+ul { padding-left:1.25rem; margin-bottom:0.75rem; }
+li { font-size:0.875rem; color:var(--text-secondary); margin-bottom:0.375rem; line-height:1.4; }
+li strong { color: var(--text-primary); }
+
+/* DOWNLOAD BUTTONS */
+.dl-bar { display:flex; gap:0.75rem; margin-top:1.25rem; flex-wrap:wrap; }
+.dl-btn {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  padding:0.625rem 1.25rem; border-radius:var(--radius);
+  font-size:0.8125rem; font-weight:600; letter-spacing:0.3px;
+  text-decoration:none; transition:all var(--transition);
+  cursor:pointer; border:1px solid transparent;
+}
+.dl-btn svg { width:16px; height:16px; flex-shrink:0; }
+.dl-btn-pdf {
+  background:var(--palmetto-500); color:var(--white); border-color:var(--palmetto-600);
+}
+.dl-btn-pdf:hover { background:var(--palmetto-600); }
+.dl-btn-xlsx {
+  background:var(--grey-700); color:var(--white); border-color:var(--grey-600);
+}
+.dl-btn-xlsx:hover { background:var(--grey-600); }
+
+/* CALLOUT */
+.callout {
+  border-left: 4px solid var(--palmetto-500);
+  background: var(--palmetto-50);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+.callout.green { border-left-color: #22783C; background: #F0F8F0; }
+.callout.red { border-left-color: #B41E1E; background: #FEF4F2; }
+.callout.amber { border-left-color: #C88C00; background: #FFFBF0; }
+
+/* STATUS PILLS */
+.pill {
+  display:inline-block; padding:0.125rem 0.5rem; border-radius:var(--radius-pill);
+  font-size:0.75rem; font-weight:600; letter-spacing:0.5px;
+}
+.pill-g { background:#E8F5E9; color:#22783C; }
+.pill-r { background:#FFEBEE; color:#B41E1E; }
+.pill-a { background:#FFF8E1; color:#C88C00; }
+.pill-b { background:#E3F2FD; color:#2864AA; }
+
+/* NAVIGATION */
+.controls {
+  position:fixed; bottom:1.25rem; right:1.25rem; z-index:10;
+  display:flex; gap:0.5rem; align-items:center;
+}
+.ctrl-prev, .ctrl-next {
+  width:36px; height:36px; border-radius:50%;
+  background:var(--grey-200); color:var(--text-primary); border:none;
+  font-size:1rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  opacity:0.8; transition:opacity var(--transition);
+}
+.ctrl-prev:hover, .ctrl-next:hover { opacity:1; }
+.slide-num {
+  font-size:0.75rem; color:var(--grey-500); font-weight:600;
+  min-width:50px; text-align:center;
+}
+.progress-bar {
+  position:fixed; top:0; left:0; width:100%; height:3px; z-index:10;
+  background: var(--grey-200);
+}
+.progress {
+  height:100%; background:var(--palmetto-500);
+  transition: width 0.3s ease;
+}
+
+/* GRID OVERVIEW */
+.grid-ov {
+  position:fixed; inset:0; z-index:100;
+  background:rgba(31,39,35,0.95); backdrop-filter:blur(4px);
+  display:none; padding:2rem; overflow-y:auto;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem;
+}
+.grid-ov.open { display:grid; align-content:start; }
+.g-thumb {
+  background:var(--grey-800); border-radius:var(--radius);
+  padding:1rem; cursor:pointer; transition:background var(--transition);
+}
+.g-thumb:hover { background:var(--grey-700); }
+.g-thumb.current { outline:2px solid var(--palmetto-500); }
+.g-n { font-size:0.75rem; color:var(--grey-400); margin-bottom:0.25rem; }
+.g-t { font-size:0.875rem; color:var(--white); font-weight:500; }
+
+/* PRINT */
+@media print {
+  html, body { overflow:visible; height:auto; background:white; }
+  .deck { display:block; position:static; }
+  .slide {
+    position:static !important; opacity:1 !important; pointer-events:auto !important;
+    transform:none !important; display:flex !important;
+    page-break-after:always; min-height:100vh;
+  }
+  .controls, .progress-bar, .grid-ov, .dl-bar { display:none !important; }
+}
+</style>
+</head>
+<body>
+<div class="deck">
+<section class="slide title-slide" id="s-title"><div class="s-inner"><div class="s-content"><div class="t-cat">COLLECTIONS & NPS CORRECTIVE ACTION PLAN</div><div class="t-display">Spectrum Solar</div><div class="badge">NEAR TARGET -- MONITOR CLOSELY</div><div class="t-h2">Markets: </div><div class="t-body">Analysis Date: March 01, 2026</div><div class="t-body">Prepared by: Troy Roble<br>SVP, Business Development &nbsp;|&nbsp; Palmetto LightReach</div><div class="dl-bar"><a class="dl-btn dl-btn-pdf" href="Spectrum Solar -- Collections &amp; NPS Corrective Action Plan.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Download PDF Report</a><a class="dl-btn dl-btn-xlsx" href="Spectrum Solar — Collections &amp; NPS Analysis.xlsx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>Download Excel Workbook</a></div></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-kpi"><div class="s-inner"><div class="s-content"><div class="t-h1">KPI Dashboard</div><div class="t-xs">Portfolio Snapshot</div><div class="kpi-grid"><div class="kpi" style="border-left:4px solid #C88C00"><div class="kpi-n">97.80%</div><div class="kpi-l">Collection Rate</div></div><div class="kpi" style="border-left:4px solid #22783C"><div class="kpi-n">8</div><div class="kpi-l">Past-Due Accounts</div></div><div class="kpi" style="border-left:4px solid #C88C00"><div class="kpi-n">2.2%</div><div class="kpi-l">Delinquency Rate</div></div><div class="kpi" style="border-left:4px solid #2864AA"><div class="kpi-n">125</div><div class="kpi-l">NTPs (30d)</div></div></div><div class="kpi-grid"><div class="kpi" style="border-left:4px solid #B41E1E"><div class="kpi-n">-0.20%</div><div class="kpi-l">vs. 98% Target</div></div><div class="kpi" style="border-left:4px solid #C88C00"><div class="kpi-n">+0</div><div class="kpi-l">NPS Score</div></div><div class="kpi" style="border-left:4px solid #C88C00"><div class="kpi-n">+33%</div><div class="kpi-l">MoM Trend</div></div><div class="kpi" style="border-left:4px solid #2864AA"><div class="kpi-n">0</div><div class="kpi-l">NPS Responses</div></div></div></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-summary"><div class="s-inner"><div class="s-content"><div class="t-h1">Executive Summary</div><div class="callout amber">NEAR TARGET: Spectrum Solar&#x27;s collection rate of 97.80% is below the 98% LightReach target. 8 past-due accounts require corrective action.</div><ul><li>Collection rate 97.80% -- BELOW the 98% LightReach target (-0.20%)</li><li>8 past-due accounts (30+ days) with delinquency rate of 2.2%</li><li>Month-over-month trend: PD rate increasing (+33%)</li><li>NPS Score: +0 based on 0 responses (0 promoters, 0 detractors)</li><li>Current pipeline: 125 NTPs in last 30 days</li></ul></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide divider" id="s-div-portfolio"><div class="s-inner"><div class="s-content"><div style="display:flex;flex-direction:column;justify-content:center;height:100%"><div class="t-cat" style="color:var(--palmetto-400)">SECTION</div><div class="div-title">Portfolio &amp; Collections Analysis</div><div class="div-sub">Collection rates, aging, geographic and rep-level analysis</div></div></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-coll-perf"><div class="s-inner"><div class="s-content"><div class="t-h1">Collection Performance vs Target</div><div class="t-sm" style="margin-bottom:0.5rem">Below 98% target. 8 past-due accounts require action.</div><table><thead><tr><th>Metric</th><th>Spectrum Solar</th><th>LR Target</th><th>Status</th></tr></thead><tbody><tr><td>Collection Rate</td><td>97.80%</td><td>98%</td><td>BELOW (-0.20%)</td></tr>
+<tr><td>Past-Due Accounts (30+d)</td><td>8</td><td>--</td><td>2.2% delinquency</td></tr>
+<tr><td>MoM Trend</td><td>+33%</td><td>Decreasing</td><td>Worsening</td></tr>
+<tr><td>NPS Score</td><td>+0</td><td>+30</td><td>0 responses</td></tr>
+</tbody></table></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-aging"><div class="s-inner"><div class="s-content"><div class="t-h1">Aging Analysis</div><div class="t-sm" style="margin-bottom:0.5rem">6-month past-due account trend</div><table><thead><tr><th>Month</th><th>PD Accounts</th><th>PD Rate</th><th>MoM Change</th></tr></thead><tbody><tr><td>2025-09</td><td>0</td><td>0.0%</td><td>--</td></tr>
+<tr><td>2025-10</td><td>0</td><td>0.0%</td><td>--</td></tr>
+<tr><td>2025-11</td><td>0</td><td>0.0%</td><td>--</td></tr>
+<tr><td>2025-12</td><td>2</td><td>0.8%</td><td>--</td></tr>
+<tr><td>2026-01</td><td>6</td><td>1.7%</td><td>+103%</td></tr>
+<tr><td>2026-02</td><td>8</td><td>2.2%</td><td>+33%</td></tr>
+</tbody></table></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide divider" id="s-div-nps"><div class="s-inner"><div class="s-content"><div style="display:flex;flex-direction:column;justify-content:center;height:100%"><div class="t-cat" style="color:var(--palmetto-400)">SECTION</div><div class="div-title">NPS Analysis</div><div class="div-sub">Customer satisfaction, state and rep-level NPS breakdown</div></div></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-nps-overview"><div class="s-inner"><div class="s-content"><div class="t-h1">NPS Overview</div><div class="kpi-grid"><div class="kpi" style="border-left:4px solid #C88C00"><div class="kpi-n">+0</div><div class="kpi-l">NPS Score</div></div><div class="kpi" style="border-left:4px solid #2864AA"><div class="kpi-n">0</div><div class="kpi-l">Responses</div></div><div class="kpi" style="border-left:4px solid #22783C"><div class="kpi-n">0</div><div class="kpi-l">Promoters</div></div><div class="kpi" style="border-left:4px solid #B41E1E"><div class="kpi-n">0</div><div class="kpi-l">Detractors</div></div></div><div class="t-body">NPS Score: +0 based on 0 responses. Avg rating: 0/10. 0 promoters, 0 passives, 0 detractors.</div></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide divider" id="s-div-action"><div class="s-inner"><div class="s-content"><div style="display:flex;flex-direction:column;justify-content:center;height:100%"><div class="t-cat" style="color:var(--palmetto-400)">SECTION</div><div class="div-title">Corrective Action Plan</div><div class="div-sub">Priority matrix, phased implementation, target trajectory</div></div></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-priority"><div class="s-inner"><div class="s-content"><div class="t-h1">Priority Matrix</div><div class="t-sm" style="margin-bottom:0.5rem">Focus on corrective actions to reach 98% target</div><table><thead><tr><th>Priority</th><th>Action</th><th>Timeline</th><th>Owner</th><th>Expected Impact</th></tr></thead><tbody><tr><td>P2</td><td>Monitor past-due accounts weekly</td><td>Ongoing</td><td>PLR Collections</td><td>Prevent aging migration</td></tr>
+<tr><td>P2</td><td>ACH enrollment verification</td><td>Week 1-2</td><td>PLR Ops</td><td>Reduce payment friction</td></tr>
+<tr><td>P3</td><td>Quarterly performance review</td><td>Week 12</td><td>PLR RM</td><td>Sustain improvement trend</td></tr>
+<tr><td>P3</td><td>Energy Backup cross-sell assessment</td><td>Week 4-8</td><td>PLR RM</td><td>Revenue growth</td></tr>
+</tbody></table></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-phase1"><div class="s-inner"><div class="s-content"><div class="t-h1">Immediate Actions</div><ul><li>Weekly monitoring of 8 past-due accounts</li><li>ACH enrollment verification for delinquent accounts</li><li>Proactive outreach for accounts approaching 60 days</li><li>Target: Reduce delinquency rate from 2.2% to &lt;2%</li></ul></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-phase23"><div class="s-inner"><div class="s-content"><div class="t-h1">Phased Implementation</div><div class="two-col"><div class="col"><h3 class="t-h3">Process Improvements</h3><ul><li>Weekly delinquency monitoring cadence</li><li>Proactive outreach at 45-day mark</li><li>ACH re-enrollment for dropped accounts</li><li>Monthly trend review with PLR RM</li></ul></div><div class="col"><h3 class="t-h3" style="color:var(--palmetto-500)">Growth Opportunities</h3><ul><li>Energy Backup cross-sell assessment</li><li>NPS improvement plan</li><li>Solar 3.0 positioning for all product lines</li><li>Channel tier advancement evaluation</li></ul></div></div></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-takeaways"><div class="s-inner"><div class="s-content"><div class="t-h1">Key Takeaways</div><ul><li>BELOW TARGET: Collection rate 97.80% (-0.20% vs 98% target)</li><li>8 PAST-DUE ACCOUNTS: Immediate outreach required</li><li>NPS SCORE 0: Needs improvement</li><li>TREND: MoM change +33% -- worsening</li></ul></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+<section class="slide" id="s-contact"><div class="s-inner"><div class="s-content"><div class="t-h1">Contact</div><table><thead><tr><th>Role</th><th>Details</th></tr></thead><tbody><tr><td>SVP, Business Development</td><td>Troy Roble</td></tr>
+<tr><td>PLR Collections Main Line</td><td>(855) 339-1831</td></tr>
+<tr><td>Report Date</td><td>March 01, 2026</td></tr>
+<tr><td>Classification</td><td>Confidential -- Internal Use Only</td></tr>
+</tbody></table></div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; March 2026</div></div></section>
+
+</div>
+<div class="progress-bar"><div class="progress"></div></div>
+<div class="controls">
+  <button class="ctrl-prev" aria-label="Previous">&larr;</button>
+  <span class="slide-num">1 / 14</span>
+  <button class="ctrl-next" aria-label="Next">&rarr;</button>
+</div>
+<div class="grid-ov"></div>
+<script>
+(function(){
+  const S=document.querySelectorAll('.slide'), N=S.length;
+  let c=0;
+  const num=document.querySelector('.slide-num'),
+        bar=document.querySelector('.progress'),
+        grid=document.querySelector('.grid-ov');
+
+  function go(n){
+    if(n<0||n>=N)return;
+    S[c].classList.remove('active'); S[c].classList.add('prev');
+    c=n;
+    S.forEach((s,i)=>{s.classList.remove('active','prev');if(i===c)s.classList.add('active')});
+    num.textContent=`${c+1} / ${N}`;
+    bar.style.width=`${((c+1)/N)*100}%`;
+    const sc=S[c].querySelector('.s-content'); if(sc)sc.scrollTop=0;
+  }
+  function nx(){go(c+1)} function pv(){go(c-1)}
+
+  document.addEventListener('keydown',e=>{
+    if(grid.classList.contains('open')){if(e.key==='Escape'||e.key==='g')grid.classList.remove('open');return;}
+    switch(e.key){
+      case'ArrowRight':case'ArrowDown':case' ':case'PageDown':e.preventDefault();nx();break;
+      case'ArrowLeft':case'ArrowUp':case'PageUp':e.preventDefault();pv();break;
+      case'Home':e.preventDefault();go(0);break;
+      case'End':e.preventDefault();go(N-1);break;
+      case'f':case'F':if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();break;
+      case'g':case'G':toggleG();break;
+      case'Escape':if(document.fullscreenElement)document.exitFullscreen();break;
+    }
+  });
+
+  document.addEventListener('click',e=>{
+    if(grid.classList.contains('open'))return;
+    if(e.target.closest('.controls'))return;
+    const x=e.clientX/window.innerWidth;
+    if(x>.6)nx(); else if(x<.4)pv();
+  });
+
+  let tx=0;
+  document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d<-50)nx();else if(d>50)pv();},{passive:true});
+
+  document.querySelector('.ctrl-prev').addEventListener('click',e=>{e.stopPropagation();pv()});
+  document.querySelector('.ctrl-next').addEventListener('click',e=>{e.stopPropagation();nx()});
+
+  function toggleG(){grid.classList.toggle('open');if(grid.classList.contains('open'))buildG();}
+  function buildG(){
+    grid.innerHTML='';
+    S.forEach((s,i)=>{
+      const d=document.createElement('div');d.className='g-thumb'+(i===c?' current':'');
+      const t=s.querySelector('.t-display,.t-h1,.t-h2,.div-title');
+      d.innerHTML=`<div class="g-n">Slide ${i+1}</div><div class="g-t">${t?t.textContent:'\u2014'}</div>`;
+      d.addEventListener('click',e=>{e.stopPropagation();go(i);grid.classList.remove('open')});
+      grid.appendChild(d);
+    });
+  }
+  go(0);
+})();
+</script>
+</body>
+</html>

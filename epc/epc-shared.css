@@ -1,5 +1,39 @@
 .epc-hero { position: relative; }
 
+/* Co-branded nav logo */
+.cobrand-nav {
+    display: flex !important;
+    align-items: center;
+    gap: 1rem;
+}
+.nav-plr-logo {
+    height: 32px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+}
+.nav-cobrand-sep {
+    width: 1px;
+    height: 28px;
+    background: rgba(255,255,255,0.3);
+    flex-shrink: 0;
+}
+.nav-epc-logo {
+    height: 28px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+}
+
+/* Channel tier badge */
+.channel-badge {
+    height: 240px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+}
+
 .epc-badge {
     display: inline-flex;
     align-items: center;

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | SpartanX Solar | Palmetto Presents</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="../../epc-shared.css">
+    <style>
+        .blog-hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        .blog-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #f59e0b, #f97316, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .blog-hero p {
+            font-size: 1.25rem;
+            color: var(--grey-500, #6b7280);
+            max-width: 500px;
+        }
+        .goat-emoji {
+            font-size: 6rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="../index.html" class="nav-logo cobrand-nav">
+            <img src="../plr-logo.png" alt="Palmetto LightReach" class="nav-plr-logo">
+            <span class="nav-cobrand-sep"></span>
+            <img src="../spartan-logo.png" alt="SpartanX Solar" class="nav-epc-logo">
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html">Back to SpartanX</a></li>
+        </ul>
+        <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </div>
+</nav>
+
+<section class="blog-hero">
+    <div class="goat-emoji">&#x1F410;</div>
+    <h1>Derek is the biggest GOAT on the mountain</h1>
+    <p>Weekly update from Derek, Sean, Troy, AC &amp; Paul.</p>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2026 Palmetto LightReach. Prepared for SpartanX Solar. Confidential &mdash; for authorized partner use only.</p>
+</footer>
+
+</body>
+</html>

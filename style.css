@@ -520,6 +520,8 @@ a { text-decoration: none; color: inherit; }
 .rt-nps svg { stroke: #ec4899; }
 .rt-training { background: rgba(99,102,241,0.1); }
 .rt-training svg { stroke: #6366f1; }
+.rt-news { background: rgba(20,184,166,0.1); }
+.rt-news svg { stroke: #14b8a6; }
 
 .report-type-card h3 {
     font-size: 1.05rem;

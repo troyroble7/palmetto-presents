@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="../epc-shared.css">
     <style>
     /* ── Channel Health Thermometer ── */
+    .epc-hero { overflow: visible; }
     .hero-health-row {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 2.5rem;
         margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
     }
     .hero-health-row .channel-badge {
         margin-bottom: 0;
@@ -25,11 +28,13 @@
         display: flex;
         gap: 1rem;
         background: #ffffff;
+        color: #1f2937;
         border-radius: 16px;
         padding: 1.25rem 1.5rem;
         box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
         min-width: 280px;
         max-width: 320px;
+        text-align: left;
     }
     /* Vertical thermometer bar */
     .ch-thermo {

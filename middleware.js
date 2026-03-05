@@ -5,6 +5,7 @@ const LOGIN_PATH = '/login.html';
 // Everything else on the entire site requires a valid session
 const PUBLIC_PATHS = [
   '/login.html',
+  '/auth.js',
   '/plr-logo.png',
   '/robots.txt',
   '/favicon.ico',

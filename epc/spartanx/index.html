@@ -1,12 +1,189 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="/auth.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpartanX Solar | Palmetto Presents</title>
     <!-- v2026.03.01 -->
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../epc-shared.css">
+    <style>
+    /* ── Channel Health Thermometer ── */
+    .hero-health-row {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+    .hero-health-row .channel-badge {
+        margin-bottom: 0;
+        height: 336px;
+    }
+    .channel-health-card {
+        display: flex;
+        gap: 1rem;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 1.25rem 1.5rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+        min-width: 280px;
+        max-width: 320px;
+        position: absolute;
+        right: 2.25in;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    /* Vertical thermometer bar */
+    .ch-thermo {
+        width: 10px;
+        min-width: 10px;
+        border-radius: 5px;
+        background: #f0f0f0;
+        position: relative;
+        overflow: hidden;
+        align-self: stretch;
+    }
+    .ch-thermo-fill {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 5px;
+        transition: height 0.8s ease;
+    }
+    .ch-thermo-fill.thermo-green {
+        background: linear-gradient(to top, #22c55e, #4ade80);
+    }
+    .ch-thermo-fill.thermo-yellow {
+        background: linear-gradient(to top, #eab308, #facc15);
+    }
+    .ch-thermo-fill.thermo-red {
+        background: linear-gradient(to top, #ef4444, #f87171);
+    }
+    /* Thermometer bulb */
+    .ch-thermo::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #22c55e;
+        border: 2px solid #e8e8e8;
+        box-shadow: 0 0 8px rgba(34,197,94,0.4);
+    }
+    /* Metrics column */
+    .ch-metrics {
+        flex: 1;
+    }
+    .ch-metrics h4 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9ca3af;
+        margin: 0 0 0.85rem;
+    }
+    .ch-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.55rem;
+    }
+    .ch-row:last-child { margin-bottom: 0; }
+    /* Colored dot */
+    .ch-dot {
+        width: 10px;
+        height: 10px;
+        min-width: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    .ch-dot.green {
+        background: #22c55e;
+        box-shadow: 0 0 6px rgba(34,197,94,0.6);
+    }
+    .ch-dot.yellow {
+        background: #eab308;
+        box-shadow: 0 0 6px rgba(234,179,8,0.6);
+    }
+    .ch-dot.red {
+        background: #ef4444;
+        box-shadow: 0 0 6px rgba(239,68,68,0.6);
+    }
+    /* Metric label */
+    .ch-label {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: #4b5563;
+        white-space: nowrap;
+        flex: 1;
+    }
+    /* Mini progress bar */
+    .ch-bar {
+        width: 48px;
+        min-width: 48px;
+        height: 5px;
+        border-radius: 3px;
+        background: #f0f0f0;
+        overflow: hidden;
+    }
+    .ch-bar-fill {
+        display: block;
+        height: 100%;
+        border-radius: 3px;
+    }
+    .ch-bar-fill.bg-green  { background: #22c55e; }
+    .ch-bar-fill.bg-yellow { background: #eab308; }
+    .ch-bar-fill.bg-red    { background: #ef4444; }
+    /* Value */
+    .ch-val {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #1f2937;
+        min-width: 40px;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+    }
+    /* Overall score at bottom */
+    .ch-overall {
+        margin-top: 0.85rem;
+        padding-top: 0.7rem;
+        border-top: 1px solid #e8e8e8;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .ch-overall-label {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: #9ca3af;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+    .ch-overall-score {
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #16a34a;
+    }
+    @media (max-width: 768px) {
+        .hero-health-row {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .channel-health-card {
+            position: static;
+            transform: none;
+            min-width: unset;
+            max-width: 340px;
+            width: 100%;
+        }
+    }
+    </style>
 </head>
 <body>
 
@@ -30,7 +207,57 @@
 </nav>
 
 <section class="page-hero epc-hero">
-    <img src="../badges/platinum.png" alt="Palmetto LightReach Platinum Partner" class="channel-badge">
+    <div class="hero-health-row">
+        <img src="../badges/platinum.png" alt="Palmetto LightReach Platinum Partner" class="channel-badge">
+        <div class="channel-health-card">
+            <div class="ch-thermo">
+                <div class="ch-thermo-fill thermo-green" style="height:88%"></div>
+            </div>
+            <div class="ch-metrics">
+                <h4>Channel Health</h4>
+                <div class="ch-row">
+                    <span class="ch-dot yellow"></span>
+                    <span class="ch-label">Install Quality</span>
+                    <span class="ch-bar"><span class="ch-bar-fill bg-yellow" style="width:75%"></span></span>
+                    <span class="ch-val">75%</span>
+                </div>
+                <div class="ch-row">
+                    <span class="ch-dot green"></span>
+                    <span class="ch-label">Aging Backlog</span>
+                    <span class="ch-bar"><span class="ch-bar-fill bg-green" style="width:90%"></span></span>
+                    <span class="ch-val">Low</span>
+                </div>
+                <div class="ch-row">
+                    <span class="ch-dot green"></span>
+                    <span class="ch-label">Customer NPS</span>
+                    <span class="ch-bar"><span class="ch-bar-fill bg-green" style="width:84%"></span></span>
+                    <span class="ch-val">+42</span>
+                </div>
+                <div class="ch-row">
+                    <span class="ch-dot green"></span>
+                    <span class="ch-label">Collection Rate</span>
+                    <span class="ch-bar"><span class="ch-bar-fill bg-green" style="width:98%"></span></span>
+                    <span class="ch-val">98.2%</span>
+                </div>
+                <div class="ch-row">
+                    <span class="ch-dot green"></span>
+                    <span class="ch-label">Tranche Exec.</span>
+                    <span class="ch-bar"><span class="ch-bar-fill bg-green" style="width:92%"></span></span>
+                    <span class="ch-val">On Track</span>
+                </div>
+                <div class="ch-row">
+                    <span class="ch-dot green"></span>
+                    <span class="ch-label">Monthly Volume</span>
+                    <span class="ch-bar"><span class="ch-bar-fill bg-green" style="width:95%"></span></span>
+                    <span class="ch-val">#5 / 501</span>
+                </div>
+                <div class="ch-overall">
+                    <span class="ch-overall-label">Overall Score</span>
+                    <span class="ch-overall-score">5 / 6</span>
+                </div>
+            </div>
+        </div>
+    </div>
     <h1>SpartanX Solar</h1>
     <p>Your dedicated Palmetto LightReach intelligence hub. Access your latest reports below.</p>
     <a href="https://spartanxsolar.com/" target="_blank" rel="noopener" class="epc-website">spartanxsolar.com &nearr;</a>
@@ -126,28 +353,6 @@
             </div>
         </a>
 
-        <a href="https://news.golightreach.com" target="_blank" rel="noopener" class="report-card">
-            <div class="report-icon" style="background:rgba(20,184,166,0.1);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="1.5"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
-            </div>
-            <div class="report-content">
-                <h3>News</h3>
-                <p>Latest LightReach announcements, product launches, capital markets updates, and industry coverage.</p>
-                <span class="report-link">Read latest news &nearr;</span>
-            </div>
-        </a>
-
-        <a href="reports/blog.html" class="report-card">
-            <div class="report-icon" style="background:rgba(168,85,247,0.1);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-            </div>
-            <div class="report-content">
-                <h3>Blog</h3>
-                <p>Weekly update from Derek, Sean, Troy, AC &amp; Paul.</p>
-                <span class="report-link">Open blog &rarr;</span>
-            </div>
-        </a>
-
         <a href="../../solar-3-0.html" class="report-card">
             <div class="report-icon" style="background:rgba(251,146,60,0.1);">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -167,6 +372,39 @@
                 <h3>Channel Program</h3>
                 <p>Explore the LightReach partner tiers &mdash; Certified, Pro, Elite, and Platinum. How the 6-KPI framework rewards operational excellence.</p>
                 <span class="report-link">View channel tiers &rarr;</span>
+            </div>
+        </a>
+
+        <a href="../../safe-harbor.html" class="report-card">
+            <div class="report-icon" style="background:rgba(16,185,129,0.1);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="report-content">
+                <h3>Safe Harbor</h3>
+                <p>Access the 2026 Safe Harbor equipment request form. Lock in ITC value with Tesla PW3, Enphase IQ9, Franklin aPower2, and SolarEdge Battery.</p>
+                <span class="report-link">Open Safe Harbor portal &rarr;</span>
+            </div>
+        </a>
+
+        <a href="https://news.golightreach.com" target="_blank" rel="noopener" class="report-card">
+            <div class="report-icon" style="background:rgba(20,184,166,0.1);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="1.5"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+            </div>
+            <div class="report-content">
+                <h3>News</h3>
+                <p>Latest LightReach announcements, product launches, capital markets updates, and industry coverage.</p>
+                <span class="report-link">Read latest news &nearr;</span>
+            </div>
+        </a>
+
+        <a href="reports/blog.html" class="report-card">
+            <div class="report-icon" style="background:rgba(168,85,247,0.1);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <div class="report-content">
+                <h3>Blog</h3>
+                <p>Weekly update from Derek, Sean, Troy, AC &amp; Paul.</p>
+                <span class="report-link">Open blog &rarr;</span>
             </div>
         </a>
     </div>

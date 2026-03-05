@@ -85,6 +85,10 @@
         .login-btn:hover {
             background: #e04a2e;
         }
+        .login-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
         .error-msg {
             background: #fef2f2;
             color: #dc2626;
@@ -102,30 +106,23 @@
             color: #999;
             line-height: 1.5;
         }
-        .login-footer a {
-            color: #F9593B;
-            text-decoration: none;
-        }
-        .login-footer a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
     <div class="login-card">
         <img src="/plr-logo.png" alt="Palmetto LightReach" class="login-logo">
         <h1>Palmetto Presents</h1>
-        <p>Enter your passphrase to access your EPC portal.</p>
+        <p>Enter your passphrase to access the site.</p>
 
         <div class="error-msg" id="errorMsg"></div>
 
-        <form method="POST" action="/api/login">
+        <form id="loginForm" onsubmit="return handleLogin(event)">
             <input type="hidden" name="redirect" id="redirectField" value="/">
             <div class="form-group">
                 <label for="passphrase">Passphrase</label>
                 <input type="password" id="passphrase" name="passphrase" placeholder="Enter your passphrase" required autocomplete="off">
             </div>
-            <button type="submit" class="login-btn">Sign In</button>
+            <button type="submit" class="login-btn" id="submitBtn">Sign In</button>
         </form>
 
         <p class="login-footer">
@@ -134,15 +131,126 @@
     </div>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        const redirect = params.get('redirect');
+        // Authorized passphrase hashes (SHA-256)
+        // Only these passphrases will be accepted
+        var AUTH_HASHES = {
+            // Admin — full access
+            'a668bf0513d52eda9f560483dafe3bd0d5a7ac900ab851e2b8b9712aa3927970': { role: 'admin', slug: '_admin' },
+            // Test viewer — full view access for demos
+            'd4840c7ab9d36a9ac1bd045c03a4fdaa7e86c53a0cad09ff7373d29bcaa3c75b': { role: 'admin', slug: '_test' },
+            // SpartanX EPC — their portal only
+            'cb6535998e6ddfc99b8de82b1dc3aad4700bb9159b2b92a0821980191e449712': { role: 'epc', slug: 'spartanx' }
+        };
+
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('redirect');
         if (redirect) {
             document.getElementById('redirectField').value = redirect;
         }
-        const error = params.get('error');
+        var error = params.get('error');
         if (error) {
-            const el = document.getElementById('errorMsg');
-            el.textContent = error;
+            showError(error);
+        }
+
+        // If already authenticated, redirect
+        (function() {
+            var match = document.cookie.match(/(?:^|;\s*)pp_auth=([^;]*)/);
+            if (match) {
+                try {
+                    var token = decodeURIComponent(match[1]);
+                    var dotIdx = token.lastIndexOf('.');
+                    if (dotIdx !== -1) {
+                        var payload = JSON.parse(atob(token.substring(0, dotIdx)));
+                        if (payload.v && payload.exp && Date.now() < payload.exp) {
+                            window.location.replace(redirect || '/');
+                            return;
+                        }
+                    }
+                } catch(e) {}
+            }
+        })();
+
+        async function sha256(text) {
+            var enc = new TextEncoder();
+            var hash = await crypto.subtle.digest('SHA-256', enc.encode(text));
+            return Array.from(new Uint8Array(hash)).map(function(b) {
+                return b.toString(16).padStart(2, '0');
+            }).join('');
+        }
+
+        async function handleLogin(e) {
+            e.preventDefault();
+            var btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Verifying...';
+
+            var passphrase = document.getElementById('passphrase').value.trim();
+            var redirectTo = document.getElementById('redirectField').value || '/';
+
+            if (!passphrase) {
+                showError('Please enter a passphrase.');
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+                return false;
+            }
+
+            var hash = await sha256(passphrase);
+
+            // Validate against known hashes
+            var authEntry = AUTH_HASHES[hash];
+            if (!authEntry) {
+                showError('Invalid passphrase.');
+                document.getElementById('passphrase').value = '';
+                document.getElementById('passphrase').focus();
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+                return false;
+            }
+
+            // Create validated token
+            var payload = JSON.stringify({
+                role: authEntry.role,
+                slug: authEntry.slug,
+                v: 1,
+                exp: Date.now() + (7 * 24 * 60 * 60 * 1000)
+            });
+            var token = btoa(payload) + '.' + hash.substring(0, 32);
+
+            // Set auth cookie (7 days)
+            var expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = 'pp_auth=' + encodeURIComponent(token) + '; path=/; expires=' + expires + '; SameSite=Lax; Secure';
+
+            // Also try server-side login (works once Vercel Edge Functions recover)
+            try {
+                var formData = new URLSearchParams();
+                formData.append('passphrase', passphrase);
+                formData.append('redirect', redirectTo);
+                var resp = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData.toString(),
+                    redirect: 'manual'
+                });
+                if (resp.status === 302 || resp.type === 'opaqueredirect') {
+                    window.location.href = redirectTo;
+                    return false;
+                }
+            } catch (_) {}
+
+            // Redirect — EPC users go to their portal if no specific redirect
+            if (authEntry.role === 'epc' && (!redirectTo || redirectTo === '/')) {
+                redirectTo = '/epc/' + authEntry.slug + '/';
+            }
+            if (!redirectTo.startsWith('/') || redirectTo.startsWith('//')) {
+                redirectTo = '/';
+            }
+            window.location.href = redirectTo;
+            return false;
+        }
+
+        function showError(msg) {
+            var el = document.getElementById('errorMsg');
+            el.textContent = msg;
             el.classList.add('show');
         }
     </script>

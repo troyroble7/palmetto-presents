@@ -66,45 +66,47 @@ export default async function middleware(request) {
     if (path.startsWith(prefix)) return;
   }
 
-  const secret = process.env.PP_SESSION_SECRET;
-  if (!secret) {
-    console.error('PP_SESSION_SECRET not set');
-    return redirectToLogin(request);
-  }
+  const secret = process.env.PP_SESSION_SECRET || '';
 
-  // Read session cookie
   const cookieHeader = request.headers.get('cookie');
+
+  // Try server-side session cookie first (HMAC-signed)
+  let session = null;
   const sessionValue = parseCookie(cookieHeader, SESSION_COOKIE);
-
-  if (!sessionValue) {
-    return redirectToLogin(request);
+  if (sessionValue && secret) {
+    const dotIndex = sessionValue.lastIndexOf('.');
+    if (dotIndex !== -1) {
+      const payloadB64 = sessionValue.substring(0, dotIndex);
+      const signature = sessionValue.substring(dotIndex + 1);
+      const valid = await hmacVerify(payloadB64, signature, secret);
+      if (valid) {
+        try {
+          const parsed = JSON.parse(atob(payloadB64));
+          if (parsed.exp && Date.now() < parsed.exp) {
+            session = parsed;
+          }
+        } catch {}
+      }
+    }
   }
 
-  // Parse token: base64(payload).signature
-  const dotIndex = sessionValue.lastIndexOf('.');
-  if (dotIndex === -1) {
-    return redirectToLogin(request);
+  // Fallback: client-side auth cookie (pp_auth)
+  if (!session) {
+    const authValue = parseCookie(cookieHeader, 'pp_auth');
+    if (authValue) {
+      const dotIndex = authValue.lastIndexOf('.');
+      if (dotIndex !== -1) {
+        try {
+          const parsed = JSON.parse(atob(authValue.substring(0, dotIndex)));
+          if (parsed.v && parsed.exp && Date.now() < parsed.exp) {
+            session = parsed;
+          }
+        } catch {}
+      }
+    }
   }
 
-  const payloadB64 = sessionValue.substring(0, dotIndex);
-  const signature = sessionValue.substring(dotIndex + 1);
-
-  // Verify HMAC
-  const valid = await hmacVerify(payloadB64, signature, secret);
-  if (!valid) {
-    return redirectToLogin(request);
-  }
-
-  // Decode payload
-  let session;
-  try {
-    session = JSON.parse(atob(payloadB64));
-  } catch {
-    return redirectToLogin(request);
-  }
-
-  // Check expiration
-  if (!session.exp || Date.now() > session.exp) {
+  if (!session) {
     return redirectToLogin(request);
   }
 

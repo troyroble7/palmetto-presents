@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/auth.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SpartanX — Channel Performance Scorecard | April 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --palmetto-50:#FEF4F2; --palmetto-100:#FFE3D6; --palmetto-200:#FFCCB5;
+  --palmetto-300:#FFB493; --palmetto-400:#F77D67; --palmetto-500:#F9593B;
+  --palmetto-600:#DF3A1C; --palmetto-700:#952A18; --palmetto-800:#611D11;
+  --palmetto-900:#341009; --palmetto-950:#2F0C06;
+
+  --grey-50:#FBFBF7; --grey-100:#ECF0E4; --grey-150:#DAE3D8;
+  --grey-200:#DAE3D8; --grey-300:#A7B1B0; --grey-400:#819087;
+  --grey-500:#65776D; --grey-600:#4A5951; --grey-700:#313E37;
+  --grey-800:#28332D; --grey-900:#1F2723; --grey-950:#131B16;
+
+  --lumen-500:#808867; --lumen-100:#E4EBCD;
+  --earth-300:#CFAC75; --earth-100:#EFE6D2;
+
+  --white:#FFFFFF; --border:#DDDDDD; --fill:#F8F8F8; --bg-alt:#F3F4F5;
+  --text-primary:#1F2723; --text-secondary:#535353; --text-muted:#888888;
+
+  --font-display: "Inter", Helvetica, Arial, sans-serif;
+  --font-body: "Inter", Helvetica, Arial, sans-serif;
+
+  --radius: 3px; --radius-pill: 200px;
+  --transition: 0.15s ease-in-out;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+  height:100%; width:100%; overflow:hidden;
+  font-family: var(--font-body);
+  color: var(--text-primary); background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px; line-height: 1.5;
+}
+.deck { position:relative; width:100%; height:100%; overflow:hidden; }
+.slide {
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background: var(--white); opacity:0; pointer-events:none;
+  transition: opacity var(--transition), transform var(--transition);
+  transform: translateX(30px);
+}
+.slide.active { opacity:1; pointer-events:auto; transform:translateX(0); z-index:2; }
+.slide.prev   { opacity:0; transform:translateX(-30px); z-index:1; }
+.slide:nth-child(even) { background: var(--grey-50); }
+.slide.divider { background: var(--white); }
+.s-inner {
+  width: min(92vw, 1200px); height: min(88vh, 720px);
+  padding: 2.5rem 3.5rem 2rem;
+  display: flex; flex-direction: column;
+}
+.s-content { flex:1; overflow-y:auto; overflow-x:hidden; padding-right:6px; }
+.s-content::-webkit-scrollbar { width:3px; }
+.s-content::-webkit-scrollbar-thumb { background:var(--grey-300); border-radius:var(--radius); }
+.foot {
+  flex-shrink:0; padding-top:0.75rem; margin-top:auto;
+  font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.3px;
+}
+.t-display { font-size: clamp(2.25rem, 4.5vw, 3rem); font-weight: 900; line-height: 1; letter-spacing: -2px; color: var(--text-primary); margin-bottom: 0.75rem; }
+.t-h1 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 700; line-height: 1.25; letter-spacing: -1px; color: var(--text-primary); margin-bottom: 0.5rem; }
+.t-h2 { font-size: clamp(1.25rem, 2.5vw, 2rem); font-weight: 400; line-height: 1.25; color: var(--text-primary); margin-bottom: 0.5rem; }
+.t-h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.5px; color: var(--text-primary); margin-bottom: 0.5rem; }
+.t-body { font-size: 1rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem; }
+.t-sm { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; }
+.t-xs { font-size: 0.75rem; color: var(--text-muted); }
+.t-cat { font-size: 0.875rem; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: var(--grey-500); margin-bottom: 0.75rem; display: inline-block; }
+.badge { display: inline-block; font-size: 0.875rem; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; padding: 0.375rem 1rem; border-radius: var(--radius); background: var(--bg-alt); color: var(--text-primary); margin-bottom: 1.25rem; }
+.badge-tone { border-left: 3px solid var(--palmetto-500); }
+.card-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1rem; }
+.card { display:flex; flex-direction:column; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+.card-l { font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 2px; }
+.card-v { font-size: 0.9375rem; font-weight: 500; color: var(--text-primary); }
+.card-full { grid-column: 1 / -1; }
+.kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; margin-top:1.25rem; }
+.kpi { text-align:center; padding:1.25rem 0.25rem; }
+.kpi-n { font-size: clamp(2rem, 4.5vw, 3.25rem); font-weight: 900; letter-spacing: -1px; color: var(--text-primary); line-height: 1; margin-bottom: 0.375rem; }
+.kpi-l { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+.kpi-c { font-size: 0.75rem; color: var(--text-muted); }
+.find-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-top:0.75rem; }
+.find-card { border: 1px solid var(--border); border-left: 3px solid var(--grey-700); border-radius: var(--radius); padding: 1.25rem; background: var(--white); }
+.find-card h4 { font-size: 0.9375rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+.find-card p  { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.5; }
+.find-card.positive { border-left-color: var(--lumen-500); }
+.find-card.watch { border-left-color: var(--earth-300); }
+.find-card.critical { border-left-color: var(--palmetto-500); }
+table { width:100%; border-collapse:collapse; margin:0.75rem 0; font-size:0.8125rem; }
+th { text-align:left; padding:0.625rem 0.875rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--grey-500); border-bottom: 2px solid var(--border); }
+td { padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--grey-100); color: var(--text-primary); }
+tr:nth-child(even) td { background: var(--grey-50); }
+.hl td { font-weight: 600; background: var(--lumen-100); }
+.divider .s-inner { justify-content:center; }
+.divider .s-content { display:flex; flex-direction:column; justify-content:center; }
+.div-badge { font-size:0.875rem; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:var(--grey-500); margin-bottom:1rem; display:inline-block; width:fit-content; padding:0.25rem 0.75rem; background:var(--bg-alt); border-radius:var(--radius); }
+.div-title { font-size:clamp(2rem,5vw,3rem); font-weight:900; letter-spacing:-2px; color:var(--text-primary); line-height:1; margin-bottom:0.75rem; }
+.div-desc { font-size:1rem; color:var(--text-secondary); max-width:550px; line-height:1.5; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:0.75rem; }
+.col-hd { font-size:0.9375rem; font-weight:600; color:var(--text-primary); margin-bottom:0.625rem; padding-bottom:0.375rem; border-bottom:2px solid var(--palmetto-500); }
+.controls { position:fixed; bottom:1.5rem; right:2rem; z-index:100; display:flex; align-items:center; gap:0.75rem; }
+.ctrl-btn { width:2.25rem; height:2.25rem; border-radius:50%; border:1px solid var(--border); background:rgba(255,255,255,0.95); color:var(--text-primary); cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1rem; transition:all var(--transition); backdrop-filter:blur(8px); }
+.ctrl-btn:hover { background:var(--palmetto-500); color:var(--white); border-color:var(--palmetto-500); }
+.slide-num { font-size:0.75rem; color:var(--text-muted); font-weight:500; min-width:3rem; text-align:center; }
+.progress { position:fixed; top:0; left:0; height:3px; background:var(--palmetto-500); z-index:100; transition: width 0.3s ease; }
+.grid-ov { position:fixed; inset:0; background:rgba(31,39,35,0.92); z-index:200; display:none; padding:2rem; overflow-y:auto; }
+.grid-ov.open { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; align-content:start; }
+.g-thumb { background:var(--white); border-radius:var(--radius); padding:0.75rem; cursor:pointer; border:2px solid transparent; transition:border-color var(--transition); aspect-ratio:16/9; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
+.g-thumb:hover, .g-thumb.current { border-color:var(--palmetto-500); }
+.g-thumb .g-n { font-size:0.6875rem; color:var(--text-muted); margin-bottom:0.25rem; }
+.g-thumb .g-t { font-size:0.8125rem; font-weight:500; color:var(--text-primary); line-height:1.3; }
+.cobrand-header { display:flex; align-items:center; gap:1.25rem; margin-bottom:0.75rem; flex-shrink:0; }
+.cobrand-plr { height:36px; width:auto; max-width:220px; object-fit:contain; }
+.cobrand-epc { height:32px; width:auto; max-width:180px; object-fit:contain; }
+.cobrand-sep { width:1px; height:30px; background:var(--grey-300); flex-shrink:0; }
+.verdict { background: var(--grey-900); color: var(--white); border-radius: var(--radius); padding: 1.5rem; margin-top: 0.75rem; }
+.verdict h4 { font-size: 0.875rem; font-weight: 600; color: var(--palmetto-400); margin-bottom: 0.625rem; }
+.verdict p { font-size: 0.875rem; line-height: 1.6; color: rgba(255,255,255,0.85); }
+.tier-card { border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; margin-bottom:0.75rem; background:var(--white); }
+.tier-card.platinum { border-top:4px solid #7C7D7F; background:linear-gradient(180deg, #F5F6F7 0%, #FFFFFF 40%); }
+.tier-card h4 { font-size:1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text-primary); }
+.metric-row { display:grid; grid-template-columns: 1fr auto; gap:0.75rem; padding:0.5rem 0; border-bottom:1px solid var(--grey-100); font-size:0.875rem; }
+.metric-row:last-child { border-bottom:none; }
+.metric-label { color:var(--text-secondary); }
+.metric-val { font-weight:600; color:var(--text-primary); }
+.metric-val.good { color:#1F7A4D; }
+.metric-val.watch { color:#B08400; }
+.metric-val.critical { color:#B0201C; }
+.stat-chip { display:inline-block; padding:0.35rem 0.875rem; border-radius:var(--radius-pill); font-size:0.8125rem; font-weight:600; }
+.stat-chip.platinum { background:#F5F6F7; color:#4A4B4D; border:1px solid #D5D7DB; }
+.stat-chip.elite { background:#FDF3D8; color:#8D5B0F; border:1px solid #E8D7A0; }
+.stat-chip.pro { background:#E4EBCD; color:#4A5951; border:1px solid #C9D3B0; }
+@media print {
+  html,body { overflow:visible; background:white; height:auto; }
+  .deck { position:static; overflow:visible; }
+  .slide { position:static!important; opacity:1!important; pointer-events:auto!important; transform:none!important; page-break-after:always; page-break-inside:avoid; height:100vh; }
+  .slide:nth-child(even) { background:white!important; }
+  .controls,.progress,.grid-ov { display:none!important; }
+}
+</style>
+</head>
+<body>
+<div class="progress"></div>
+<div class="deck">
+<section class="slide title-slide"><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<p class="t-cat">Channel Performance</p>
+<h1 class="t-display">SpartanX — Channel Performance Scorecard</h1>
+<p class="t-h2">Executive Report · April 2026</p>
+<div class="kpi-grid" style="margin-top:1.75rem"><div class="kpi"><div class="kpi-n">Platinum</div><div class="kpi-l">Overall Tier</div><div class="kpi-c">Channel Program</div></div><div class="kpi"><div class="kpi-n">6/6</div><div class="kpi-l">KPI Framework</div><div class="kpi-c">All measured</div></div><div class="kpi"><div class="kpi-n">9.6×</div><div class="kpi-l">Q1 YoY Growth</div><div class="kpi-c">198 → 1,898 NTPs</div></div><div class="kpi"><div class="kpi-n">April '26</div><div class="kpi-l">Live Reporting</div><div class="kpi-c">Refreshed monthly</div></div></div>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+<section class="slide "><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<p class="t-cat">Channel Program</p>
+<h2 class="t-h1">How Palmetto LightReach Measures EPC Partners</h2>
+<p class="t-body">The Palmetto LightReach Channel Program scores every EPC partner on six KPIs. Tiers are earned — not given. Platinum is reserved for EPCs who perform in the top tier on all metrics that matter to capital markets, customer experience, and operational delivery.</p>
+<div class="card-grid">
+  <div class="card"><span class="card-l">KPI 1</span><span class="card-v">Install Quality (First-time M1/M2 pass rate)</span></div>
+  <div class="card"><span class="card-l">KPI 2</span><span class="card-v">Aging Backlog (&gt;60 &amp; &gt;115 day PTO aging)</span></div>
+  <div class="card"><span class="card-l">KPI 3</span><span class="card-v">Customer NPS (Net Promoter Score)</span></div>
+  <div class="card"><span class="card-l">KPI 4</span><span class="card-v">Collection Rate (Current payment %)</span></div>
+  <div class="card"><span class="card-l">KPI 5</span><span class="card-v">Tranche Execution (On-time tranche fulfillment)</span></div>
+  <div class="card"><span class="card-l">KPI 6</span><span class="card-v">Monthly Volume (Active NTPs relative to channel)</span></div>
+</div>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+<section class="slide "><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<p class="t-cat">Scorecard</p>
+<h2 class="t-h1">SpartanX — Channel KPI Scorecard</h2>
+<table>
+  <thead><tr><th>KPI</th><th>Current</th><th>Platinum Floor</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>Install Quality (M1 first-pass)</td><td>73.9%</td><td>≥75%</td><td><span class="stat-chip elite">Near Platinum</span></td></tr>
+    <tr><td>Install Quality (M2 first-pass)</td><td>78.1%</td><td>≥75%</td><td><span class="stat-chip platinum">Platinum</span></td></tr>
+    <tr><td>Aging Backlog (&gt;60d w/o PTO)</td><td>30%</td><td>≤18%</td><td><span class="stat-chip pro">Action</span></td></tr>
+    <tr><td>Customer NPS</td><td>2</td><td>&gt;15</td><td><span class="stat-chip pro">Action</span></td></tr>
+    <tr><td>Collection Rate</td><td>97.5%</td><td>≥98%</td><td><span class="stat-chip elite">Near Platinum</span></td></tr>
+    <tr><td>Tranche Execution (All 5 tranches)</td><td>96-100%</td><td>≥98%</td><td><span class="stat-chip platinum">Platinum</span></td></tr>
+    <tr class="hl"><td>Volume Performance Tier</td><td>Platinum</td><td>Top-tier</td><td><span class="stat-chip platinum">Platinum</span></td></tr>
+    <tr class="hl"><td>Quality Performance Tier</td><td>Platinum</td><td>Top-tier</td><td><span class="stat-chip platinum">Platinum</span></td></tr>
+  </tbody>
+</table>
+<p class="t-sm" style="margin-top:0.5rem">SpartanX wins Platinum on Volume and Quality today. Three of six underlying KPIs hit Platinum. Three sit in the action band — closing them completes the full Platinum story.</p>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+<section class="slide divider"><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<div class="div-badge">Growth Trajectory</div>
+<h1 class="div-title">The 10× Year</h1>
+<p class="div-desc">From 5 NTPs per month in January 2025 to 994 NTPs in March 2026 — the fastest-ramping EPC in the Palmetto LightReach channel.</p>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+<section class="slide "><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<p class="t-cat">Volume Trajectory</p>
+<h2 class="t-h1">NTP Growth by Month</h2>
+<table>
+  <thead><tr><th>Period</th><th>NTPs</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>January 2025</td><td>5</td><td>First month of partnership</td></tr>
+    <tr><td>Q1 2025 Total</td><td>198</td><td>Ramp begins</td></tr>
+    <tr><td>June 2025</td><td>236</td><td>First full-scale month</td></tr>
+    <tr><td>September 2025</td><td>475</td><td>Sustained monthly run</td></tr>
+    <tr><td>December 2025</td><td>374</td><td>Year-end normalization</td></tr>
+    <tr><td>January 2026</td><td>333</td><td>Post-year-end start</td></tr>
+    <tr><td>February 2026</td><td>571</td><td>Step change up</td></tr>
+    <tr class="hl"><td>March 2026</td><td>994</td><td>Record month</td></tr>
+    <tr class="hl"><td>Q1 2026 Total</td><td>1,898</td><td>9.6× YoY vs Q1 2025</td></tr>
+  </tbody>
+</table>
+<p class="t-sm" style="margin-top:0.5rem">This is the fastest ramp in the PLR channel. At the March 2026 run rate, SpartanX is on pace for approximately 3,000 NTPs per quarter through Q3 and Q4 2026.</p>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+<section class="slide "><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<p class="t-cat">Pipeline &amp; Tranche Execution</p>
+<h2 class="t-h1">Capital Markets Confidence</h2>
+<div class="kpi-grid">
+  <div class="kpi"><div class="kpi-n">2,399</div><div class="kpi-l">Active Pipeline</div><div class="kpi-c">All stages</div></div>
+  <div class="kpi"><div class="kpi-n">1,820</div><div class="kpi-l">NTP → Not Yet Install</div><div class="kpi-c">In-flight projects</div></div>
+  <div class="kpi"><div class="kpi-n">520</div><div class="kpi-l">Install Approved → PTO</div><div class="kpi-c">Awaiting final activation</div></div>
+  <div class="kpi"><div class="kpi-n">11</div><div class="kpi-l">Activation Rejected</div><div class="kpi-c">Queue to resolve</div></div>
+</div>
+<h3 class="t-h3" style="margin-top:1.5rem">Tranche Fulfillment — % PTO'd</h3>
+<div class="card-grid">
+  <div class="card"><span class="card-l">Bluestem Sabal — Tax Equity</span><span class="card-v">100.0%</span></div>
+  <div class="card"><span class="card-l">Antillean Solar 3</span><span class="card-v">99.3%</span></div>
+  <div class="card"><span class="card-l">Hat Palm Sabal — Tax Equity</span><span class="card-v">96.7%</span></div>
+  <div class="card"><span class="card-l">Bermuda Sabal 2 — Tax Equity</span><span class="card-v">100.0%</span></div>
+  <div class="card"><span class="card-l">GP Sabal — Tax Equity</span><span class="card-v">100.0%</span></div>
+</div>
+<p class="t-sm">Tranche fulfillment is the promise made to Wall Street. SpartanX delivers at 96-100% — a key reason PLR's ABS prices at 225 bps, the tightest in residential solar.</p>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+<section class="slide "><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<p class="t-cat">The Plan</p>
+<h2 class="t-h1">Closing the Gap — Three Moves to Full Platinum</h2>
+<div class="find-grid">
+  <div class="find-card watch"><h4>Move #1: M1 First-Pass +1.1 points</h4><p>Close the 73.9% → 75% gap. Target a handful of top-cited M1 missing-flag categories. PLR ops team has the data — this is a weekly cadence item with Tim Hetterman.</p></div>
+  <div class="find-card watch"><h4>Move #2: Aging &gt;60 days 30% → 18%</h4><p>Dedicated 2-week sweep of the 154 open projects. Coordinated push with utility partners on pending PTO submissions. This single move unlocks the Platinum floor.</p></div>
+  <div class="find-card watch"><h4>Move #3: NPS 2 → 10+</h4><p>Weekly customer update cadence + proactive 30/60/90-day status calls. Pair with cancel-rate reduction via sales rep expectation-setting. Dan Devito's training resources available.</p></div>
+  <div class="find-card positive"><h4>The Upside</h4><p>Hit all three and SpartanX becomes the reference EPC for the entire PLR channel — Platinum on all six KPIs, not just Volume and Quality.</p></div>
+</div>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+<section class="slide "><div class="s-inner"><div class="cobrand-header"><img src="../plr-logo.png" alt="Palmetto LightReach" class="cobrand-plr"><div class="cobrand-sep"></div><img src="../spartan-logo.png" alt="SpartanX" class="cobrand-epc"></div><div class="s-content">
+<p class="t-cat">Next Steps</p>
+<h2 class="t-h1">Scorecard Cadence &amp; Contact</h2>
+<ol style="padding-left:1.25rem;line-height:2;margin:0.75rem 0;font-size:0.9375rem;color:var(--text-secondary)">
+  <li>Monthly Channel Performance scorecard refresh — first of every month</li>
+  <li>Weekly Tim Hetterman cadence on KPIs trending outside target</li>
+  <li>Tranche execution reviewed continuously alongside ABS pipeline</li>
+  <li>Dan Devito onboarding &amp; training support for rep-level action items</li>
+  <li>Quarterly business review (QBR) — next scheduled Q3 2026</li>
+</ol>
+<div style="margin-top:1.5rem">
+  <h3 class="t-h3">Contact</h3>
+  <div class="card-grid">
+    <div class="card"><span class="card-l">Relationship Manager</span><span class="card-v">Tim Hetterman</span></div>
+    <div class="card"><span class="card-l">Organization</span><span class="card-v">Palmetto LightReach</span></div>
+    <div class="card"><span class="card-l">Prepared By</span><span class="card-v">Troy Roble, SVP Business Development</span></div>
+    <div class="card"><span class="card-l">Report Type</span><span class="card-v">Channel Performance Scorecard</span></div>
+  </div>
+</div>
+</div><div class="foot">Palmetto LightReach &nbsp;|&nbsp; Confidential &nbsp;|&nbsp; April 2026</div></div></section>
+</div>
+<div class="controls" onclick="event.stopPropagation()">
+  <button class="ctrl-btn ctrl-prev" title="Previous">&lsaquo;</button>
+  <span class="slide-num">1 / 1</span>
+  <button class="ctrl-btn ctrl-next" title="Next">&rsaquo;</button>
+</div>
+<div class="grid-ov"></div>
+<script>
+(function(){
+  const S=document.querySelectorAll('.slide'), N=S.length;
+  let c=0;
+  const num=document.querySelector('.slide-num'),
+        bar=document.querySelector('.progress'),
+        grid=document.querySelector('.grid-ov');
+  function go(n){
+    if(n<0||n>=N)return;
+    S[c].classList.remove('active'); S[c].classList.add('prev');
+    c=n;
+    S.forEach((s,i)=>{s.classList.remove('active','prev');if(i===c)s.classList.add('active')});
+    num.textContent=`${c+1} / ${N}`;
+    bar.style.width=`${((c+1)/N)*100}%`;
+    const sc=S[c].querySelector('.s-content'); if(sc)sc.scrollTop=0;
+  }
+  function nx(){go(c+1)} function pv(){go(c-1)}
+  document.addEventListener('keydown',e=>{
+    if(grid.classList.contains('open')){if(e.key==='Escape'||e.key==='g')grid.classList.remove('open');return;}
+    switch(e.key){
+      case'ArrowRight':case'ArrowDown':case' ':case'PageDown':e.preventDefault();nx();break;
+      case'ArrowLeft':case'ArrowUp':case'PageUp':e.preventDefault();pv();break;
+      case'Home':e.preventDefault();go(0);break;
+      case'End':e.preventDefault();go(N-1);break;
+      case'f':case'F':if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();break;
+      case'g':case'G':toggleG();break;
+      case'Escape':if(document.fullscreenElement)document.exitFullscreen();break;
+    }
+  });
+  document.addEventListener('click',e=>{
+    if(grid.classList.contains('open'))return;
+    if(e.target.closest('.controls'))return;
+    const x=e.clientX/window.innerWidth;
+    if(x>.6)nx(); else if(x<.4)pv();
+  });
+  let tx=0;
+  document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;if(d<-50)nx();else if(d>50)pv();},{passive:true});
+  document.querySelector('.ctrl-prev').addEventListener('click',e=>{e.stopPropagation();pv()});
+  document.querySelector('.ctrl-next').addEventListener('click',e=>{e.stopPropagation();nx()});
+  function toggleG(){grid.classList.toggle('open');if(grid.classList.contains('open'))buildG();}
+  function buildG(){
+    grid.innerHTML='';
+    S.forEach((s,i)=>{
+      const d=document.createElement('div');d.className='g-thumb'+(i===c?' current':'');
+      const t=s.querySelector('.t-display,.t-h1,.t-h2,.div-title');
+      d.innerHTML=`<div class="g-n">Slide ${i+1}</div><div class="g-t">${t?t.textContent:'\u2014'}</div>`;
+      d.addEventListener('click',e=>{e.stopPropagation();go(i);grid.classList.remove('open')});
+      grid.appendChild(d);
+    });
+  }
+  go(0);
+})();
+</script>
+</body>
+</html>

@@ -1,465 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/auth.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Competitive Market Overview | Palmetto Presents</title>
+<title>2026 Solar Market Overview | Palmetto Presents</title>
 <link rel="stylesheet" href="../style.css">
 <style>
-.intel-nav { background: var(--dark-bg, #1a1f2e); padding: 1rem 2rem; }
+.intel-nav { background: #1a1f2e; padding: 1rem 2rem; }
 .intel-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
 .intel-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
 .intel-nav a:hover { color: #fff; }
 .intel-nav .brand { color: #fff; font-weight: 700; font-size: 1.125rem; }
 .intel-nav .brand .accent { color: #F9593B; }
-.intel-body {
-  max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem;
-  font-family: Inter, -apple-system, sans-serif;
-  color: #1f2723; line-height: 1.7;
-}
-.intel-body h1 {
-  font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;
-  border-left: 4px solid #1e40af; padding-left: 1rem;
-}
-.intel-body h2 {
-  font-size: 1.375rem; font-weight: 700; margin: 2rem 0 0.75rem;
-  color: #1f2723; border-bottom: 2px solid #eee; padding-bottom: 0.5rem;
-}
-.intel-body h3 {
-  font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #333;
-}
-.intel-body p {
-  font-size: 0.9375rem; color: #535353; margin-bottom: 0.75rem;
-}
-.intel-body ul {
-  padding-left: 1.5rem; margin-bottom: 1rem;
-}
-.intel-body li {
-  font-size: 0.9375rem; color: #535353; margin-bottom: 0.375rem; line-height: 1.6;
-}
+.intel-body { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem; font-family: Inter, -apple-system, sans-serif; color: #1f2723; line-height: 1.7; }
+.intel-body h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; border-left: 4px solid #2563eb; padding-left: 1rem; }
+.intel-body h2 { font-size: 1.375rem; font-weight: 700; margin: 2rem 0 0.75rem; color: #1f2723; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+.intel-body h3 { font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #333; }
+.intel-body p { font-size: 0.9375rem; color: #535353; margin-bottom: 0.75rem; }
+.intel-body ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+.intel-body li { font-size: 0.9375rem; color: #535353; margin-bottom: 0.375rem; line-height: 1.6; }
 .intel-body li strong { color: #1f2723; }
-.intel-body table {
-  width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin: 1rem 0;
-}
-.intel-body th {
-  background: #313E37; color: #fff; font-weight: 600; text-align: left;
-  padding: 0.5rem 0.75rem; white-space: nowrap;
-}
-.intel-body td {
-  padding: 0.4rem 0.75rem; border-bottom: 1px solid #ddd;
-}
+.intel-body table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin: 1rem 0; }
+.intel-body th { background: #313E37; color: #fff; font-weight: 600; text-align: left; padding: 0.5rem 0.75rem; white-space: nowrap; }
+.intel-body td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #ddd; }
 .intel-body tr:nth-child(even) td { background: #f8f8f8; }
-.intel-body code {
-  background: #f3f4f5; padding: 0.125rem 0.375rem; border-radius: 3px;
-  font-size: 0.8125rem; color: #611D11;
-}
-.intel-badge {
-  display: inline-block; font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  padding: 0.25rem 0.75rem; border-radius: 3px;
-  background: #1e40af15; color: #1e40af; margin-bottom: 1rem;
-}
-.intel-updated {
-  font-size: 0.8125rem; color: #888; margin-bottom: 2rem;
-}
-.intel-footer {
-  max-width: 900px; margin: 0 auto; padding: 2rem;
-  border-top: 1px solid #ddd; font-size: 0.75rem; color: #888;
-  text-align: center;
-}
+.intel-body code { background: #f3f4f5; padding: 0.125rem 0.375rem; border-radius: 3px; font-size: 0.8125rem; color: #611D11; }
+.intel-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 3px; background: #2563eb15; color: #2563eb; margin-bottom: 1rem; }
+.intel-updated { font-size: 0.8125rem; color: #888; margin-bottom: 2rem; }
+.intel-footer { max-width: 900px; margin: 0 auto; padding: 2rem; border-top: 1px solid #ddd; font-size: 0.75rem; color: #888; text-align: center; }
+.callout { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-red { background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-green { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-blue { background: #eff6ff; border-left: 4px solid #2563eb; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
 </style>
 </head>
 <body style="background:#fff;">
-
 <nav class="intel-nav">
   <div class="intel-nav-inner">
     <a href="../index.html" class="brand"><span class="accent">Palmetto</span>&nbsp;Presents</a>
-    <div style="display:flex;gap:1.5rem;">
-      <a href="../index.html">Home</a>
-      <a href="../index.html#intel">Competitive Intel</a>
-    </div>
+    <div><a href="../index.html">&larr; Back to Dashboard</a></div>
   </div>
 </nav>
-
 <div class="intel-body">
-  <div class="intel-badge">Competitive Intelligence</div>
-  <div class="intel-updated">Last updated: March 2026</div>
-<h1>Competitive Market Intelligence — Live Updates</h1>
+<span class="intel-badge">Market Overview</span>
+<h1>2026 Solar Market Overview</h1>
+<div class="intel-updated">Updated April 17, 2026 &nbsp;|&nbsp; Palmetto LightReach Competitive Intelligence</div>
 
-<h2>Market Context (Updated Feb 28, 2026)</h2>
+<div class="callout-blue"><strong>Bottom line:</strong> 2026 is a trough year in MW (-18-26% YoY) but TPO market share jumps from 45% to 69-70% as 25D residential ITC expires. The market is consolidating around fewer, higher-quality issuers with capital markets access. PLR is positioned as the pure-play TPO with the strongest financial foundation.</div>
 
-<h3>Core 2026 Forecast (SEIA/Wood Mac/Ohm/EnergySage)</h3>
+<h2>2026 Core Forecast (SEIA / Wood Mac / Ohm / EnergySage)</h2>
 <ul>
-<li><strong>2025 full year:</strong> ~4.3-4.7 GW. Q4-25 revised up on extended 25D demand pull-forward</li>
-<li><strong>2026 = trough year:</strong> 3.5 GW (-18-26% YoY). Market bottoms then recovers. Total US new capacity: <strong>86 GW record</strong> (SEIA).</li>
-<li><strong>TPO share: 69-70% in 2026</strong> (up from 45% in 2025) — SEIA/Wood Mac/Ohm all confirm. <strong>TPO is now the ONLY way homeowners access a federal tax credit.</strong> Barclays: could reach 90%+.</li>
-<li><strong>EnergySage H2 2025 (Feb 27, 2026):</strong> 205% YoY increase in homeowner engagement from ITC urgency. Most installers hit annual capacity by Oct 2025. <strong>Modules sold out through year-end 2026</strong> — supply constraints favor established TPO providers.</li>
-<li><strong>Residential pricing:</strong> $2.49/W median H2 2025 (+0.4%). Storage: $1,074/kWh (+3.6%).</li>
-<li><strong>Storage attachment:</strong> 38% national Q3-25, CA 79%, CA NEM3 87%, HI 92%. Sunrun at 71%. 1,026 MWh deployed Q3-25 (+40% YoY).</li>
-<li><strong>Median solar APR:</strong> 7.99% in Oct-25 (up from 4.49% in early 2025). Fed cuts NOT translating to lower solar rates.</li>
-<li><strong>Utility rates:</strong> +7.4% YoY nationally. Data center demand tripling electricity needs by 2030. FPL +$945M (Jan '26), +$705M (2027). APS requesting 14% mid-2026.</li>
+<li><strong>2025 full year:</strong> ~4.3&ndash;4.7 GW</li>
+<li><strong>2026 = trough year:</strong> 3.5 GW (-18-26% YoY). Market bottoms then recovers. 86 GW total US new capacity (SEIA)</li>
+<li><strong>TPO share: 69-70% in 2026</strong> (up from 45% in 2025) &mdash; SEIA/Wood Mac/Ohm all confirm</li>
+<li><strong>Barclays:</strong> TPO share could reach 90%+</li>
+<li><strong>Residential pricing:</strong> $2.49/W median H2 2025 (+0.4%)</li>
+<li><strong>Storage:</strong> $1,074/kWh (+3.6%)</li>
+<li><strong>Storage attachment:</strong> 38% national Q3-25, CA 79%, CA NEM3 87%, HI 92%</li>
+<li><strong>Utility rates:</strong> +7.4% YoY nationally. Data center demand tripling electricity needs by 2030</li>
 </ul>
 
-<h3>Policy (as of Feb 28, 2026)</h3>
+<h2>Policy Context (OBBBA)</h2>
 <ul>
-<li><strong>OBBBA (signed Jul 4, 2025):</strong> 25D (homeowner ITC) <strong>EXPIRED Dec 31, 2025</strong>. 48E (TPO/commercial ITC) active through <strong>Dec 31, 2027</strong> with safe harbor to 2030. FEOC MACR: 40% (2026) → 60% (2030+).</li>
-<li><strong>NPR national coverage (Feb 20, 2026):</strong> "Solar installers switched to leases after tax credits ended" — features model as 25D→48E shift exemplar.</li>
+<li><strong>Signed Jul 4, 2025</strong></li>
+<li><strong>25D (homeowner ITC) EXPIRED Dec 31, 2025</strong></li>
+<li><strong>48E (TPO/commercial ITC):</strong> must begin construction by Jul 4, 2026, placed in service by Dec 31, 2027</li>
+<li><strong>FEOC MACR:</strong> 40% (2026) &rarr; 45% (2027) &rarr; 60% (2029+)</li>
+<li><strong>PLR safe harbor:</strong> Residential <1.5 MW retain 5% cost safe harbor if construction begins by Jul 5, 2026 &mdash; runway through 2030</li>
+<li><strong>Solar for All:</strong> Federal $7B funding HALTED by EPA/Trump. 24 state AGs suing to restore</li>
 </ul>
 
-<h3>Tariffs (Updated Feb 28, 2026)</h3>
+<h2>Tariff Landscape (Updated Mar 2026)</h2>
 <ul>
-<li><strong>Section 201 tariffs EXPIRED Feb 6, 2026</strong> — first time in 8 years without</li>
-<li><strong>NEW (Feb 25, 2026):</strong> US Commerce Dept: <strong>126% tariffs on Indian solar panels</strong>, 86-143% Indonesia, 81% Laos. Manufacturers relocated from SE Asia (already tariffed) to India/Indonesia/Laos — now tariffed too.</li>
-<li><strong>Definitive decision:</strong> July 6, 2026</li>
-<li><strong>Section 232 investigation</strong> on polysilicon initiated July 2025 — could impact all solar products</li>
-<li><strong>Chinese LFP batteries:</strong> ~82% combined import duties (Section 301 + reciprocal)</li>
-<li><strong>Impact:</strong> Module shortages + tariffs = supply constraints. Established TPO providers (PLR) with locked supply chains benefit. QCells (EnFin parent, domestic mfg) is named petitioner on tariff case.</li>
-<li><strong>CFPB PACE rule effective March 1, 2026</strong> — ability-to-repay assessments for PACE loans</li>
+<li><strong>Section 201 tariffs EXPIRED Feb 7, 2026</strong> &mdash; first time in 8 years without</li>
+<li><strong>Section 301 (China):</strong> 50% on Chinese solar products (doubled Aug 2024)</li>
+<li><strong>AD/CVD (Feb 25, 2026):</strong> 126% tariffs on Indian panels, 86-143% Indonesia, 81% Laos</li>
+<li><strong>Section 232 polysilicon:</strong> Commerce findings due soon. Could impose tariffs on ALL polysilicon-based imports</li>
+<li><strong>Chinese LFP batteries:</strong> ~82% combined duties</li>
+<li><strong>Module shortages through year-end 2026</strong> &mdash; manufacturers sold out (EnergySage H2 2025)</li>
+<li><strong>Impact:</strong> Supply constraints + tariffs favor established TPO providers with locked supply chains</li>
 </ul>
 
-<h3>Ohm Q3-25 Reference Data</h3>
+<h2>US Solar Manufacturing</h2>
 <ul>
-<li><strong>Top 10 resi states (Q3-25 MW):</strong> CA 297, PR 114, FL 82, TX 77, IL 52, MA 50, NY 49, AZ 41, NJ 34, CT 32</li>
-<li><strong>2026-2030 CAGR:</strong> 7% (Ohm). Resi forecast to <strong>more than triple by 2035</strong> (96+ GWdc, Wood Mac).</li>
-<li><strong>Enphase ADLP price increase:</strong> 10-20% on select microinverters effective Feb 9, 2026.</li>
-<li><strong>Full details:</strong> See <code>ohm-analytics-q3-25.md</code> and <code>woodmac-seia-q3-2025.md</code> in memory/</li>
+<li><strong>Module capacity:</strong> ~65 GW annually (exceeds 44 GW demand)</li>
+<li><strong>Cell capacity:</strong> only 3.2 GW &mdash; critical bottleneck for FEOC compliance</li>
+<li>US now produces all major supply chain components (polysilicon &rarr; modules) for first time since 2013</li>
+<li><strong>T1 Energy (TX):</strong> 2.1 GW cells by EOY 2026, phase 2 adds 3.2 GW</li>
+<li><strong>First Solar:</strong> Fully domestic thin-film (AL, LA, OH, SC) &mdash; 14 GW</li>
+<li><strong>Qcells:</strong> Dalton + Cartersville = 8.4 GW, fully integrated silicon value chain</li>
 </ul>
 
-<p>---</p>
+<h2>TPO Market Share (Ohm Q3-25)</h2>
+<table>
+<thead><tr><th>Provider</th><th>Share</th></tr></thead>
+<tbody>
+<tr><td>Sunrun</td><td>46%</td></tr>
+<tr style="background:#f0fdf4"><td><strong>Palmetto LightReach</strong></td><td><strong>24%</strong></td></tr>
+<tr><td>GoodLeap</td><td>11%</td></tr>
+<tr><td>EnFin</td><td>8%</td></tr>
+<tr><td>EverBright</td><td>4%</td></tr>
+</tbody>
+</table>
 
-<h2>Structural Differentiation (Why Is Fundamentally Different)</h2>
+<h2>Top 10 Residential States (Ohm Q3-25 MW)</h2>
+<ol>
+<li>California &mdash; 297 MW</li>
+<li>Puerto Rico &mdash; 114 MW</li>
+<li>Florida &mdash; 82 MW</li>
+<li>Texas &mdash; 77 MW</li>
+<li>Illinois &mdash; 52 MW</li>
+<li>Massachusetts &mdash; 50 MW</li>
+<li>New York &mdash; 49 MW</li>
+<li>Arizona &mdash; 41 MW</li>
+<li>New Jersey &mdash; 34 MW</li>
+<li>Connecticut &mdash; 32 MW</li>
+</ol>
+
+<h2>Industry Shakeout &mdash; 2025 Bankruptcies &amp; Exits</h2>
 <ul>
-<li><strong>Asset & customer retention:</strong> Palmetto maintains the customer AND asset for the full 25-year term. Traditional TPO providers (Sunrun, etc.) sell ownership to third-party tax equity investors after origination, making them wary of maintaining customer communication. strives for long-term relationships because the asset is theirs.</li>
-<li><strong>Recheck (founding member):</strong> Industry-first sales representative database and compliance data exchange requiring universal licensing of all sales reps. was a founding member.</li>
-<li><strong>Anti-fraud operations (industry first):</strong> First major player to invest in direct anti-fraud ops, including software that identifies/flags potentially invalid consumer emails during contracting. Helps and install partners weed out fraudulent organizations.</li>
-<li><strong>Modernized consumer protection stips:</strong> Multiple layers of transparent, plainly spoken information for homeowners at and after the sale. Goes beyond industry standard.</li>
-<li><strong>Elderly consumer protection:</strong> 24-48 hour cooling-off confirmation after signing, when the sales rep is not present.</li>
-<li><strong>Battery replacement included:</strong> 25 years, $0 cost to homeowner. PPL and loan models require homeowner to pay out of pocket ($8K-$15K).</li>
-<li><strong>Why this matters for ABS:</strong> These protections (fraud detection, rep licensing, consumer stips, quality controls) are why collections run 98%+, why FICO averages 751, and why ABS spreads are the tightest in solar. The structural model produces the financial results.</li>
+<li><strong>Sunnova</strong> (Jun 2025): $10.67B debt. Sold to Solaris/GoodFinch. SunStrong servicing 500K+ customers</li>
+<li><strong>Mosaic</strong> (Jun 2025): $15B+ loans. Acquired by Forbright Bank subsidiary. New loans discontinued</li>
+<li><strong>PosiGen</strong> (Nov 2025): Liquidated Feb 2026. Brookfield $600M single-lender dependency triggered collapse</li>
+<li><strong>EverBright</strong> (Mar 2026): Exiting residential TPO. Last submissions Mar 20, 2026</li>
+<li><strong>SunPower</strong> (Aug 2024): $2.01B debt. Assets to SunStrong</li>
+<li><strong>Sunlight Financial</strong> (2023): Loan bankruptcy</li>
+<li><strong>Combined ~$35B+ in ABS in runoff</strong> &mdash; freeing capital for higher-quality issuers</li>
 </ul>
 
-<p>---</p>
-
-<h2>GoodLeap (Updated Feb 28, 2026)</h2>
+<h2>2026 TPO Market Positioning &mdash; PLR Path to #1</h2>
 <ul>
-<li><strong>Company:</strong> GoodLeap, LLC (fka Loanpal). ~$500M rev, ~1,235 employees, $17.7B valuation (likely inflated). CEO Hayes Barnard.</li>
-<li><strong>Core thesis:</strong> Loan company trying to become a TPO company while legacy loan book burns. TPO launched June 2024 — only ~8 months old.</li>
-<li><strong>TPO:</strong> Only 15 states, ~250 EPCs (vs 31+PR, 700+). Platform integrations: Aurora, Enerflo, Solo (same as — EPCs see both side-by-side).</li>
-<li><strong>FL/TX retreat (Feb 2026):</strong> Pulling out due to low collections. Creates wallet share opportunity with shared EPCs.</li>
+<li>Sunrun cutting 40%+ affiliate volume = hundreds of displaced EPCs needing a new TPO home</li>
+<li>PLR 2026 forecast: 119,681 NTPs vs Sunrun ~108K subs (2025)</li>
+<li>PLR pure-play EPC model scales; Sunrun hybrid model contracts</li>
+<li>PLR cross-sell (EB, Generator, HVAC, Water Heater) = higher LTV than competitors</li>
+<li>The Cool Down (40M+ monthly users) = customer acquisition at scale no competitor matches</li>
+<li>Solar 3.0 model (25-year customer value) outperforms asset-sale-to-survive approach</li>
+<li>$550M+ ITC sales + $1.136B ABS = diversified capital stack</li>
+<li>Zero corporate debt, zero rating downgrades, tightest ABS spreads in solar (225 bps)</li>
 </ul>
 
-<h3>GoodLeap ABS — Two Tracks</h3>
-<p><strong>Loan ABS (Legacy — Toxic):</strong></p>
-<ul>
-<li>24 securitizations, $8-10B cumulative issuance. ALL 3 rating agencies downgrading.</li>
-<li><strong>KBRA (May '25):</strong> 11 downgrades across 18 trusts — "ongoing deterioration in credit performance"</li>
-<li><strong>S&P (Sep '25):</strong> 13/16 ratings downgraded across 6 trusts. Class C notes <strong>undercollateralized</strong>. Default rates 5.99-7.10%, accelerating. Negative excess spread (-1.8% to -3.4%).</li>
-<li><strong>Fitch (Jun '25):</strong> B/C note downgrades — "prepayments exacerbate negative excess spread"</li>
-<li><strong>Fitch (Feb '26):</strong> "Non-Prime Loans and State Concentrations Drive Defaults" — validates PLR's FICO floors + diversification</li>
-<li><strong>KBRA Solar Loan ABS Index (Jan '26):</strong> ALL major credit metrics at <strong>ALL-TIME WORST</strong> since inception. Net losses +173 bps YoY.</li>
-<li><strong>2025 Loan ABS:</strong> GHIS 2025-1 ($386M), GHIS 2025-2 ($355M), GHIS 2025-3 ($523M) = ~$1.26B</li>
-</ul>
-
-<p><strong>TPO ABS (via TIP/Apollo — Small but Growing):</strong></p>
-<ul>
-<li>TIP Solar 2025-1 ($183M, Oct '25), TIP 2025-2 ($140M, Dec '25), TIP 2026-1 ($180M, ~Mar '26). ~$503M cumulative.</li>
-<li>Apollo/ATLAS SP sole structurer (single counterparty) vs PLR's 6-bank syndicate.</li>
-</ul>
-
-<h3>GoodLeap Legal/Regulatory Exposure</h3>
-<ul>
-<li><strong>FBI investigation (active):</strong> Synthetic identity fraud in New Orleans. 35+ fraudulent applications, $45K+ per victim.</li>
-<li><strong>MN AG lawsuit ($33M):</strong> 19.32% avg hidden dealer fees. 853 consumers. Ongoing.</li>
-<li><strong>17-state AG Pink Energy probe.</strong> CA class action (arbitration forces individual claims).</li>
-<li><strong>1,076 BBB complaints.</strong> 2.1/5 Trustpilot. Glassdoor 3.4/5 (declining, 40% positive outlook).</li>
-</ul>
-
-<h3>GoodGrid VPP — Early Stage</h3>
-<ul>
-<li>GEMS AI platform. $40/mo homeowner rewards. 1.5 GW target over 5 years.</li>
-<li>NRG/Reliant TX partnership (Nov '25). CT Green Bank (Aug '25, 25 MW target).</li>
-</ul>
-
-<h3>Strategic Opportunity</h3>
-<ul>
-<li><strong>Shared EPCs:</strong> SunnyMac (SPW #9), Suntria/AZ Solar Solutions (SPW #10) — wallet share opportunity</li>
-<li>FL: Only 5% penetration, 178 GW TAM through 2050, #2 resi state. GoodLeap retreating = massive opportunity.</li>
-<li><strong>Full details:</strong> See <code>goodleap-abs-performance.md</code> and <code>goodleap-home-improvement.md</code> in memory/</li>
-</ul>
-
-<h2>Sunrun (Updated Feb 28, 2026 — Post Q4/FY2025 Crash)</h2>
-
-<h3>Headline: Beat EPS by $0.46, Stock Crashed 35% to $13.21</h3>
-<ul>
-<li><strong>FY2025:</strong> $2.96B rev (+45%), $449.9M net income, $1.71 EPS. Q4 beat consensus by $0.46.</li>
-<li><strong>Stock crashed 35.1% on Feb 27</strong> ($20.42 → $13.21, intraday low $12.47). Market cap ~$3.17B.</li>
-<li>Market punished: weak 2026 guidance, 40%+ affiliate cut, collapsing unit economics, no capital return.</li>
-</ul>
-
-<h3>Why It Crashed — 2026 Guidance</h3>
-<ul>
-<li><strong>Cash generation:</strong> $250M-$450M ($350M midpoint — <strong>below 2025's $377M</strong>)</li>
-<li><strong>Aggregate subscriber value:</strong> $4.8B-$5.2B (<strong>-11% at midpoint</strong>)</li>
-<li><strong>Affiliate volume: DOWN 40%+</strong> — hundreds of EPCs being cut</li>
-<li>Direct business: high single-digit to low double-digit growth (modest)</li>
-<li>No dividends, no buybacks despite investor expectations</li>
-</ul>
-
-<h3>Unit Economics — Collapsing</h3>
-<ul>
-<li><strong>Net Subscriber Value:</strong> $9,098 (<strong>-30% YoY</strong>). Contracted NSV: $6,921 (-32%).</li>
-<li><strong>Creation cost/sub:</strong> $41,067 (+8%). Paying more, getting less.</li>
-<li><strong>Contracted Net Value Creation:</strong> $176M (<strong>-44% YoY</strong>)</li>
-</ul>
-
-<h3>Debt & Financial Health</h3>
-<ul>
-<li><strong>Total debt:</strong> ~$14.7B ($14.0B non-recourse + $238M revolver + $474M converts)</li>
-<li><strong>Interest expense:</strong> $996.8M/yr (~$1B) — 34% of total revenue</li>
-<li><strong>D/E:</strong> ~3.4x. <strong>Altman Z-Score: -0.47</strong> (distress zone). Macroaxis 46.5% BK probability.</li>
-<li><strong>Cash:</strong> $823.4M. No recourse maturities until March 2028. Runway exists but thin.</li>
-</ul>
-
-<h3>Subscribers & Storage</h3>
-<ul>
-<li><strong>Total customers:</strong> 1,165,686. Subscribers: 997,280 (+12% YoY but decelerating).</li>
-<li><strong>Q4 additions:</strong> 25,475 (<strong>-17% YoY</strong>). FY2025: ~108K (flat).</li>
-<li><strong>Storage:</strong> 4.0 GWh, 71% attach rate. 106K+ VPP customers. 18 VPP programs. 425 MW peak dispatch.</li>
-</ul>
-
-<h3>Business Model Pivot — Asset Sales</h3>
-<ul>
-<li><strong>50% of Q4 systems sold to third parties</strong> (up from 10% in Q3). Revenue flattery, not recurring.</li>
-<li><strong>HASI JV:</strong> $500M, 300+ MW, 40K homes. <strong>NRG partnership:</strong> 1 GW VPP by 2035 in TX.</li>
-<li>Sunrun increasingly an originator, not owner — undermines VPP/grid services moat.</li>
-</ul>
-
-<h3>Insider Selling & Analyst Sentiment</h3>
-<ul>
-<li><strong>17 insider sells, 0 buys in 90 days.</strong> $9.9M total. Fenster ($3.27M), Jurich ($930K) sold BEFORE crash.</li>
-<li><strong>Jefferies:</strong> Downgraded Buy→Hold ($22 PT). "Defensive posture."</li>
-<li><strong>GLJ Research:</strong> Sell (reiterated). <strong>Morgan Stanley:</strong> Equal-Weight ($21). <strong>Consensus:</strong> Hold (~$20).</li>
-<li><strong>Muddy Waters:</strong> Short thesis partially validated — NSV collapsed 30%, sub additions -17%, asset-sale pivot changes subscriber counting.</li>
-</ul>
-
-<h3>CT AG Lawsuit + Sector Contagion</h3>
-<ul>
-<li>CT AG William Tong sued for forging homeowner signatures on 25-year leases. CA PPA class action active.</li>
-<li>Sunrun crash dragged Enphase (-7.6%) and broader solar sector.</li>
-</ul>
-
-<h2>Sunnova -- BANKRUPT (June 2025) — Cautionary Tale</h2>
-<ul>
-<li>Filed Ch.11 June 9, 2025 ($10.67B debt, $13.5M cash). <strong>Sold to Solaris</strong> (acquired by ad hoc DIP lenders + GoodFinch Management). <strong>SunStrong Management</strong> as servicer.</li>
-<li><strong>Post-bankruptcy nightmare (Feb 2026):</strong> Customers report <strong>months-long repair delays</strong> while still being billed. WCVB exposé Feb 20, 2026 ("Solar customers left in the dark"). Brand destruction.</li>
-<li>SunSafe standalone battery lease is DEFUNCT. ~175 active dealers at filing dispersed to Sunrun, PLR, GoodLeap, EnFin.</li>
-<li>SunStrong manages legacy 500K+ customers but NOT originating new business.</li>
-<li><strong>Sunnova = ~25% of KBRA Solar Loan ABS Index</strong> — legacy portfolio dragging sector metrics to all-time worst.</li>
-</ul>
-
-<h2>Propel / Concert Finance / Enphase (Updated Mar 4, 2026 — Propel Payment Estimator pricing added)</h2>
-<ul>
-<li><strong>Product:</strong> Prepaid Energy Services Agreement (ESA) + Concert loan = "Propel" — transitional ownership model, EBO at year 5/6.5/8</li>
-<li><strong>Distribution:</strong> CED Greentech Renewables (design services + fulfillment via Solargraf)</li>
-<li><strong>Stage:</strong> Beta launch — 3 states confirmed in training (AZ, TX, ME)</li>
-<li><strong>Pricing caps (UPDATED):</strong> $3.60/W AZ, $3.70/W TX, $4.00/W ME — <strong>MUCH lower than previously reported $4.85/W</strong>. Storage: $2,000/kWh. Loan: $10,001-$135,000.</li>
-<li><strong>Min productivity:</strong> 1,000 kWh/kW (AZ & TX), 900 kWh/kW (ME) — $/W cap enforced in Switch platform</li>
-<li><strong>AVL (UPDATED):</strong> QCells + <strong>Silfab</strong> (now on AVL per training deck). Enphase-ONLY inverters/storage. Racking: Unirac, Snap-N-Rack, IronRidge.</li>
-<li><strong>Concert loan rates:</strong> Standard 8.99% APR (0% DF), RBP: 7.79% (Excellent), 8.79% (Very Good), 9.79% (Good). 0.50% ACH discount. 3 reamortizations (mo 12/24/36). 660 FICO min (TransUnion).</li>
-<li><strong>Credit:</strong> Soft inquiry hardens after loan pays for equipment. Valid 180 days to install. Co-applicants allowed. SFR, multi-unit (up to 4), 2nd homes.</li>
-<li><strong>Warranties:</strong> 5-yr workmanship, 10-yr roof penetration, 25-yr solar asset mgmt, 15-yr storage asset mgmt. Monthly O&M available post-year 5.</li>
-<li><strong>Pricing examples (EC eligible):</strong> TX $40K system -> $23,717 Propel price ($201/mo); AZ -> $25,185 ($214/mo); ME -> $23,404 ($198/mo)</li>
-<li><strong>NEW TX Payment Estimator data (Mar 2026):</strong> Solar-only capped at $3.00/kW. Solar+storage $3.55-$4.16/kW. Monthly payments at 8.99% APR: $137-$416/mo (small solar EC to large solar+storage non-EC). Homeowner prepays $16K-$49K. Energy Community drops payment 18-23%.</li>
-<li><strong>Energy community pricing:</strong> 40% discount in SD, 41% in TX. Much less competitive OUTSIDE energy communities.</li>
-<li><strong>KEY WEAKNESSES:</strong> No add-ons, no battery-only, no standalone storage. Lower $/W caps severely limit EPC margin. Reamortization 3x in first 3 years confuses homeowners. Enphase-only hardware lock. Pricing collapses outside EC zones.</li>
-<li><strong>No ABS program.</strong> Balance sheet / private tax equity only.</li>
-<li><strong>Threat level:</strong> MODERATE-HIGH — compelling in energy community zones, but $/W caps are LOW ($3.60-$4.00 vs uncapped), tight AVL, no battery-only, no cross-sell</li>
-<li><strong>Full details:</strong> See <code>ppl-competitive-intel.md</code> in memory/</li>
-</ul>
-
-<h2>Tesla Energy (Feb 2026)</h2>
-<ul>
-<li><strong>NOT a traditional TPO competitor</strong> — hardware manufacturer + direct-to-consumer brand</li>
-<li><strong>Energy Division FY2025:</strong> $12.8B revenue (+27% YoY), 29.8% GM — most profitable Tesla division</li>
-<li><strong>Storage:</strong> 46.7 GWh deployed 2025 (+49% YoY), 1M+ cumulative Powerwalls</li>
-<li><strong>Solar installations:</strong> Collapsed — stopped reporting Q1 2024 after 4 decline quarters. Last: 41 MW (Q4 2023). 1.6% install share</li>
-<li><strong>Solar lease:</strong> Relaunched Oct 2025. 25-year term, 3% escalator, direct-only (~28 states). Certified installers CANNOT offer Tesla lease</li>
-<li><strong>PW3 inverter disruption:</strong> Integrated 11.5kW inverter went from 3% → 32% inverter share (2022-2025). Enphase dropped 73% → 47-50%. <strong>WoodMac:</strong> Microinverter pricing $0.435/Wac (-5% QoQ) — PW3 competition driving Enphase prices down</li>
-<li><strong>Anti-Musk sentiment:</strong> 20-60% customer avoidance, 68% EnergySage mentions = requesting alternatives, ~50% volume drops at some installers</li>
-<li><strong>No ABS program, no EPC channel, no dealer fees</strong> — runs residential off $36.6B corporate cash</li>
-<li><strong>TSP-415/TSP-420:</strong> New US-made panels (Buffalo), 18 power zones, rail-less, targeting 1 GW mid-2026</li>
-<li><strong>Competitive impact is INDIRECT:</strong> PW3 reshapes hardware economics, brand pulls D2C customers, anti-Musk creates opportunity for LR EPCs</li>
-<li><strong>Full details:</strong> See <code>Tesla Energy vs Palmetto — Competitive Analysis.md</code> in ~/Documents/Brain/</li>
-</ul>
-
-<h2>Pre-Paid Lease (PPL) Category — Consolidated Intel</h2>
-<ul>
-<li><strong>Ohm Analytics forecast:</strong> 230 MW PPL volume in 2026, ~10% of market by Q4-26</li>
-<li><strong>4 PPL competitors analyzed:</strong> Propel/Concert, HDM Capital, Participate Energy, Thrive Power</li>
-<li><strong>All share same IRS risk:</strong> 48E commercial treatment of residential assets is untested at scale</li>
-<li><strong>FEOC squeeze (WoodMac):</strong> FEOC MACR starts at 40% in 2026, rising to 60% by 2030. PPL players with restrictive AVLs (Propel = QCells-only, Participate = Tesla-only) face supply chain bifurcation risk. ~50% of US module capacity could be FEOC-impacted.</li>
-<li><strong>Backend credit union financing:</strong> Most PPL customers do NOT pay cash — they finance the prepayment through a high-interest credit union loan at 8-10%+ APR. PPL's "$0 monthly" pitch is misleading — homeowners have monthly payments to a lender, just not to the solar company. Only true cash buyers avoid monthly costs. When credit union interest is added, PPL's total cost advantage over shrinks or disappears.</li>
-<li><strong>Consolidated PPL memory file:</strong> See <code>ppl-competitive-intel.md</code> in memory/ — pricing caps, credit, geography, AVL, ownership timelines, weaknesses for all 4</li>
-</ul>
-
-<h3>PPL Pricing Caps (Updated Mar 3, 2026)</h3>
-<table><thead>
-<tr><th>Metric</th><th>HDM</th><th>Propel</th><th>Participate</th><th>Thrive</th></tr></thead><tbody>
-<tr><td>Max PV</td><td>**$4.50/W**</td><td>$3.60-$4.00/W (by state)</td><td>Not disclosed</td><td>~$2.60/W*</td></tr>
-<tr><td>Max storage</td><td>**$1,400/kWh**</td><td>$2,000/kWh</td><td>Not disclosed</td><td>Included</td></tr>
-<tr><td>Upfront</td><td>$12K-$24K cash</td><td>$10K-$135K financed</td><td>~70% of cost</td><td>100% lump sum</td></tr>
-<tr><td>States</td><td>7</td><td>3 (beta: AZ, TX, ME)</td><td>9 (prepaid) / CA (CCA)</td><td>Claims 50</td></tr>
-</tbody></table>
-<p>*Thrive $2.60/W includes 13.5 kWh battery</p>
-
-<h2>Freedom Forever — Channel Risk (Feb 2026)</h2>
-<ul>
-<li><strong>Status:</strong> #2 US residential installer. Contracting — abandoned 10 of 30 states, laid off ~20% (Reuters Feb 5, 2026)</li>
-<li><strong>BBB:</strong> C+ (NOT accredited), "Pattern of Complaints" alert, 1.8/5 reviews</li>
-<li><strong>CSLB:</strong> Probation in California (Oct 2024, Case N2022-286)</li>
-<li><strong>Subcontractor non-payment:</strong> Confirmed — mechanics liens on homeowners, 90+ day unpaid invoices</li>
-<li><strong>Mosaic connection:</strong> Major Mosaic installer partner. Mosaic Ch.11 (Jun 2025) froze ~$130M in unfunded projects</li>
-<li><strong>Financing partners:</strong> GoodLeap, EnFin, EverBright, Sunnova (THD program, now defunct)</li>
-<li><strong>Sunrun partnership trajectory (earnings call research):</strong></li>
-<li>Jan 2021: "Platinum Elite" 3-year deal announced (highest tier)</li>
-<li>Feb 2024 (Q4'23 call): Mary Powell confirmed FF as "valued partner" but <10% of volume. Philip Shen (Roth) estimated ~250 MW in 2023, ~380 MW potential in 2024. FF already splitting volume with EverBright.</li>
-<li>Feb 2025 (Q4'24 call): ZERO Freedom Forever mentions. Affiliate partners discussed generically.</li>
-<li>Nov 2025 (Q3'25 call): ZERO Freedom Forever mentions. Powell: "a few key core partners aligned with our strategy." Explicitly NOT onboarding smaller dealers.</li>
-<li>Feb 26, 2026 (Q4'25 call): 40%+ affiliate volume cut announced. FF likely among cuts.</li>
-<li><strong>Trajectory:</strong> Platinum Elite → <10% volume → unnamed → likely cut entirely in 2026</li>
-<li><strong>FF market position:</strong> 7% US market share (#2 installer after Sunrun). Expanding to MI, WA, WY. Present in 33 states. Policy director warned eliminating 48E would be "tantamount to a death sentence."</li>
-<li><strong>Full analysis:</strong> <code>Freedom Forever — Competitive Risk Assessment.md</code> in ~/Documents/Brain/</li>
-</ul>
-
-<h2>Mosaic Bankruptcy (Jun 2025) — Still in Chapter 11</h2>
-<ul>
-<li><strong>Filed:</strong> June 6, 2025, Ch.11 (SDTX, Case 25-90156). <strong>Dual-path restructuring</strong> (convert debt to equity OR asset sale). $45M DIP financing ($15M new money).</li>
-<li><strong>Lifetime origination:</strong> $15B+, 500K+ households, $8B+ serviced at filing</li>
-<li><strong>ABS:</strong> $3.8B in securitization vehicles. KBRA downgraded 19 classes across 16 deals</li>
-<li><strong>Cause:</strong> Interest rate compression, failed capital raise (43 parties, zero accepted), 31% market contraction, failed loan-to-TPO transition</li>
-<li><strong>Servicer:</strong> Solar Servicing LLC (Forbright Bank subsidiary) — runoff only, no new origination</li>
-<li><strong>Installer impact:</strong> ~$130M unfunded commitments frozen. Freedom Forever was major partner — consumers stranded</li>
-<li><strong>Feb 2026 update:</strong> No resolution yet. Still in Ch.11.</li>
-<li><strong>Combined with Sunnova:</strong> ~$10B in ABS in runoff — freeing investor capital for higher-quality issuers like - <strong>Validates thesis:</strong> Solar loan model structurally broken. Graveyard: Sunlight (2023), SunPower (2024), Mosaic (Jun 2025), Sunnova (Jun 2025)</li>
-</ul>
-
-<h2>EnFin / Qcells (Updated Mar 4, 2026)</h2>
-<ul>
-<li><strong>ABS Program:</strong> $577.5M cumulative (EnFin 2024-A $253M, 2024-B $325M). KBRA-affirmed, no downgrades. <strong>No 2025 or 2026 ABS deal announced</strong> — 16+ month gap since last deal.</li>
-<li><strong>Portfolio:</strong> $1B+ loans, 22,000+ contracts (Nov 2024). TPO launched Jan 2024, 10K+ contracts in 6 states. Loans in 46 states + DC (via Hatch Bank).</li>
-<li><strong>Warehouse:</strong> $500M committed (RBC $250M Apr '23, Santander $250M Jan '24)</li>
-<li><strong>Leadership:</strong> Alex Kaplan (CEO, ex-Mosaic/SolarCity/SunFi), Christina Kahng (COO, ex-Hyundai Capital). No changes.</li>
-<li><strong>UFLPA disruption (Aug-Nov 2025):</strong> CBP detained Qcells cell imports from S. Korea — first electronic products from S. Korea detained under UFLPA. Released Sep 2025 after documentation. But fallout: <strong>1,000 workers furloughed</strong> (~25% GA workforce) at Dalton/Cartersville Nov 2025. No layoffs (full benefits retained). Q3 2025 Renewable Energy division op profit fell <strong>95% QoQ</strong> to KRW 7.9B. Module shipment guidance cut from 9 GW → 7.5 GW → <strong>6 GW</strong>.</li>
-<li><strong>AMPC guidance revised down:</strong> From KRW 700B to high KRW 400B range.</li>
-<li><strong>Trade tailwind (Feb 2026):</strong> US Commerce Dept <strong>126% CVD on Indian solar</strong>, 86-143% Indonesia, 81% Laos. Qcells is named petitioner (Alliance for American Solar Manufacturing & Trade). Cash deposits required immediately. Final ruling July 6, 2026. AD decision delayed to April 21, 2026.</li>
-<li><strong>Cartersville, GA:</strong> $2.3B, $1.45B DOE loan (finalized Dec 2024). Ingot/wafer/cell lines in commissioning phase — <strong>full operations slipped to end of 2026</strong> (was early 2026). 3.3 GW annual capacity. Combined with Dalton = 8.4 GW US module capacity. Largest ingot/wafer plant ever built in US.</li>
-<li><strong>EcoRecycle (Jun 2025):</strong> Solar panel recycling division at Cartersville. 250 MW/year (~500K panels). First C-Si producer with full value chain (mfg + recycling). Partnership with Greentech Renewables.</li>
-<li><strong>Perovskite record (Dec 2024):</strong> 28.6% perovskite-silicon tandem cell efficiency (M10, Fraunhofer ISE certified). Commercially scalable. 2025: Key durability milestone achieved.</li>
-<li><strong>BBB complaints:</strong> Low volume, billing-focused. Significantly less severe than EverBright or GoodLeap.</li>
-<li><strong>S&P Global Tier 1 Cleantech Company</strong> (2025, one of 14 solar module makers).</li>
-<li><strong>EPC payment issues (Summer 2025):</strong> EnFin had problems paying EPCs on time, repriced EPC payouts negatively, and still owes many EPCs sizeable amounts of money. Significant reputational damage with installer partners that EnFin has yet to overcome.</li>
-</ul>
-
-<h2>EverBright / NextEra (Updated Mar 4, 2026)</h2>
-<ul>
-<li><strong>MASS LAYOFFS (Feb 2026)</strong> — confirmed via LayoffsToday.io tracker. NextEra-backed subsidiary restructuring. <strong>Immediate EPC recruitment opportunity</strong> — installer partners losing sales support.</li>
-<li><strong>NextEra Q4 2025 (Jan 27, 2026):</strong> FY2025 adj EPS $3.71 (+8.2% YoY, above guidance). Q4 EPS $0.54 (missed $0.56 consensus). Q4 rev $6.5B (missed $6.78B). 7.2 GW placed in service (highest single-year). 2+ GW battery storage (+220% YoY). 30 GW backlog. 2026 EPS guidance $3.92-$4.02. <strong>CRITICAL: EverBright was NOT mentioned once</strong> in Q4 2025 earnings call or slides — NextEra treating it as immaterial subsidiary.</li>
-<li><strong>States:</strong> Expanded to include MA, CT, NH, NJ, OH, MO since 2022 launch. <strong>No new state expansion in 2025-2026.</strong> No formal state exits announced, but layoffs suggest operational contraction.</li>
-<li><strong>BBB:</strong> 178 complaints over 3 years (Juno Beach FL). Common: systems installed but never turned on, zero production, misleading sales, property damage, contract transferability misrepresentation.</li>
-<li><strong>IL CUB Alert (Mar 2025):</strong> Formal consumer warning — <strong>seniors thought 25-year lease was free</strong> when it was not. "Extremely expensive contracts." Door-to-door sales. CUB recommended AG complaints. Also published in Spanish (Apr 2025).</li>
-<li><strong>Yelp:</strong> 85 reviews (Fremont CA). Common: underperforming systems, unreachable service, property damage, scam allegations.</li>
-<li><strong>Timilsina v. EverBright LLC:</strong> Contra Costa County CA — alleges EverBright fraudulently induced contract signing (contracts represented as "for permit approval purposes only"). <strong>Still active</strong> as of Mar 2026.</li>
-<li><strong>CFO:</strong> Jennifer Dudek (from NextEra/FPL/NextCity Networks). Job listing also posted — ambiguous signal (expansion or transition).</li>
-<li><strong>Assessment: Company in serious trouble.</strong> Single ABS deal (no follow-up in 24 months), mass layoffs, parent silent on earnings calls, CUB alert, 178 BBB complaints, active fraud lawsuit. <strong>May be in strategic wind-down mode even if not publicly announced.</strong> Not a major competitive threat to PLR.</li>
-</ul>
-
-<h2>IGS Energy (Feb 2026 Update)</h2>
-<ul>
-<li><strong>Solar customers:</strong> ~30,000+ (corrected from 45K — per HASI deal Jan 2025)</li>
-<li><strong>Brandon Childers:</strong> Now COO of IGS Energy (not Solar President)</li>
-<li><strong>HASI partnership:</strong> First tranche 71 MW, 11 states. 60,000 customer target over 3 years. No follow-on tranche announced.</li>
-<li><strong>Class action investigation:</strong> Tycko & Zavareei LLP — deceptive pricing allegations.</li>
-<li><strong>No ABS program.</strong> Structured equity (HASI) only.</li>
-<li><strong>Community solar:</strong> Active in IL and MD, no new state expansions.</li>
-</ul>
-
-<h2>SOLRITE Energy (Updated Mar 4, 2026)</h2>
-<ul>
-<li><strong>CEO/Founder:</strong> Regan George (ex-Vivint Solar DM, ex-Fluent Solar VP Sales, ran SolNova since 2017). BYU grad.</li>
-<li><strong>Battery-only VPA launched Feb 11, 2026.</strong> First-ever battery-only VPP in Texas. Up to 60 kWh sonnen storage (3x 20 kWh units, new 11th-gen: 6/12/18 kW output). 12¢/kWh all-in retail rate, $20/mo flat fee. $0 upfront. No credit check (43% higher approval than traditional PPA).</li>
-<li><strong>Target customers:</strong> "Solar orphans" (buyback contracts expired) AND homes without any rooftop solar — key differentiator.</li>
-<li><strong>Eligible territories:</strong> TX deregulated (Houston, Corpus Christi, McAllen, DFW metro).</li>
-<li><strong>Tech stack (4-party):</strong> sonnen (hardware) + SOLRITE (VPA/financing) + Abundance Energy (REP) + Energywell Proton (optimization/dispatch, SOC 2 certified).</li>
-<li><strong>VPP capacity:</strong> 40 MW enrolled (Sep 2024-Jan 2025). Target 600 MWh dispatchable / 144 MW output by EOY 2026.</li>
-<li><strong>Customer count:</strong> 3,000 existing VPA + ~500 battery-only early adopters. Target 10,000 total by EOY 2026.</li>
-<li><strong>Markets beyond TX:</strong> CA (positioned as "premium NEM 3.0 solution"), Puerto Rico (Luma VPP). More markets "coming online in the next couple of weeks" (per Feb 2026 press cycle).</li>
-<li><strong>VPP economics:</strong> Grid dispatch credit 12¢/kWh during dispatch hours, wholesale rates off-peak. Majority of VPP node cost paid by TX energy system (not customer).</li>
-<li><strong>No external funding.</strong> Bootstrapped/zero-VC per Tracxn/Crustdata — limits scale capacity.</li>
-</ul>
-
-<h2>Thrive Power — CRITICAL UPDATE (Feb 2026)</h2>
-<ul>
-<li><strong>TriSMART Solar SHUT DOWN</strong> end of 2025. Confirmed by Reuters + Houston Press.</li>
-<li>TriSMART was #1 residential installer in TX, #7 nationally. Customers left with incomplete installations.</li>
-<li>Thrive Power LLC (financing entity) appears to still operate separately. Website live as of Feb 2026.</li>
-<li><strong>Threat level DOWNGRADED to LOW.</strong> Primary installer partner is now defunct.</li>
-</ul>
-
-<h2>HDM Capital / HDM Renewable Finance (Updated Mar 4, 2026)</h2>
-<ul>
-<li><strong>Expanded to 7 states:</strong> CA, NV, TX, UT, OK, CO, <strong>IL</strong> (new). Plans to expand further in 2026 (specific states TBD).</li>
-<li><strong>20,000+ systems under management</strong> (no updated public figure beyond this).</li>
-<li><strong>Pricing (2026):</strong> 15-20% off system cost (from commercial ITC/depreciation pass-through). One-time upfront prepayment. No escalators. No monthly bills. Performance guarantee. $0 or nominal buyout after Year 6 (IRS safe harbor).</li>
-<li><strong>Post-25D positioning:</strong> HDM claims 48E commercial ITC and shares savings — their core value prop now that 25D expired.</li>
-<li><strong>New partners (confirmed):</strong> Option One Solar, Project Solar (UT/NV/CA), NRG Clean Power, Infinium Solar, First Response Solar, Heliogold Solar, Improvement Funding (distribution platform), StackRack Battery Systems.</li>
-<li><strong>Inception Solar lawsuit:</strong> $10M breach of contract + trade secret misappropriation (Case 25STCV24268, LA County Superior Court, filed Aug 18, 2025). Alleges Inception stole HDM confidential info to benefit Thrive. Legal rep: Brownstein Hyatt Farber Schreck. <strong>Still active</strong> — no settlement/dismissal found.</li>
-<li><strong>Not BBB Accredited</strong> (SD BBB profile exists but no accreditation).</li>
-</ul>
-
-<h2>Participate Energy (Updated Mar 4, 2026)</h2>
-<ul>
-<li><strong>HQ:</strong> Torrance, CA. Founded 2022. Very small — LinkedIn shows 2-10 employees (may underreport ~14). No external funding or ABS.</li>
-<li><strong>"Synthetic Cash Program" (Dec 2025):</strong> Single upfront prepayment (~70% of system value). No credit score required. No UCC filings or property liens. 25-year prepaid lease. Buyout after year 6. FMV purchase at end. Stellar Solar offering in SD.</li>
-<li><strong>CCA Partnerships (expanded):</strong></li>
-<li><strong>Clean Energy Alliance (CEA) Solar Plus</strong> — North SD County: Carlsbad, Del Mar, Solana Beach, Escondido, San Marcos, Oceanside, Vista. Tesla Powerwall partnership. $0 upfront, no credit check, on-bill tariff through SDG&E. Solar Plus Connect (CARE/FERA income-qualified, 60% bill reduction — waitlisted as of Sep 2025).</li>
-<li><strong>CalChoice Power Choice</strong> — Pomona, San Jacinto, Lancaster, Pico Rivera (PRIME), Rancho Mirage (RMEA), Apple Valley (AVCE), Palmdale (EPIC). Tesla partnership.</li>
-<li><strong>Independent Energy Hawaii</strong> — prepaid lease program.</li>
-<li><strong>CEA commercial program went to Luminia (Jan 2026)</strong> — NOT Participate. CEA diversifying away from Participate for C&I while keeping residential. Luminia targeting 160 MW solar + 640 MWh storage across CEA territory.</li>
-<li><strong>Product lines:</strong> Residential solar+battery (CCA on-bill), CARE residential, battery retrofit, homebuilder/developer, C&I, prepaid lease (Synthetic Cash).</li>
-<li><strong>Enphase entering prepaid lease space:</strong> Piloting in 4 states with 40+ installers, 25-year term, no escalator, customer repays upfront with loan. Could either validate or displace Participate's niche.</li>
-<li><strong>No ABS, no capital markets.</strong> Tiny team. Not a capital markets competitor. Punching above weight through CCA partnerships.</li>
-</ul>
-
-<h2>Competitor Analysis Reports Completed (as of Feb 2026)</h2>
-<ul>
-<li>Sunrun</li>
-<li>GoodLeap</li>
-<li>EnFin</li>
-<li>EverBright</li>
-<li>Participate Energy</li>
-<li>HDM Capital</li>
-<li>IGS Energy</li>
-<li>Thrive Power</li>
-<li>Solrite Energy</li>
-<li>Propel / Concert Finance / Enphase</li>
-<li>Tesla Energy</li>
-<li>Freedom Forever (Risk Assessment)</li>
-</ul>
-<p>All saved in ~/Documents/Brain/ as "[Company] vs Palmetto — Competitive Analysis.md" or "[Company] — Competitive Risk Assessment.md"</p>
-
-<h2>Market Stability Guide — Sales Rep Edition (Mar 2026)</h2>
-<ul>
-<li><strong>Script:</strong> <code>~/Desktop/Reports/gen_market_stability_guide.py</code></li>
-<li><strong>Outputs:</strong> PDF + Gamma-Ready PPTX → <code>~/Downloads/Market Stability Guide -- Sales Rep Edition.pdf</code> and <code>.pptx</code></li>
-<li><strong>PPL section (10):</strong> Kitchen table complexity, $0 down vs $12-30K, CU loan reality, 48E 2027 cliff, rate caps (consumer protection) vs $/W caps (balance sheet), battery replacement included, no cross-sell, no ABS, limited hardware. Generic, no named PPL competitors.</li>
-<li><strong>Differentiator priority:</strong> #1 Capital Markets Strength, #2 Asset & Customer Retention (25yr, not sold to third party), #3 Consumer Protection (Recheck, anti-fraud, protection stips, elderly cooling-off)</li>
-<li><strong>Full template details:</strong> See <code>market-stability-guide.md</code> in memory/</li>
-</ul>
 </div>
-
-<div class="intel-footer">
-  &copy; 2026 Palmetto LightReach. Confidential &mdash; for authorized use only.
-</div>
-
+<div class="intel-footer">&copy; 2026 Palmetto LightReach. Confidential &mdash; for authorized use only.</div>
 </body>
 </html>

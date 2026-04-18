@@ -1,318 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="/auth.js"></script>
+<script src="/auth.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Freedom Forever — Competitive Intel | Palmetto Presents</title>
+<title>Freedom Forever Competitive Intelligence | Palmetto Presents</title>
 <link rel="stylesheet" href="../style.css">
 <style>
-.intel-nav { background: var(--dark-bg, #1a1f2e); padding: 1rem 2rem; }
+.intel-nav { background: #1a1f2e; padding: 1rem 2rem; }
 .intel-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
 .intel-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
 .intel-nav a:hover { color: #fff; }
 .intel-nav .brand { color: #fff; font-weight: 700; font-size: 1.125rem; }
 .intel-nav .brand .accent { color: #F9593B; }
-.intel-body {
-  max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem;
-  font-family: Inter, -apple-system, sans-serif;
-  color: #1f2723; line-height: 1.7;
-}
-.intel-body h1 {
-  font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;
-  border-left: 4px solid #dc2626; padding-left: 1rem;
-}
-.intel-body h2 {
-  font-size: 1.375rem; font-weight: 700; margin: 2rem 0 0.75rem;
-  color: #1f2723; border-bottom: 2px solid #eee; padding-bottom: 0.5rem;
-}
-.intel-body h3 {
-  font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #333;
-}
-.intel-body p {
-  font-size: 0.9375rem; color: #535353; margin-bottom: 0.75rem;
-}
-.intel-body ul {
-  padding-left: 1.5rem; margin-bottom: 1rem;
-}
-.intel-body li {
-  font-size: 0.9375rem; color: #535353; margin-bottom: 0.375rem; line-height: 1.6;
-}
+.intel-body { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem; font-family: Inter, -apple-system, sans-serif; color: #1f2723; line-height: 1.7; }
+.intel-body h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; border-left: 4px solid #dc2626; padding-left: 1rem; }
+.intel-body h2 { font-size: 1.375rem; font-weight: 700; margin: 2rem 0 0.75rem; color: #1f2723; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+.intel-body h3 { font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #333; }
+.intel-body p { font-size: 0.9375rem; color: #535353; margin-bottom: 0.75rem; }
+.intel-body ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+.intel-body li { font-size: 0.9375rem; color: #535353; margin-bottom: 0.375rem; line-height: 1.6; }
 .intel-body li strong { color: #1f2723; }
-.intel-body table {
-  width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin: 1rem 0;
-}
-.intel-body th {
-  background: #313E37; color: #fff; font-weight: 600; text-align: left;
-  padding: 0.5rem 0.75rem; white-space: nowrap;
-}
-.intel-body td {
-  padding: 0.4rem 0.75rem; border-bottom: 1px solid #ddd;
-}
+.intel-body table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin: 1rem 0; }
+.intel-body th { background: #313E37; color: #fff; font-weight: 600; text-align: left; padding: 0.5rem 0.75rem; white-space: nowrap; }
+.intel-body td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #ddd; }
 .intel-body tr:nth-child(even) td { background: #f8f8f8; }
-.intel-body code {
-  background: #f3f4f5; padding: 0.125rem 0.375rem; border-radius: 3px;
-  font-size: 0.8125rem; color: #611D11;
-}
-.intel-badge {
-  display: inline-block; font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  padding: 0.25rem 0.75rem; border-radius: 3px;
-  background: #dc262615; color: #dc2626; margin-bottom: 1rem;
-}
-.intel-updated {
-  font-size: 0.8125rem; color: #888; margin-bottom: 2rem;
-}
-.intel-footer {
-  max-width: 900px; margin: 0 auto; padding: 2rem;
-  border-top: 1px solid #ddd; font-size: 0.75rem; color: #888;
-  text-align: center;
-}
-.risk-high {
-  display: inline-block; background: #dc2626; color: #fff;
-  padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 0.75rem;
-  font-weight: 700; letter-spacing: 0.5px;
-}
-.risk-moderate {
-  display: inline-block; background: #f59e0b; color: #fff;
-  padding: 0.2rem 0.6rem; border-radius: 3px; font-size: 0.75rem;
-  font-weight: 700; letter-spacing: 0.5px;
-}
+.intel-body code { background: #f3f4f5; padding: 0.125rem 0.375rem; border-radius: 3px; font-size: 0.8125rem; color: #611D11; }
+.intel-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 3px; background: #dc262615; color: #dc2626; margin-bottom: 1rem; }
+.intel-updated { font-size: 0.8125rem; color: #888; margin-bottom: 2rem; }
+.intel-footer { max-width: 900px; margin: 0 auto; padding: 2rem; border-top: 1px solid #ddd; font-size: 0.75rem; color: #888; text-align: center; }
+.callout { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-red { background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-green { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-blue { background: #eff6ff; border-left: 4px solid #2563eb; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
 </style>
 </head>
 <body style="background:#fff;">
-
 <nav class="intel-nav">
   <div class="intel-nav-inner">
     <a href="../index.html" class="brand"><span class="accent">Palmetto</span>&nbsp;Presents</a>
-    <div style="display:flex;gap:1.5rem;">
-      <a href="../index.html">Home</a>
-      <a href="../index.html#intel">Competitive Intel</a>
-    </div>
+    <div><a href="../index.html">&larr; Back to Dashboard</a></div>
   </div>
 </nav>
-
 <div class="intel-body">
-  <div class="intel-badge">Competitive Intelligence</div>
-  <div class="intel-updated">Last updated: March 5, 2026</div>
+<span class="intel-badge">Freedom Forever</span>
+<h1>Freedom Forever Competitive Intelligence</h1>
+<div class="intel-updated">Updated April 17, 2026 &nbsp;|&nbsp; Palmetto LightReach Competitive Intelligence</div>
 
-<h1>Freedom Forever — Competitive Risk Assessment</h1>
+<div class="callout-red"><strong>BREAKING (Apr 15, 2026):</strong> Freedom Forever LLC filed <strong>Chapter 11 bankruptcy</strong> in the U.S. Bankruptcy Court for the District of Delaware (Case No. 26-10522). Owes <strong>$500M&ndash;$1B to creditors</strong>, $100M&ndash;$500M in assets. Owes <strong>$114M to Mosaic</strong> (itself in Ch.11). Filing states <strong>no funds available to unsecured creditors</strong> after admin expenses. Palmetto LightReach rejected Freedom Forever multiple times &mdash; the only finance provider to say no. This vindicates the call.</div>
 
-<p><span class="risk-high">RISK LEVEL: HIGH</span></p>
-
-<p><strong>Date:</strong> March 5, 2026</p>
-
-<h2>Executive Summary</h2>
-<p>Freedom Forever is the <strong>#2 residential solar installer</strong> in the US behind Sunrun — but is in full contraction mode. They have abandoned 10 of 30 state markets, laid off ~20% of employees (Feb 2026), carry a <strong>BBB C+ rating</strong> with a "Pattern of Complaints" alert, are on <strong>CSLB probation</strong> in California, and have confirmed subcontractor payment problems including mechanics liens on homeowners' properties. Their heavy reliance on Mosaic for loan financing collapsed when Mosaic filed Chapter 11 in June 2025, forcing a scramble to pivot to TPO financing with 4-5 TPO providers.</p>
-
-<p>Freedom Forever is <strong>NOT a financing competitor</strong> — they are an EPC installer. They partner with GoodLeap, EnFin, EverBright, and other financing providers for TPO and loan products.</p>
-
-<h2>1. Company Profile</h2>
-
+<h2>Chapter 11 Filing &mdash; April 15, 2026</h2>
 <table>
-<thead><tr><th>Metric</th><th>Details</th></tr></thead>
+<thead><tr><th>Field</th><th>Detail</th></tr></thead>
 <tbody>
-<tr><td><strong>CEO</strong></td><td>Brett Bouchy</td></tr>
-<tr><td><strong>President</strong></td><td>Greg Albright</td></tr>
-<tr><td><strong>COO</strong></td><td>Brian Eglsaer</td></tr>
-<tr><td><strong>Founded</strong></td><td>2011 (LLC incorporated Oct 2016)</td></tr>
-<tr><td><strong>HQ</strong></td><td>Temecula, CA</td></tr>
-<tr><td><strong>Employees</strong></td><td>~3,000-4,000 (pre-layoffs); ~20% cut Feb 2026</td></tr>
-<tr><td><strong>States (pre-contraction)</strong></td><td>30 states</td></tr>
-<tr><td><strong>States (post-contraction)</strong></td><td>~20 states (10 abandoned Feb 2026)</td></tr>
-<tr><td><strong>Industry Rank</strong></td><td>#2 residential installer (behind Sunrun)</td></tr>
-<tr><td><strong>Revenue (est.)</strong></td><td>~$470M (Growjo)</td></tr>
-<tr><td><strong>BBB Rating</strong></td><td>C+ (NOT accredited), "Pattern of Complaints" alert</td></tr>
-<tr><td><strong>CSLB Status</strong></td><td>Probation (Oct 2024, Case N2022-286)</td></tr>
-<tr><td><strong>Business Model</strong></td><td>EPC installer — independent authorized dealers sell, FF installs</td></tr>
-<tr><td><strong>Inc. 5000</strong></td><td>8 consecutive years through 2025 (#3669, 144% growth)</td></tr>
+<tr><td>Court</td><td>U.S. Bankruptcy Court, District of Delaware</td></tr>
+<tr><td>Case Number</td><td>26-10522</td></tr>
+<tr><td>Filing Date</td><td>April 15, 2026</td></tr>
+<tr><td>Total Debt Range</td><td>$500M&ndash;$1B</td></tr>
+<tr><td>Total Assets Range</td><td>$100M&ndash;$500M</td></tr>
+<tr><td>Mosaic exposure</td><td>$114M (Mosaic itself in Ch.11)</td></tr>
+<tr><td>Unsecured Creditor Recovery</td><td>Filing states <strong>no funds available</strong> after administrative expenses</td></tr>
 </tbody>
 </table>
 
-<h2>2. Financial Distress Indicators</h2>
-
-<h3>Market Exit &amp; Layoffs (Feb 2026)</h3>
+<h3>Context &mdash; Why This Happened</h3>
 <ul>
-<li><strong>Abandoned 10 of 30 state markets</strong> — 33% geographic footprint reduction</li>
-<li><strong>Laid off ~20% of employees</strong> (confirmed by Ben Airth to Reuters, Feb 5, 2026)</li>
-<li>Pivoting from 75% cash/loan to majority TPO financing</li>
-<li><strong>~500 employees in Florida alone</strong> — FL is a key market but high-delinquency state for solar loans</li>
-<li><strong>Strategy:</strong> "Home in on only the most attractive markets" — survival mode, not growth mode</li>
+<li>Company was <strong>#2 US residential solar installer in 2025</strong> (6.1% nationwide market share)</li>
+<li>Claimed 3,000+ employees as recently as August 2025</li>
+<li>By February 2026: exited 10 of 30 state markets, ~20% workforce cut</li>
+<li>March 13, 2026: second round of layoffs (Rick Wood, Mark Zacchilli, Derek Beamer, Brian Reale, Taqi Khawaja)</li>
+<li>March 11, 2026: Sunder Energy filed $4M summary judgment (Freedom had paid $0 of signed settlement)</li>
+<li>April 3, 2026: Texas AG Ken Paxton named Freedom Forever in solar fraud crackdown initiative</li>
+<li>April 15, 2026: Chapter 11 filed</li>
 </ul>
 
-<h3>25D ITC Expiration Impact (Jan 2026)</h3>
+<h3>What the Ch.11 Filing Means for the Channel</h3>
 <ul>
-<li>The 30% federal homeowner tax credit (25D) expired Dec 31, 2025 under OBBBA</li>
-<li><strong>Ohm Analytics expects residential installs to decline 20% in 2026</strong> (vs prior 8% growth forecast)</li>
-<li>Freedom Forever pivoting to TPO/lease models to access 48E commercial ITC — launched third-party ownership products with Enphase</li>
-<li>Solar Power World (Jan 2026): "Solar layoffs and closures run rampant in Trump's first year back" — FF among companies highlighted</li>
+<li><strong>Dealer network dispersal:</strong> Solar Pros and other Freedom Forever dealers are now looking for a new EPC home immediately. This is a Displaced EPC Onboarding Protocol activation event at the largest scale possible &mdash; potentially thousands of sales reps</li>
+<li><strong>Customer exposure:</strong> Hundreds of thousands of homeowners with 25-year production guarantees from Freedom Forever now face uncertainty. Those in active install could be stranded</li>
+<li><strong>Sunrun collateral damage:</strong> Sunrun&rsquo;s Platinum Elite #1 affiliate is now insolvent. Reinforces the 40%+ affiliate volume cut thesis</li>
+<li><strong>Mosaic cascade:</strong> Freedom Forever owes $114M to Mosaic &mdash; which is itself in Chapter 11. The solar bankruptcy cascade continues</li>
+<li><strong>TX AG investigation</strong> (named Apr 3, 2026) now overlaps with Ch.11 proceedings &mdash; creates potential litigation + regulatory convergence</li>
 </ul>
 
-<h3>Executive Language (Jun 2025 — Semafor)</h3>
-<ul>
-<li>Ben Airth: Company may be forced to <strong>"shrink back to the size of a mom and pop"</strong> if ITC eliminated</li>
-<li>COO Brian Eglsaer: "If it's not [preserved], you're going to see massive layoffs. You'll see lots of companies go out of business."</li>
-<li>These are survival-mode statements from a company claiming to be the #2 installer in America</li>
-</ul>
+<div class="callout-green"><strong>PLR positioning vindicated:</strong> Palmetto LightReach rejected Freedom Forever MULTIPLE TIMES. We were the only finance provider in the industry to say no. Two weeks ago that looked cautious. Today it looks prescient. Solar 3.0 quality standards protect PLR&rsquo;s ABS portfolio &mdash; we do not absorb the risk of companies like this.</div>
 
-<h3>Bankruptcy Risk Assessment</h3>
-<ul>
-<li>Freedom Forever has NOT filed for bankruptcy as of Feb 2026</li>
-<li>However: 10 state exits + 20% layoffs + Mosaic collapse + subcontractor payment problems + CSLB probation = company in defensive survival mode</li>
-<li>Industry context: Purelight Power (Ch.11 Dec 2025), TriSMART (ceased ops), Mosaic (Ch.11 Jun 2025), Sunnova (Ch.11 Jun 2025)</li>
-<li><strong>Private company — no public financial filings. Actual debt, cash reserves, and runway are unknown.</strong></li>
-</ul>
-
-<h2>3. Reputation — Severely Damaged</h2>
-
-<h3>BBB Profile</h3>
-<ul>
-<li><strong>Rating: C+</strong> (NOT accredited)</li>
-<li><strong>2 BBB Alerts:</strong> (1) Government Actions, (2) Pattern of Complaints</li>
-<li><strong>Customer review rating: 1.8 out of 5</strong></li>
-<li>Complaint pages go to at least page 126 (hundreds of formal complaints)</li>
-<li>BBB has identified a <strong>"Pattern of Complaints"</strong> the business has failed to resolve</li>
-</ul>
-
-<h3>CSLB Probation (Oct 2024)</h3>
-<ul>
-<li>California Contractors State License Board placed Freedom Forever on probation</li>
-<li>CSLB Case N2022-286, order dated September 4, 2024</li>
-<li>CSLB Chief White specifically mentioned Freedom Forever when "working with the media to educate consumers about unscrupulous contractors"</li>
-</ul>
-
-<h3>Consumer Reviews</h3>
-<ul>
-<li><strong>Consumer Affairs:</strong> 390 reviews, heavily negative pattern</li>
-<li><strong>SolarReviews:</strong> "DO NOT USE THIS COMPANY!!!"</li>
-<li><strong>EcoWatch:</strong> "Inconsistent customer service," "concerning pattern of unresponsive or unhelpful support"</li>
-<li><strong>Reddit r/solar:</strong> "Freedom Forever is the shadiest company I've ever dealt with"</li>
-<li><strong>Facebook:</strong> Dedicated complaint group — "Freedom Forever Complaints" (1,000+ members)</li>
-</ul>
-
-<h3>Common Complaints</h3>
-<ul>
-<li>Extreme difficulty contacting customer service</li>
-<li>Installation damage to roofs and property</li>
-<li>Systems not producing as promised / non-functional systems</li>
-<li>Contracts/cancellation processing failures — loans activated for uninstalled systems</li>
-<li>Misleading sales representatives / promises not honored</li>
-<li>Mechanics liens placed on homeowners' properties (subcontractor non-payment)</li>
-</ul>
-
-<h2>4. Subcontractor Payment Problems — CONFIRMED</h2>
-
-<ul>
-<li><strong>Reddit r/TexasSolar:</strong> "Any other contractors not getting paid by Freedom Forever? We're a small roofing company in Texas..."</li>
-<li><strong>Facebook:</strong> "Currently dealing with several unpaid invoices by them over 90 days old. Haven't paid us period actually. Forced to place liens on the..."</li>
-<li><strong>Consumer Affairs:</strong> "If you want your house to have mechanical lien placed on your house then feel free to use them. They did not pay their subcontractors..."</li>
-<li><strong>CBS Sacramento:</strong> Homeowners discovered liens and loans — investigation found Mosaic filed liens against homeowners working with Freedom Forever</li>
-<li><strong>Freedom Forever FAQ acknowledges lien risk:</strong> "Because materials and labor are provided to build your solar project, contractors are allowed to file a mechanics lien..."</li>
-</ul>
-
-<p><strong>Pattern:</strong> Subcontractors not paid &rarr; subs file mechanics liens on homeowners' properties &rarr; homeowners discover unauthorized liens. This is a textbook cash flow distress pattern.</p>
-
-<h2>5. Mosaic Bankruptcy Connection — Critical</h2>
-
-<h3>Timeline</h3>
-<ul>
-<li><strong>June 6, 2025:</strong> Mosaic filed Chapter 11 (Southern District of Texas, Case 25-90156)</li>
-<li><strong>Pre-filing:</strong> Mosaic notified all partners of "delays in ALL milestone processing until further notice"</li>
-<li><strong>~$130M in unfunded loan commitments</strong> frozen at filing</li>
-<li><strong>September 5, 2025:</strong> Court confirmed Mosaic's Plan of Liquidation</li>
-<li><strong>September 22, 2025:</strong> Solar Servicing LLC (Forbright Bank subsidiary) acquired servicing operations</li>
-</ul>
-
-<h3>Impact on Freedom Forever</h3>
-<ul>
-<li>Freedom Forever was one of Mosaic's highest-volume installer partners</li>
-<li>When Mosaic froze milestone payments, it created immediate cash flow crisis for FF</li>
-<li>Consumers caught between bankrupt lender and installer with no mechanism for resolution</li>
-<li>Reddit: "Mosaic paid milestone payments to Freedom Forever. Freedom Forever did not complete installation. Mosaic now in bankruptcy cannot process clawback."</li>
-<li><strong>Unfunded projects were simply closed</strong> — installers must find alternative financing</li>
-<li>Pre-petition amounts owed to installers treated as unsecured claims — "no funds will be available for distribution to unsecured creditors"</li>
-</ul>
-
-<h2>6. Financing Partnerships</h2>
-
-<p>Freedom Forever works with "four to five of the top six or seven TPO companies" (Solar Builder, Jun 2025). Confirmed partners include <strong>GoodLeap</strong> and <strong>EnFin</strong>.</p>
-
-<h3>GoodLeap Partnership</h3>
-<p>Freedom Forever is a confirmed GoodLeap installer partner. GoodLeap's 5,300+ contractor network includes Freedom Forever — meaning GoodLeap's TPO and loan products are being sold through a BBB C+-rated, CSLB-probated installer with confirmed subcontractor payment problems.</p>
-
-<h3>EnFin Partnership — Documented Issues</h3>
-<p>Freedom Forever is a confirmed channel partner for EnFin (Qcells). Joint complaints are severe:</p>
-<ul>
-<li><strong>Facebook:</strong> "We were duped by Freedom Forever and Enfin. They put up our solar panels prior to acquiring ALL required permits..."</li>
-<li><strong>BBB (EnFin):</strong> "Freedom Forever solar installed solar but then... I got a bill for $103,788 from EnFin"</li>
-<li><strong>Facebook (Yuma AZ):</strong> "Trouble with Enfin Freedom Forever solar panels?"</li>
-<li><strong>Facebook (Sacramento):</strong> "Help! Anyone successfully get out of PPA with Enfin and Freedom Forever installers?"</li>
-</ul>
-<p><strong>Pattern:</strong> Consumers trapped between Freedom Forever (installer) and EnFin (financier), with neither taking responsibility. $100K+ surprise bills, unpermitted installations, inability to exit contracts.</p>
-
-<h2>7. Sunrun Partnership Status — Earnings Call Deep Dive</h2>
-
-<p>Freedom Forever's most prominent TPO partnership has been with Sunrun — but earnings call transcripts reveal a clear trajectory of distancing.</p>
-
+<h2>Company Profile</h2>
 <table>
-<thead><tr><th>Period</th><th>Status</th><th>Evidence</th></tr></thead>
+<thead><tr><th>Field</th><th>Detail</th></tr></thead>
 <tbody>
-<tr><td><strong>Jan 2021</strong></td><td>"Platinum Elite" 3-year partnership announced</td><td>Press release</td></tr>
-<tr><td><strong>~Jan 2024</strong></td><td>Original 3-year deal likely expired</td><td>Timeline math</td></tr>
-<tr><td><strong>Feb 2024</strong></td><td>"Valued partner" but &lt;10% of Sunrun volume</td><td>Mary Powell, Q4 2023 call</td></tr>
-<tr><td><strong>Feb 2024</strong></td><td>Already splitting volume with EverBright</td><td>Philip Shen (Roth), Q4 2023 call</td></tr>
-<tr><td><strong>Feb 2025</strong></td><td>Not mentioned by name on earnings call</td><td>Q4 2024 transcript</td></tr>
-<tr><td><strong>Nov 2025</strong></td><td>Not mentioned; Sunrun shifts to "few key core partners"</td><td>Q3 2025 transcript</td></tr>
-<tr><td><strong>Feb 2026</strong></td><td>FF abandons 10 states, 20% layoffs, BBB C+, CSLB probation</td><td>Reuters, BBB, CSLB</td></tr>
+<tr><td>Company</td><td>Freedom Forever, LLC</td></tr>
+<tr><td>Founded</td><td>2011 (Brett Bouchy acquired stake 2015, CEO ~2019)</td></tr>
+<tr><td>HQ</td><td>Temecula, CA + Las Vegas, NV</td></tr>
+<tr><td>CEO</td><td>Brett Bouchy</td></tr>
+<tr><td>Employees</td><td>~3,671 (2024) &rarr; ~2,900 (post Feb 2026 layoffs) &rarr; further cuts Mar 13, 2026</td></tr>
+<tr><td>Revenue</td><td>~$1.6B (2024 est)</td></tr>
+<tr><td>States</td><td>~20 (exited 10 of 30 states in early 2026)</td></tr>
+<tr><td>Cumulative installs</td><td>1.5 GW since 2011</td></tr>
+<tr><td>2024 installs</td><td>400 MW</td></tr>
+<tr><td>Rankings</td><td>#1 Residential Solar Contractor (Solar Power World 2024 &amp; 2025)</td></tr>
 </tbody>
 </table>
 
-<p><strong>Current assessment:</strong> The Sunrun-Freedom Forever partnership is almost certainly DIMINISHED significantly. FF is under 10% of Sunrun volume and shrinking. Sunrun's explicit strategic shift to "a few key core partners" is incompatible with a BBB C+-rated, CSLB-probated installer in full contraction mode.</p>
-
-<h2>8. Lawsuits &amp; Legal Actions</h2>
-
+<h3>Business Model &mdash; Dealer-Driven EPC Subcontractor</h3>
 <ul>
-<li><strong>CSLB Probation (Oct 2024)</strong> — California contractor's license on probation</li>
-<li><strong>Ewing v. Freedom Forever, LLC</strong> (3:2023cv01240) — Federal court, SDCA</li>
-<li><strong>Taylor et al. v. Sunrun, Freedom Forever Maryland LLC, and Boundless Energy</strong> — USDC Maryland</li>
-<li><strong>TCPA Lawsuit (Shelton v. Freedom Forever)</strong> — Telephone Consumer Protection Act</li>
-<li><strong>Delaware Supreme Court case</strong> — Freedom Forever LLC, Brett Bouchy, Chad Towner</li>
-<li><strong>Sunder Energy lawsuit</strong> — Former sales dealer sued Freedom Forever</li>
-<li><strong>Class action interest</strong> — Active Facebook groups and attorney solicitations</li>
+<li>Does NOT sell directly to homeowners. Independent Authorized Dealers (IADs) handle all customer-facing sales</li>
+<li>Handles EPC operations: engineering, procurement, construction, permitting, interconnection, 25-year production guarantee</li>
+<li>Key dealer: Solar Pros (largest, founded by Josh Sluyter 2022, recruited 300+ reps from Sunder Energy)</li>
+<li>TPO finance: Primarily Sunrun (Platinum Elite since Jan 2021)</li>
 </ul>
 
-<h2>Key Takeaways</h2>
+<h2>Accelerating Distress (Feb&ndash;Mar 2026)</h2>
+
+<h3>Round 1: Feb 2026</h3>
 <ul>
-<li><strong>Freedom Forever is the #2 installer in America but is in full contraction mode</strong> — 10 state exits, 20% layoffs, BBB C+, CSLB probation</li>
-<li><strong>Subcontractor payment problems are confirmed</strong> — mechanics liens on homeowners' properties is a textbook cash flow distress pattern</li>
-<li><strong>Mosaic's Chapter 11 created an immediate financing crisis</strong> — FF was a top Mosaic partner and lost access to ~$130M in pipeline</li>
-<li><strong>Financing partners (GoodLeap, EnFin) absorb reputational damage</strong> — joint complaints, $100K surprise bills, unpermitted installs</li>
-<li><strong>Sunrun is distancing</strong> — went from "valued partner" to zero mentions on earnings calls in 12 months</li>
-<li><strong>Private company with no public financials</strong> — actual debt, cash, and runway unknown</li>
-<li><strong>Displaced dealer network</strong> — as FF contracts, their authorized dealers will seek new financing partners. These dealers carry bad sales habits and complaint histories that require rigorous screening.</li>
+<li>~20% workforce cut (~3,671 &rarr; ~2,900)</li>
+<li>Exited 10 of 30 state markets</li>
+<li>COO Brian Eglsaer publicly stated eliminating tax credits would force FF to &ldquo;shrink back to the size of a mom and pop&rdquo;</li>
 </ul>
 
-<h2>Sources</h2>
+<h3>Round 2: Mar 13, 2026</h3>
 <ul>
-<li>Reuters (Feb 5, 2026): Freedom Forever market exits and layoffs</li>
-<li>Semafor (Jun 26, 2025): "US rooftop solar companies are bracing for devastation"</li>
-<li>Solar Builder Magazine (Jun 3, 2025): Freedom Forever COO interview</li>
-<li>BBB Profile: bbb.org (Freedom Forever, Temecula, CA)</li>
-<li>CSLB: California Contractors State License Board probation order</li>
-<li>Reddit r/solar, r/TexasSolar: Consumer and subcontractor complaints</li>
-<li>Facebook: Freedom Forever Complaints group</li>
-<li>Consumer Affairs: 390 reviews</li>
-<li>CBS Sacramento, CBS Texas: Consumer investigation reports</li>
-<li>PV Magazine, Solar Power World: Industry coverage</li>
-<li>Sunrun Earnings Call Transcripts: Q4 2023, Q4 2024, Q3 2025</li>
-<li>Court filings: Mosaic bankruptcy (25-90156, SDTX)</li>
+<li>Rick Wood (Cleantech Executive, ~4 yrs), Mark Zacchilli, Derek Beamer, Brian Reale, Taqi Khawaja confirmed terminated</li>
+<li>Second round in 5 weeks &mdash; signals accelerating financial distress, not stabilization</li>
+<li>Glassdoor reviews describe layoffs &ldquo;multiple times a year&rdquo; &mdash; structural pattern</li>
 </ul>
+
+<h2>Sunder Energy v. Freedom Forever (NY Supreme Court, Mar 11, 2026)</h2>
+<div class="callout-red"><strong>Critical:</strong> Freedom Forever has paid <strong>$0 of the $4M settlement</strong>. Missed all four $1M payment deadlines. 150+ days past due. Brett Bouchy personally signed.</div>
+
+<ul>
+<li><strong>Case:</strong> Index No. 651543/2026, NY County Clerk, NYSCEF Doc. No. 2</li>
+<li><strong>Counsel:</strong> Paul Hastings LLP for Sunder (now a wholly-owned subsidiary of SunPower Inc.)</li>
+<li><strong>Background:</strong>
+  <ul>
+    <li>Sunder and FF Dealer Agreement (Apr 2019&ndash;Sep 2023)</li>
+    <li>Sunder AAA arbitration (Sep 2023); FF countersued for $500M damages (Nov 2023)</li>
+    <li>Arbitrator Hon. Scott W. Bales (former AZ Supreme Court Chief Justice)</li>
+    <li>Final Award (Jul 15, 2025): Sunder entitled to $6,772,441.68 + 10% post-award interest. FF owed $0.</li>
+    <li>Settlement Agreement (Sep 26, 2025): FF agreed to $4M in 4 installments of $1M each</li>
+    <li>Schedule: 14 / 44 / 74 / 104 days. All missed entirely.</li>
+  </ul>
+</li>
+<li><strong>Sunder seeks:</strong> $4,105,534.25 ($4M principal + 9% CPLR statutory interest)</li>
+<li><strong>What this means:</strong> Freedom Forever cannot pay a $4M settlement. Not a contested claim &mdash; an unconditional obligation they signed and defaulted on. Severe cash flow distress signal.</li>
+</ul>
+
+<h2>CSLB Probation (California, Oct 2024)</h2>
+<ul>
+<li>3-year probation through October 2027 by CA Contractors State Licensing Board</li>
+<li>Investigation found: wrong panels installed, work without permits, incorrect installations, roof damage, overcharging</li>
+<li>$100,000 disciplinary bond required</li>
+<li>Fined 13 times by CSLB since 2017</li>
+<li>License can be revoked if probation terms not met</li>
+</ul>
+
+<h2>Customer Sentiment &mdash; Very Weak</h2>
+<table>
+<thead><tr><th>Platform</th><th>Rating</th></tr></thead>
+<tbody>
+<tr><td>SolarReviews</td><td>1.76/5.0</td></tr>
+<tr><td>Trustpilot</td><td>1.8/5.0 (~297 reviews)</td></tr>
+<tr><td>ConsumerAffairs</td><td>1.1/5.0</td></tr>
+<tr><td>BestCompany</td><td>4.4/10 expert, 2.0/5 user</td></tr>
+</tbody>
+</table>
+<p><strong>Common complaints:</strong> 6-9+ month installation delays vs promised 4 days-2 weeks, poor communication, subcontractor quality issues, mechanical liens on homes (FF not paying subs), inspection failures, warranty service 8-9 month waits, roof damage (company denies), systems producing &ldquo;not even half&rdquo; of projected output, $250+ per panel removal fees, cancellations not processed.</p>
+
+<h2>Sunrun Relationship &mdash; Critical Dependency</h2>
+<ul>
+<li>Jan 2021: First partner to achieve <strong>Sunrun Platinum Elite</strong></li>
+<li>Originally 3-year exclusive with Sunrun as primary TPO provider</li>
+<li><strong>Sunrun cutting 40%+ affiliate volume in 2026</strong> &mdash; stated on Q4/FY2025 earnings call</li>
+<li>Even Platinum Elite partners will feel volume pressure</li>
+<li>Freedom Forever&rsquo;s dealer network needs alternative TPO providers urgently</li>
+</ul>
+
+<h2>Palmetto LightReach Position</h2>
+<div class="callout-green"><strong>Palmetto LightReach rejected Freedom Forever multiple times</strong> &mdash; the only finance provider in the industry to say no. This was the right call. It looks even better now given the Sunder lawsuit, CSLB probation, and accelerating layoffs.</div>
+
+<ul>
+<li>PLR also has never worked with LGCY &mdash; same Solar 3.0 standards rationale</li>
+<li>Solar 3.0 proof point: GoodLeap / EnFin / Sunrun said yes to FF &rarr; reputational damage, joint complaints. PLR said no &rarr; tightest ABS spreads, WA FICO 751-757.</li>
+</ul>
+
+<h2>PLR Opportunity &mdash; High Priority</h2>
+<ul>
+<li>Sunrun 40%+ cut = Freedom Forever&rsquo;s primary TPO source drying up</li>
+<li>Scale: 400 MW/yr, ~$1.6B revenue. Even capturing a fraction of dealer network = transformational</li>
+<li>20 states remaining overlap heavily with PLR&rsquo;s 31-state footprint</li>
+<li><strong>Dealer network is the prize</strong> &mdash; Solar Pros alone has 300+ reps</li>
+<li>Recommend: recruit their best dealers directly as independent PLR EPCs (full partnership too risky given complaint volume and solvency concerns)</li>
+</ul>
+
+<h2>Risks If PLR Partnership Considered</h2>
+<ul>
+<li>Customer complaint volume could hurt PLR ABS paper quality</li>
+<li>Aggressive dealer acquisition tactics (Sunder lawsuit) = difficult partner</li>
+<li>25-year production guarantee = long-term liability if FF faces insolvency</li>
+<li>Subcontractor model creates quality/accountability gaps</li>
+<li>Cannot pay $4M settlement &mdash; red flag for solvency</li>
+<li>CSLB on 3-year probation &mdash; license at risk</li>
+</ul>
+
 </div>
-
-<div class="intel-footer">
-  &copy; 2026 Palmetto LightReach. Confidential &mdash; for authorized use only.
-</div>
-
-<script src="/auth-ui.js"></script>
+<div class="intel-footer">&copy; 2026 Palmetto LightReach. Confidential &mdash; for authorized use only.</div>
 </body>
 </html>

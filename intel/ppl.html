@@ -1,439 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/auth.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pre-Paid Lease (PPL) Competitors | Palmetto Presents</title>
+<title>Pre-Paid Lease (PPL) Competitive Intelligence | Palmetto Presents</title>
 <link rel="stylesheet" href="../style.css">
 <style>
-.intel-nav { background: var(--dark-bg, #1a1f2e); padding: 1rem 2rem; }
+.intel-nav { background: #1a1f2e; padding: 1rem 2rem; }
 .intel-nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
 .intel-nav a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 500; }
 .intel-nav a:hover { color: #fff; }
 .intel-nav .brand { color: #fff; font-weight: 700; font-size: 1.125rem; }
 .intel-nav .brand .accent { color: #F9593B; }
-.intel-body {
-  max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem;
-  font-family: Inter, -apple-system, sans-serif;
-  color: #1f2723; line-height: 1.7;
-}
-.intel-body h1 {
-  font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;
-  border-left: 4px solid #d97706; padding-left: 1rem;
-}
-.intel-body h2 {
-  font-size: 1.375rem; font-weight: 700; margin: 2rem 0 0.75rem;
-  color: #1f2723; border-bottom: 2px solid #eee; padding-bottom: 0.5rem;
-}
-.intel-body h3 {
-  font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #333;
-}
-.intel-body p {
-  font-size: 0.9375rem; color: #535353; margin-bottom: 0.75rem;
-}
-.intel-body ul {
-  padding-left: 1.5rem; margin-bottom: 1rem;
-}
-.intel-body li {
-  font-size: 0.9375rem; color: #535353; margin-bottom: 0.375rem; line-height: 1.6;
-}
+.intel-body { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 4rem; font-family: Inter, -apple-system, sans-serif; color: #1f2723; line-height: 1.7; }
+.intel-body h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; border-left: 4px solid #8b5cf6; padding-left: 1rem; }
+.intel-body h2 { font-size: 1.375rem; font-weight: 700; margin: 2rem 0 0.75rem; color: #1f2723; border-bottom: 2px solid #eee; padding-bottom: 0.5rem; }
+.intel-body h3 { font-size: 1.125rem; font-weight: 600; margin: 1.5rem 0 0.5rem; color: #333; }
+.intel-body p { font-size: 0.9375rem; color: #535353; margin-bottom: 0.75rem; }
+.intel-body ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+.intel-body li { font-size: 0.9375rem; color: #535353; margin-bottom: 0.375rem; line-height: 1.6; }
 .intel-body li strong { color: #1f2723; }
-.intel-body table {
-  width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin: 1rem 0;
-}
-.intel-body th {
-  background: #313E37; color: #fff; font-weight: 600; text-align: left;
-  padding: 0.5rem 0.75rem; white-space: nowrap;
-}
-.intel-body td {
-  padding: 0.4rem 0.75rem; border-bottom: 1px solid #ddd;
-}
+.intel-body table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; margin: 1rem 0; }
+.intel-body th { background: #313E37; color: #fff; font-weight: 600; text-align: left; padding: 0.5rem 0.75rem; white-space: nowrap; }
+.intel-body td { padding: 0.4rem 0.75rem; border-bottom: 1px solid #ddd; }
 .intel-body tr:nth-child(even) td { background: #f8f8f8; }
-.intel-body code {
-  background: #f3f4f5; padding: 0.125rem 0.375rem; border-radius: 3px;
-  font-size: 0.8125rem; color: #611D11;
-}
-.intel-badge {
-  display: inline-block; font-size: 0.75rem; font-weight: 600;
-  letter-spacing: 1px; text-transform: uppercase;
-  padding: 0.25rem 0.75rem; border-radius: 3px;
-  background: #d9770615; color: #d97706; margin-bottom: 1rem;
-}
-.intel-updated {
-  font-size: 0.8125rem; color: #888; margin-bottom: 2rem;
-}
-.intel-footer {
-  max-width: 900px; margin: 0 auto; padding: 2rem;
-  border-top: 1px solid #ddd; font-size: 0.75rem; color: #888;
-  text-align: center;
-}
+.intel-body code { background: #f3f4f5; padding: 0.125rem 0.375rem; border-radius: 3px; font-size: 0.8125rem; color: #611D11; }
+.intel-badge { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 3px; background: #8b5cf615; color: #8b5cf6; margin-bottom: 1rem; }
+.intel-updated { font-size: 0.8125rem; color: #888; margin-bottom: 2rem; }
+.intel-footer { max-width: 900px; margin: 0 auto; padding: 2rem; border-top: 1px solid #ddd; font-size: 0.75rem; color: #888; text-align: center; }
+.callout { background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-red { background: #fef2f2; border-left: 4px solid #dc2626; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-green { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
+.callout-blue { background: #eff6ff; border-left: 4px solid #2563eb; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0; font-size: 0.9375rem; }
 </style>
 </head>
 <body style="background:#fff;">
-
 <nav class="intel-nav">
   <div class="intel-nav-inner">
     <a href="../index.html" class="brand"><span class="accent">Palmetto</span>&nbsp;Presents</a>
-    <div style="display:flex;gap:1.5rem;">
-      <a href="../index.html">Home</a>
-      <a href="../index.html#intel">Competitive Intel</a>
-    </div>
+    <div><a href="../index.html">&larr; Back to Dashboard</a></div>
   </div>
 </nav>
-
 <div class="intel-body">
-  <div class="intel-badge">Competitive Intelligence</div>
-  <div class="intel-updated">Last updated: March 2026</div>
-<h1>Pre-Paid Lease (PPL) Competitive Intelligence — Consolidated</h1>
+<span class="intel-badge">PPL Category</span>
+<h1>Pre-Paid Lease (PPL) Competitive Intelligence</h1>
+<div class="intel-updated">Updated April 17, 2026 &nbsp;|&nbsp; Palmetto LightReach Competitive Intelligence</div>
 
-<p><strong>Last updated:</strong> Mar 3, 2026</p>
+<div class="callout"><strong>Bottom line:</strong> Pre-Paid Lease category emerging post-25D expiration. 4 players: Propel/Concert/Enphase, HDM Capital, Participate Energy, Thrive Power. All share same IRS risk (48E commercial treatment of residential assets is untested at scale). All expire after Dec 31, 2027 &mdash; PLR has 4-year runway vs PPL&rsquo;s 2-year.</div>
 
-<h2>PPL Category Overview</h2>
+<h2>Category Overview</h2>
 <ul>
-<li><strong>Emerging financing model:</strong> Homeowner pays upfront (60-78% depending on provider ITC pass-through), company owns system for 5-6 years, claims 48E commercial ITC + domestic content + energy community bonuses + MACRS depreciation, then transfers ownership</li>
-<li><strong>Ohm Analytics forecast:</strong> 230 MW PPL volume in 2026, ~10% of market by Q4-26</li>
-<li><strong>Post-ITC tailwind:</strong> 25D residential ITC expired — PPL is the primary mechanism for homeowners to still access ITC savings through third-party ownership</li>
-<li><strong>All 4 PPL players share the same fundamental IRS risk:</strong> 48E commercial treatment of residential assets is untested at scale</li>
+<li><strong>Model:</strong> Homeowner pays upfront (60&ndash;78% depending on provider ITC pass-through), company owns system for 5&ndash;6 years, claims 48E commercial ITC + domestic content + energy community bonuses + MACRS, then transfers ownership</li>
+<li><strong>Ohm Forecast:</strong> 230 MW PPL in 2026, ~10% of market by Q4-26</li>
+<li><strong>Post-ITC tailwind:</strong> 25D expired Dec 31, 2025 &mdash; PPL claims to be primary mechanism for homeowners to still access ITC economics</li>
+<li><strong>Common IRS risk:</strong> 48E commercial treatment of residential assets is untested at scale. PLR&rsquo;s TPO lease/PPA is on firmer structural ground.</li>
 </ul>
 
-<h3>OBBBA / 48E Cliff — Existential Timeline (WoodMac/SEIA Q3 2025)</h3>
+<h2>The 48E Cliff &mdash; Existential for PPL</h2>
+<div class="callout-red"><strong>Critical:</strong> 48E/45Y expire after Dec 31, 2027. ALL PPL players lose their entire economic model after 2027. PLR&rsquo;s TPO can safe harbor through 2030 per Aug 15, 2025 Treasury guidance. This is an existential timeline advantage.</div>
 <ul>
-<li><strong>48E/45Y expire after Dec 31, 2027</strong> — ALL PPL players lose their entire economic model</li>
-<li><strong>safe harbor advantage:</strong> TPO providers can use 5% Safe Harbor OR Physical Work Test for projects <1.5 MW through 2030 per Aug 15, 2025 Treasury guidance</li>
-<li><strong>FEOC MACR schedule:</strong> 40% (2026) → 45% (2027) → 50% (2028) → 55% (2029) → 60% (2030+). PPL players with restrictive AVLs face supply chain risk — ~50% of US module capacity could be FEOC-impacted.</li>
+<li><strong>Jul 4, 2026:</strong> Construction must begin (Physical Work Test) for 48E eligibility</li>
+<li>Projects <1.5 MW (residential) retain 5% cost safe harbor if construction begins by Jul 5, 2026</li>
+<li>PLR safe harbor inventory locked through 2030</li>
+<li>PPL has ~2 months to begin construction at scale for post-2027 eligibility</li>
 </ul>
 
-<h3>Market Context (Ohm Q3-25 + WoodMac/SEIA Q3 2025)</h3>
+<h2>PPL Pricing Matrix (Updated Mar 2026)</h2>
+<table>
+<thead><tr><th>Provider</th><th>ITC Pass-Through</th><th>HO Prepay %</th><th>Max PV</th><th>Max Storage</th><th>States</th></tr></thead>
+<tbody>
+<tr><td>Propel / Concert / Enphase</td><td>40%</td><td>60%</td><td>$3.60&ndash;$4.00/W</td><td>$2,000/kWh</td><td>Claims nationwide (AZ/TX/ME confirmed)</td></tr>
+<tr><td>HDM Capital</td><td>22%</td><td>78%</td><td>$4.50/W</td><td>$1,400/kWh</td><td>CA, TX, NV (+ expanding)</td></tr>
+<tr><td>Participate Energy</td><td>30%</td><td>70%</td><td>N/A</td><td>N/A</td><td>9 states (prepaid) + CA (CCA)</td></tr>
+<tr><td>Thrive Power</td><td>25% (est.)</td><td>75%</td><td>~$2.60/W (incl battery)</td><td>Included</td><td>Claims 34 + PR (TriSMART dead)</td></tr>
+</tbody>
+</table>
+
+<h2>Player-by-Player Summary</h2>
+
+<h3>Propel / Concert Finance / Enphase</h3>
 <ul>
-<li><strong>2026 = trough year:</strong> Ohm: 3.7 GW (-20% YoY, revised up from 3.5 GW/-25%). WoodMac: 4,185 MW (-13%). EPCs desperate for volume.</li>
-<li><strong>TPO share (Ohm Q3-25):</strong> 42% nationally, 53% in key states, forecast ~64% in 2026. Cash/loan collapsing from ~2.7 GW to 1.1 GW (-59% YoY).</li>
-<li><strong>PPL forecast (Ohm):</strong> 230 MW in 2026, ~10% of market by Q4-26. Contractor survey: 44% of TPO expected to be PPL. Faster adoption than expected. Enphase entering PPL market via large distributor partnership.</li>
-<li><strong>Storage attachment (Ohm Q3-25):</strong> 38% national, HI 92%, CA NEM3 87%, CA 79%, IL 48%, AZ 46%. <strong>No PPL player offers battery-only</strong> — major gap.</li>
-<li><strong>Residential pricing (Ohm Q3-25):</strong> $3.59/W median (-10% YoY). PPL caps ($4.50-$4.85/W) are 25-35% above market. Contractors expect TPO +6% in 2026.</li>
-<li><strong>FL opportunity:</strong> Only 5% penetration, 178 GW remaining TAM. GoodLeap retreating. PPL players barely present in FL (only Thrive "claims" it).</li>
-<li><strong>PPL scaling concerns (Ohm):</strong> "growing, but too soon to determine which will scale." Capital constraints + untested IRS treatment + 48E 2027 cliff = systemic risk.</li>
+<li>Corporate restructure (Feb 26, 2026): SolSource Solutions + TriBeam Financial launched as backing entities</li>
+<li>CEO: Chris Couture (ex-Enphase Customer Financing, ex-SunPower VP)</li>
+<li>Backed by Hudson Sustainable Group ($13B+ managed)</li>
+<li>Enphase-only inverters/storage; QCells + Silfab modules</li>
+<li>Greentech Renewables national distribution, Solargraf design, Artemis integration (Mar 2026)</li>
+<li>pv magazine coverage (Mar 4): &ldquo;Prepaid rooftop solar model targets 40% tax credits&rdquo;</li>
+<li><strong>Threat level: HIGH</strong> &mdash; corporate formalization + industry media validation</li>
 </ul>
 
-<p>---</p>
-
-<h2>PPL ITC Pass-Through & Prepayment Ratios (Feb 2026)</h2>
-
-<p><strong>How it works:</strong> PPL company owns the system, claims the 48E commercial ITC, and assigns a portion of that ITC value as a discount to the homeowner. The homeowner's prepayment = system price minus ITC discount. Homeowner either pays prepayment in cash or finances it through a credit union loan. <strong>CU loan financing is standard across ALL PPL products</strong> — not provider-specific.</p>
-
-<table><thead>
-<tr><th>PPL Provider</th><th>ITC Value Assigned</th><th>HO Prepay %</th><th>Multiplier</th><th>Source</th></tr></thead><tbody>
-</tbody></table>
-
-<p><strong>Key insight:</strong> Propel at 60% prepay is the MOST competitive PPL (lowest homeowner cost). If beats Propel on monthly, it beats all PPL providers.</p>
-
-<p><strong>For CU loan modeling:</strong> Multiply system price by prepay % above, then amortize via CU loan. Known CU terms: Propel/Concert 25-yr @ 8.79%, Participate 20-yr @ 8.49% (6-mo deferred), HDM CU terms TBD.</p>
-
-<p><strong>Example (8 kW + 13.5 kWh battery, $52,250 system):</strong></p>
+<h3>HDM Capital</h3>
 <ul>
-<li>Propel: $31,350 prepay → $259/mo CU → ($165/mo) saves $94/mo</li>
-<li>Participate: $36,575 → $307/mo → saves $142/mo</li>
-<li>Thrive: $39,188 → $329/mo → saves $164/mo</li>
-<li>HDM: $40,755 → $342/mo → saves $177/mo</li>
+<li>HQ: San Diego, CA (same metro as PLR SD anchors)</li>
+<li>Leadership: Jeffrey Hawkinson, Micah Myers, Dusty Dunaway, Howard Milne</li>
+<li>~20,000+ systems under management</li>
+<li>$10M lawsuit vs Inception Solar (LA County Superior Court) &mdash; Thrive Power named as beneficiary of alleged misappropriation</li>
+<li>No ABS program, tax equity only</li>
+<li>HDM absorbs EPCs cut by PLR (Helio Gold, Solar Tech)</li>
 </ul>
 
-<p>---</p>
-
-<h2>Quick Comparison Table</h2>
-
-<table><thead>
-<tr><th>Metric</th><th>Propel/Concert</th><th>HDM Capital</th><th>Participate Energy</th><th>Thrive Power</th></tr></thead><tbody>
-<tr><td>**Type**</td><td>Pre-paid ESA</td><td>Prepaid PPA</td><td>CCA on-bill + Prepaid Lease</td><td>Pre-Paid PPA</td></tr>
-<tr><td>**Max PV price**</td><td>$3.60-$4.00/W (by state)</td><td>$4.50/W</td><td>Not disclosed</td><td>~$2.60/W (incl battery)</td></tr>
-<tr><td>**Max storage price**</td><td>$2,000/kWh</td><td>$1,400/kWh</td><td>Not disclosed</td><td>Included in PV price</td></tr>
-<tr><td>**ITC value assigned**</td><td>40%</td><td>22%</td><td>30%</td><td>25% (est.)</td></tr>
-<tr><td>**HO prepay %**</td><td>60% of price</td><td>78% of price</td><td>70% of price</td><td>75% of price (est.)</td></tr>
-<tr><td>**Upfront payment**</td><td>60% (cash or Concert)</td><td>78% (cash or CU loan)</td><td>70% (cash or CU loan) / $0 (CCA)</td><td>75% (cash or CU loan)</td></tr>
-<tr><td>**Financing available**</td><td>Yes — Concert 25-yr loan</td><td>Yes — CU loan (terms TBD)</td><td>Yes — CU 20-yr loan</td><td>Yes — CU loan (terms TBD)</td></tr>
-<tr><td>**CU Loan APR**</td><td>7.79-9.79% (Concert)</td><td>CU terms TBD</td><td>8.49%</td><td>CU terms TBD</td></tr>
-<tr><td>**CU Loan term**</td><td>25-yr</td><td>TBD</td><td>20-yr (6-mo deferred)</td><td>TBD</td></tr>
-<tr><td>**Loan max**</td><td>$135K</td><td>Not disclosed</td><td>Not disclosed</td><td>Not disclosed</td></tr>
-<tr><td>**Monthly payments**</td><td>Yes (loan)</td><td>$0 after prepayment*</td><td>$0 (prepaid)* / on-bill (CCA)</td><td>$0 after prepayment*</td></tr>
-<tr><td>**Ownership transfer**</td><td>Year 5</td><td>Year 6</td><td>FMV buyout after yr 6</td><td>~Year 6 (est.)</td></tr>
-<tr><td>**Term**</td><td>25-yr asset mgmt</td><td>20-yr agreement</td><td>25 years</td><td>20-25 years</td></tr>
-<tr><td>**Min FICO**</td><td>660</td><td>Not specified</td><td>NONE (CCA)</td><td>Not disclosed</td></tr>
-<tr><td>**States**</td><td>3 confirmed (AZ, TX, ME) — beta</td><td>**7** (CA, TX, NV, UT, OK, CO, IL)</td><td>9 (prepaid) / CA (CCA)</td><td>~34 (TriSMART DEAD)</td></tr>
-<tr><td>**Installers**</td><td>~40</td><td>~8 documented</td><td>~14 employees</td><td>Unknown (small)</td></tr>
-<tr><td>**ABS program**</td><td>None</td><td>None</td><td>None</td><td>None</td></tr>
-<tr><td>**Escalator**</td><td>None</td><td>None</td><td>None</td><td>None</td></tr>
-<tr><td>**Distribution**</td><td>CED Greentech</td><td>Direct installer channel</td><td>CCA partnerships + direct</td><td>Dealer/installer network</td></tr>
-<tr><td>**Equipment lock**</td><td>Enphase-only, QCells/Silfab-only</td><td>Not restrictive</td><td>Tesla-only</td><td>Not disclosed</td></tr>
-<tr><td>**Battery-only product**</td><td>NO</td><td>NO</td><td>Yes (retrofit)</td><td>Not disclosed</td></tr>
-<tr><td>**Cross-sell products**</td><td>None</td><td>None</td><td>C&I microgrids</td><td>None</td></tr>
-<tr><td>**Threat level**</td><td>MODERATE-HIGH</td><td>MODERATE-HIGH</td><td>MODERATE-HIGH (CA)</td><td>MODERATE</td></tr>
-</tbody></table>
-
-<p>---</p>
-
-<h2>1. Propel / Concert Finance / Enphase</h2>
-
-<p><strong>Full analysis:</strong> <code>~/Documents/Brain/Propel (Concert-Enphase) vs Palmetto — Competitive Analysis.md</code></p>
-<p><strong>Memory file:</strong> <code>propel-concert-enphase-intel.md</code></p>
-<p><strong>Source (Q1 2026):</strong> <code>~/Downloads/Propel Sales Training_Q1 2026.pptx</code> — official beta launch training deck</p>
-
-<h3>Product Structure (from Q1 2026 Sales Training)</h3>
+<h3>Participate Energy</h3>
 <ul>
-<li><strong>Official name:</strong> Prepaid Energy Services Agreement (ESA) paired with Concert loan = "Propel"</li>
-<li><strong>Model:</strong> Transitional ownership — homeowner finances prepaid ESA via Concert loan, exercises Early Buyout Option (EBO) at year 5 to take ownership</li>
-<li><strong>EBO options:</strong> Year 5, 6.5, or 8 (recommended year 5 for maximum benefit)</li>
-<li><strong>ESA & Loan must transfer together</strong> on home sale (unless loan already paid off)</li>
-<li><strong>Design tool:</strong> Solargraf (proposals, pricing, financing selection)</li>
-<li><strong>Fulfillment:</strong> Greentech Renewables Design Services handles final designs, plan sets, and BOM</li>
-<li><strong>Contract execution:</strong> Concert's "Switch" platform (ESA + Loan Note in one DocuSign packet)</li>
-<li><strong>Credit check:</strong> Soft inquiry (QuickCheck) in Switch — hardens after loan pays for equipment</li>
-<li><strong>DTA:</strong> Digital Terms of Acceptance + Automatic Payments Election sent post-signing</li>
+<li>Tiny (2&ndash;10 employees). HQ Torrance, CA</li>
+<li>CEO: J. Stephen Pollock (ex-Tesla Energy Head of Channel Sales Americas)</li>
+<li><strong>CCA On-Bill Tariff (CA):</strong> $0 upfront, NO credit check, NO UCC lien, on-bill tariff, works for RENTERS</li>
+<li><strong>Prepaid Lease:</strong> 9 states, ~70% upfront</li>
+<li>CCA commercial program lost to Luminia (Jan 2026)</li>
+<li>Tesla-only equipment lock</li>
+<li>No ABS, no institutional funding</li>
 </ul>
 
-<h3>Pricing (Updated Q1 2026 — from Sales Training Deck)</h3>
+<h3>Thrive Power LLC</h3>
 <ul>
-<li><strong>Max PV $/W by state:</strong> $3.60/W (AZ), $3.70/W (TX), $4.00/W (ME) — <strong>LOWER than previously reported $4.85/W</strong></li>
-<li>Max storage: <strong>$2,000/kWh</strong> | Loan range: $10,001-$135,000</li>
-<li>Min productivity: 1,000 kWh/kW (AZ & TX), 900 kWh/kW (ME)</li>
-<li>Energy community pricing: <strong>40% discount in SD</strong>, <strong>41% in TX</strong> (10% EC ITC adder)</li>
-<li>Outside energy communities: discount drops significantly — model heavily dependent on EC zones</li>
+<li>Opaque leadership &mdash; only Mark Alan Stacy via licensing</li>
+<li>Claims 34 states + PR (unverified)</li>
+<li><strong>TriSMART Solar (primary installer partner) SHUT DOWN end of 2025</strong> &mdash; customers stranded, lawsuits mounting</li>
+<li>HDM v. Inception lawsuit alleges Thrive was built using HDM&rsquo;s proprietary playbook</li>
+<li><strong>Threat level: LOW</strong> &mdash; primary installer defunct, leadership opaque</li>
 </ul>
 
-<h3>Concert Loan Rate Card (Q1 2026)</h3>
-<table><thead>
-<tr><th>Term</th><th>Credit Tier</th><th>APR</th><th>Dealer Fee</th><th>Payment Factor</th></tr></thead><tbody>
-<tr><td>25 years</td><td>Standard</td><td>8.99%</td><td>0.00%</td><td>0.00848</td></tr>
-<tr><td>25 years</td><td>Excellent (RBP)</td><td>7.79%</td><td>0.00%</td><td>0.00765</td></tr>
-<tr><td>25 years</td><td>Very Good (RBP)</td><td>8.79%</td><td>0.00%</td><td>0.00834</td></tr>
-<tr><td>25 years</td><td>Good (RBP)</td><td>9.79%</td><td>0.00%</td><td>0.00904</td></tr>
-</tbody></table>
+<h2>Cash PPL vs Loan PPL &mdash; Critical Distinction</h2>
+<div class="callout-green"><strong>Use this framing:</strong> Cash PPL has a legitimate use case (homeowner pays cash upfront, gets ownership, no monthly payment). Loan PPL does NOT have a use case vs PLR monthly TPO &mdash; the homeowner takes a 20-25 year credit union loan at 8-10% APR. Monthly payment is same or worse than PLR lease. But the loan PPL only comes with a 10-year battery warranty. PLR lease = 25-year battery warranty and replacement.</div>
 <ul>
-<li><strong>3 reamortization dates:</strong> After 12th, 24th, and 36th monthly payment</li>
-<li><strong>ACH discount:</strong> 0.50% APR reduction for autopay enrollment (via Plaid)</li>
-<li><strong>Credit valid 180 days</strong> — must reach install within that window</li>
+<li>Same monthly payment. One protects the homeowner for 25 years. The other leaves them exposed after year 10.</li>
+<li>When the battery fails in year 12 or 15, the loan PPL homeowner pays $8K&ndash;$15K out of pocket while still making loan payments. The PLR homeowner pays $0.</li>
 </ul>
 
-<h3>Market Pricing Examples (Energy Community Eligible, from training deck)</h3>
-<table><thead>
-<tr><th>Market</th><th>System</th><th>Total Price</th><th>Propel Price</th><th>Monthly (8.99%)</th><th>vs Cash</th><th>vs Loan</th></tr></thead><tbody>
-<tr><td>TX</td><td>10kW + 10kWh</td><td>$40,000</td><td>$23,717</td><td>$201/mo</td><td>saves $16,283 upfront</td><td>saves $138/mo</td></tr>
-<tr><td>AZ</td><td>10kW + 10kWh</td><td>$40,000</td><td>$25,185</td><td>$214/mo</td><td>saves $14,815 upfront</td><td>saves $125/mo</td></tr>
-<tr><td>ME</td><td>10kW + 10kWh</td><td>$40,000</td><td>$23,404</td><td>$198/mo</td><td>saves $16,596 upfront</td><td>saves $141/mo</td></tr>
-</tbody></table>
+<h2>Where ALL PPL Players Lose to PLR</h2>
 <ul>
-<li><strong>Propel price = ~59-63% of total system price</strong> in EC zones (confirms 40% ITC pass-through)</li>
+<li>$0 down &mdash; PLR requires nothing upfront. PPL requires $12K&ndash;$30K+</li>
+<li>25-year full coverage including battery replacement at $0</li>
+<li>Scale: PLR in 31 + PR vs PPL 3&ndash;9 states each</li>
+<li>ABS capital markets: $1.136B cumulative vs zero across all 4 PPL players</li>
+<li>4 cross-sell products (storage, generator, water heater, HVAC)</li>
+<li>Hardware flexibility: PLR supports multiple OEMs. Propel = Enphase-only. Participate = Tesla-only</li>
+<li>The Cool Down: 40M+ monthly users vs no PPL media platform</li>
+<li>90% production guarantee for full 25 years</li>
+<li>Safe harbor through 2030 vs PPL 2027 cliff</li>
+<li>Channel quality program: 4 tiers + 6 KPIs vs zero PPL quality framework</li>
 </ul>
 
-<h3>AVL (Q1 2026 — from Sales Training Deck)</h3>
+<h2>Where PPL Wins vs PLR</h2>
 <ul>
-<li><strong>Modules:</strong> QCells + <strong>Silfab</strong> (Silfab now on AVL per training deck, contradicts earlier Steve Mann intel re: safe harbor)</li>
-<li><strong>Inverters:</strong> Enphase-only — no Tesla, no FranklinWH, no SolarEdge</li>
-<li><strong>Storage:</strong> Enphase-only</li>
-<li><strong>Racking:</strong> Unirac, Snap-N-Rack, IronRidge</li>
+<li>Ownership transfer at year 5&ndash;6. PLR never transfers.</li>
+<li>Zero escalators</li>
+<li>Zero collections risk (prepaid)</li>
+<li>Post-ITC narrative: &ldquo;The ITC isn&rsquo;t gone &mdash; we can still get it for you&rdquo;</li>
+<li>Only cheaper for TRUE CASH buyers</li>
 </ul>
 
-<h3>Warranties & Services (from Sales Training Deck)</h3>
+<h2>PLR Counter-Strategy</h2>
 <ul>
-<li>5-year workmanship warranty + O&M coverage + performance guarantee</li>
-<li>10-year roof penetration warranty</li>
-<li>25-year Solar System Asset Management Services</li>
-<li>15-year Storage System Asset Management Services</li>
-<li><strong>Post year 5:</strong> Monthly O&M options available starting year 6 (for homeowners who exercise EBO)</li>
+<li>Lead with $0 down</li>
+<li>Lead with 25-year all-inclusive (battery replacement, maintenance, monitoring at $0)</li>
+<li>Lead with the battery warranty gap (10-yr vs 25-yr)</li>
+<li>Highlight IRS risk on 48E commercial treatment of residential assets</li>
+<li>Hammer the July 4, 2026 + Dec 31, 2027 cliff &mdash; PLR safe harbor through 2030</li>
+<li>Lead with storage attachment trend &mdash; 38% national, HI 92%, CA NEM3 87%. PLR offers battery-only (EB). No PPL player does.</li>
 </ul>
 
-<h3>Qualification (from Sales Training Deck)</h3>
-<ul>
-<li><strong>660 FICO minimum</strong> (TransUnion)</li>
-<li>Co-applicants allowed (must live at the house)</li>
-<li><strong>Residential only:</strong> SFR or multi-unit (up to 4 units); 2nd homes allowed</li>
-<li>New solar systems only</li>
-<li>Solar + Storage eligible</li>
-</ul>
-
-<h3>Key Weaknesses</h3>
-<ul>
-<li>No add-ons, no battery-only, no standalone storage</li>
-<li>QCells/Silfab-only modules (QCells overpriced, price increasing)</li>
-<li>Enphase-only hardware lock — no flexibility</li>
-<li>Pricing collapses outside energy communities</li>
-<li>$135K loan cap limits premium systems</li>
-<li>No ABS program — capital-constrained</li>
-<li>Only 3 states in training (AZ, TX, ME) — still pilot/beta phase</li>
-<li><strong>$/W caps MUCH lower than previously thought:</strong> $3.60-$4.00/W severely limits EPC margin vs 9. Reamortization at months 12/24/36 may confuse homeowners (payment amount changes 3 times in first 3 years)</li>
-</ul>
-
-<h2>2. HDM Capital / HDM Renewable Finance</h2>
-
-<p><strong>Full analysis:</strong> <code>~/Documents/Brain/HDM Capital vs Palmetto — Competitive Analysis.md</code></p>
-<p><strong>Memory file:</strong> <code>hdm-capital-intel.md</code></p>
-
-<h3>Pricing (FIELD INTEL Feb 2026)</h3>
-<ul>
-<li>Max PV: <strong>$4.50/W</strong> | Max storage: <strong>$1,400/kWh</strong></li>
-<li>Homeowner pays ~70-80% upfront ($12K-$24K typical)</li>
-<li>$1,000 deposit to start; remainder due after permits approved</li>
-<li>Extended maintenance: $48/kW/year for 20-yr term (optional)</li>
-<li><strong>Cheapest PPL on both PV and storage caps</strong> ($4.50 vs Propel $4.85/W, $1,400 vs $2,000/kWh)</li>
-</ul>
-
-<h3>AVL</h3>
-<ul>
-<li>Not as restrictive as Propel — broader hardware options</li>
-<li>Not Enphase-locked</li>
-<li>Specific AVL details TBD</li>
-</ul>
-
-<h3>Key Weaknesses</h3>
-<ul>
-<li>$10M lawsuit vs Inception Solar (Aug 2025) — litigation risk</li>
-<li>Entire model depends on 48E IRS treatment — existential risk</li>
-<li>Reddit "weird loophole" perception</li>
-<li>Requires $12K-$24K upfront cash — no financing product</li>
-<li>Only 4 states (CA, TX, NV, UT)</li>
-<li>No ABS program — tax equity only</li>
-<li>No battery-only or standalone storage product</li>
-<li>No cross-sell products</li>
-</ul>
-
-<h3>Where HDM Wins vs - $0 monthly payments after prepayment (vs PLR's 25-yr monthly)</h3>
-<ul>
-<li>Ownership at year 6 (vs never)</li>
-<li>Zero collections overhead (customer pays upfront)</li>
-<li>Lower pricing caps than both Propel and (implied) - Post-ITC narrative: "Save 20% on Solar in 2026"</li>
-<li>Fully transferable, no credit check for new owner</li>
-</ul>
-
-<p>---</p>
-
-<h2>3. Participate Energy</h2>
-
-<p><strong>Full analysis:</strong> <code>~/Documents/Brain/Participate Energy vs Palmetto — Competitive Analysis.md</code></p>
-
-<h3>Two Products</h3>
-<ul>
-<li><strong>CCA On-Bill Tariff (CA only):</strong> $0 upfront, NO credit check, NO lien, payment on utility bill, works for RENTERS. Tesla-only equipment. 10+ CCA partners serving 2M+ Californians.</li>
-<li><strong>Prepaid Lease (9 states):</strong> Customer pays ~70% upfront, ownership at FMV after year 6. AZ, CA, CO, HI, ID, NJ, NY, TX, UT.</li>
-</ul>
-
-<h3>EPC Payment Terms</h3>
-<ul>
-<li><strong>70/30 split:</strong> 70% paid at install, 30% paid at PTO</li>
-</ul>
-
-<h3>Homeowner Payment Options (70% Prepay)</h3>
-<ul>
-<li><strong>Option A: Cash upfront</strong> — homeowner pays 70% out of pocket</li>
-<li><strong>Option B: CU loan</strong> — homeowner finances 70% via credit union loan (same model as Propel/Concert)</li>
-<li><strong>CU loan terms:</strong> 20-year term, 8.49% APR, 6 months deferred payments</li>
-<li>30% ITC discount applied upfront (Participate retains remainder)</li>
-<li>CU loan is worse than Propel/Concert on term (20 yr vs 25 yr = higher monthly) despite slightly lower APR (8.49% vs 8.79%)</li>
-</ul>
-
-<h3>Pricing</h3>
-<ul>
-<li>CCA: $0 upfront, on-bill tariff (utility bill payment)</li>
-<li>Prepaid Lease: ~70% of system cost upfront (financed via CU loan)</li>
-<li>CARE/FERA: Up to 60% bill reduction (income-qualified, SGIP-funded)</li>
-<li>No disclosed pricing caps</li>
-</ul>
-
-<h3>Key Weaknesses</h3>
-<ul>
-<li>CCA model only works in California</li>
-<li>Tesla-only equipment limits installer flexibility</li>
-<li>~14 employees — severe scaling constraints</li>
-<li>No ABS, no securitization, no disclosed funding</li>
-<li>Prepaid Lease requires ~70% upfront capital</li>
-<li>Only 9 states for prepaid lease</li>
-<li><strong>CU loan pairing = higher monthly than PLR:</strong> 20-year term / 8.49% APR → higher monthly payment than PLR's 25-year lease despite lower upfront. 6-month deferral = payment shock risk.</li>
-<li><strong>70/30 EPC terms entice installers</strong> with faster cash flow but PLR's milestone funding is more structured</li>
-</ul>
-
-<h3>Where Participate Wins vs - No UCC lien on property</h3>
-<ul>
-<li>Works for RENTERS (CCA model) — market cannot serve</li>
-<li>On-bill tariff = 98%+ payment rates, zero collections</li>
-<li>Government trust channel (CCA endorsement)</li>
-<li>SD overlap: Baker Home Energy dual-channeling with CEA Solar Plus</li>
-</ul>
-
-<h3>San Diego Connection</h3>
-<ul>
-<li>Clean Energy Alliance (CEA) serves 250K+ customers in North County SD</li>
-<li>Direct competitive collision with PLR's SD anchors</li>
-</ul>
-
-<p>---</p>
-
-<h2>4. Thrive Power LLC</h2>
-
-<p><strong>Full analysis:</strong> <code>~/Documents/Brain/Thrive Power vs Palmetto — Competitive Analysis.md</code></p>
-
-<h3>Pricing</h3>
-<ul>
-<li>Pre-Paid PPA: <strong>~$2.60/W</strong> including 13.5 kWh battery (per Reddit)</li>
-<li>$0 monthly payments, no escalators</li>
-<li>Thrive retains ownership, claims ITC, passes savings as upfront discount</li>
-<li>Possible ownership transfer at ~year 6</li>
-</ul>
-
-<h3>Key Weaknesses</h3>
-<ul>
-<li>~2-3 year old company with ZERO track record</li>
-<li>No named leadership — complete organizational opacity</li>
-<li>No institutional capital, ABS, or disclosed funding</li>
-<li><strong>TriSMART Solar SHUT DOWN end of 2025</strong> — confirmed by Reuters + Houston Press. Customers left with incomplete installations. PRIMARY installer partner is DEAD.</li>
-<li>Nov 2025 prepayment verification formalization = dealer fund-handling problems</li>
-<li><strong>THREAT LEVEL DOWNGRADED TO LOW</strong> — TriSMART shutdown removes operational backbone</li>
-<li>Brand confusion — 5+ "Thrive" solar entities pollute search results</li>
-<li>Password-protected product pages (still in development)</li>
-<li>No VPP program despite installing batteries</li>
-<li>"All 50 states" claim unverified</li>
-</ul>
-
-<h3>Where Thrive Wins vs - Pre-Paid PPA at $2.60/W with battery is genuinely aggressive pricing</h3>
-<ul>
-<li>Zero monthly payments, zero escalators</li>
-<li>Battery INCLUDED in base price (not add-on)</li>
-<li>Zero collections risk (prepaid model)</li>
-<li>Serves ITC-ineligible homeowners (retirees, low tax liability)</li>
-</ul>
-
-<h3>Critical Insight</h3>
-<ul>
-<li><strong>The company is weak. The model is strong.</strong></li>
-<li>If a well-capitalized competitor adopts the prepaid PPA, it becomes a real threat</li>
-<li>Watch for capital events (tax equity partner, PE backing)</li>
-</ul>
-
-<p>---</p>
-
-<h2>PPL vs — Master Comparison</h2>
-
-<h2>Full Analysis Reports</h2>
-<ul>
-<li><code>~/Documents/Brain/Propel (Concert-Enphase) vs Palmetto — Competitive Analysis.md</code></li>
-<li><code>~/Documents/Brain/HDM Capital vs Palmetto — Competitive Analysis.md</code></li>
-<li><code>~/Documents/Brain/Participate Energy vs Palmetto — Competitive Analysis.md</code></li>
-<li><code>~/Documents/Brain/Thrive Power vs Palmetto — Competitive Analysis.md</code></li>
-</ul>
-
-<h2>Related Memory Files</h2>
-<ul>
-<li><code>propel-concert-enphase-intel.md</code> — Propel/Concert/Enphase detailed intel</li>
-<li><code>hdm-capital-intel.md</code> — HDM Capital detailed intel</li>
-<li><code>competitive-market-intel.md</code> — All competitors master list</li>
-<li><code>battery-sector-intel.md</code> — Battery/inverter market data</li>
-<li><code>woodmac-seia-q3-2025.md</code> — WoodMac/SEIA market data (48E cliff, FEOC, TPO share, storage attachment, pricing)</li>
-</ul>
 </div>
-
-<div style="margin:2rem 0; padding:1.5rem; background:#fafafa; border:2px solid #F9593B; border-radius:12px; text-align:center;">
-  <strong style="font-size:1.1rem;">Updated Report Available</strong><br>
-  <a href="/docs/Propel-vs-LightReach-Comparison.pdf" download style="display:inline-block; margin-top:0.75rem; padding:0.75rem 2rem; background:#F9593B; color:#fff; border-radius:8px; text-decoration:none; font-weight:700;">Download Propel vs Palmetto LightReach Comparison &darr;</a>
-</div>
-
-<div class="intel-footer">
-  &copy; 2026 Palmetto LightReach. Confidential &mdash; for authorized use only.
-</div>
-
+<div class="intel-footer">&copy; 2026 Palmetto LightReach. Confidential &mdash; for authorized use only.</div>
 </body>
 </html>
